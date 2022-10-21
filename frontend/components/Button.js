@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Button = ({ text, onClick }) => {
+const Button = ({ text, type, onClick }) => {
   const [buttonActive, setButtonActive] = useState(false);
   const classNameGenerator = (...classes) => {
     return classes.join(" ");
@@ -11,6 +11,7 @@ const Button = ({ text, onClick }) => {
       onMouseDown={() => setButtonActive(!buttonActive)}
       onMouseUp={() => setButtonActive(!buttonActive)}
       className={classNameGenerator("btn") + " " + buttonActive}
+      type={type}
       onClick={onClick}
     >
       {text}

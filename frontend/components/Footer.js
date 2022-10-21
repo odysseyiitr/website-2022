@@ -13,8 +13,7 @@ class Footer extends Component {
             <div className="footer-1_text">ODYSSEY</div>
           </div>
           <div className="footer-text">
-            A JOURNEY TO OPEN SOURCE SOME TAGLINE IDK something related to what
-            is going on and some lines about open source philosophy :)
+            In real open-source, you have the right to control your own destiny
           </div>
           <div className="footer-social">
             <div className="contact">
