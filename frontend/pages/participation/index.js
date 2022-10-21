@@ -60,7 +60,6 @@ export default function Home() {
         </div>
       </div>
       <div className="content">
-        <SocialIcons />
         <ReposToContribute list={CardData} callback={fetchRepos} />
       </div>
       <div className="participationB">
