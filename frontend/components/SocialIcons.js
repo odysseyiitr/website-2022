@@ -6,6 +6,7 @@ const SocialIcons = () => {
         href="https://www.instagram.com/odyssey.iitr/"
         target="_blank"
         referrerPolicy="norefferer"
+        rel="noreferrer"
       >
         <img
           className="placard-icons-instagram"
@@ -17,6 +18,7 @@ const SocialIcons = () => {
         href="https://github.com/odysseyiitr"
         target="_blank"
         referrerPolicy="norefferer"
+        rel="noreferrer"
       >
         <img
           className="placard-icons-github"
