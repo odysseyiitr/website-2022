@@ -23,6 +23,7 @@ class Footer extends Component {
                   href="https://github.com/odysseyiitr"
                   target="_blank"
                   referrerPolicy="norefferer"
+                  rel="noreferrer"
                 >
                   <img className="icon_img" src="/images/github.svg" />
                 </a>
@@ -30,6 +31,7 @@ class Footer extends Component {
                   href="https://www.instagram.com/odyssey.iitr/"
                   target="_blank"
                   referrerPolicy="norefferer"
+                  rel="noreferrer"
                 >
                   <img className="icon_img" src="/images/instagram.svg" />
                 </a>
@@ -37,6 +39,7 @@ class Footer extends Component {
                   href="mailto:odysseyiitr@gmail.com"
                   target="_blank"
                   referrerPolicy="norefferer"
+                  rel="noreferrer"
                 >
                   <img className="icon_img" src="/images/email.svg" />
                 </a>
