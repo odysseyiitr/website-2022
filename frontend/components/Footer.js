@@ -21,21 +21,21 @@ class Footer extends Component {
               <div className="footer-social-text">Contact Us</div>
               <div className="social-icons">
                 <a
-                  href="https://www.github.com/sdslabs/"
+                  href="https://github.com/odysseyiitr"
                   target="_blank"
                   referrerPolicy="norefferer"
                 >
                   <img className="icon_img" src="/images/github.svg" />
                 </a>
                 <a
-                  href="https://www.instagram.com/sdslabs/"
+                  href="https://www.instagram.com/odyssey.iitr/"
                   target="_blank"
                   referrerPolicy="norefferer"
                 >
                   <img className="icon_img" src="/images/instagram.svg" />
                 </a>
                 <a
-                  href="mailto:contact@sdslabs.co"
+                  href="mailto:odysseyiitr@gmail.com"
                   target="_blank"
                   referrerPolicy="norefferer"
                 >
