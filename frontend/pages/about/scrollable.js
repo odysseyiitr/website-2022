@@ -5,27 +5,78 @@ export default function Home() {
   return (
     <div>
       <AboutTop />
-      {/* <div className='about'>
-            <p>Designers</p>
-            <div className='members'>
-            <div className='member'><MemberCards imgsource={'/ok.jpg'} name="urmom"/></div>
-            <div className='member'><MemberCards imgsource={'/ok.jpg'} name="urmom"/></div>
-            <div className='member'><MemberCards imgsource={'/ok.jpg'} name="urmom"/></div>
-            <div className='member'><MemberCards imgsource={'/ok.jpg'} name="urmom"/></div>
-            <div className='member'><MemberCards imgsource={'/ok.jpg'} name="urmom"/></div>
-            </div>
-        </div>
-        <div className='about'>
-            <p>Developers</p>
-            <div className='members'>
-            <div className='member'><MemberCards imgsource={'/ok.jpg'} name="urmom"/></div>
-            <div className='member'><MemberCards imgsource={'/ok.jpg'} name="urmom"/></div>
-            <div className='member'><MemberCards imgsource={'/ok.jpg'} name="urmom"/></div>
-            <div className='member'><MemberCards imgsource={'/ok.jpg'} name="urmom"/></div>
-            </div>
-        </div> */}
       <div className="about">
-        <p>Mentors</p>
+        <p className="role-title">organizers</p>
+        <div className="members">
+          <div className="member">
+            <MemberCards
+              imgsource={"/images/mentors/anshul.png"}
+              name="Anshul Singh"
+            />
+          </div>
+          <div className="member">
+            <MemberCards
+              imgsource={"/images/mentors/anshul.png"}
+              name="Anshul Singh"
+            />
+          </div>
+          <div className="member">
+            <MemberCards
+              imgsource={"/images/mentors/anshul.png"}
+              name="Anshul Singh"
+            />
+          </div>
+          <div className="member">
+            <MemberCards
+              imgsource={"/images/mentors/anshul.png"}
+              name="Anshul Singh"
+            />
+          </div>
+          <div className="member">
+            <MemberCards
+              imgsource={"/images/mentors/anshul.png"}
+              name="Anshul Singh"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="about">
+        <p className="role-title">mentors</p>
+        <div className="members">
+          <div className="member">
+            <MemberCards
+              imgsource={"/images/mentors/bisht13.jpeg"}
+              name="Aditya Bisht"
+            />
+          </div>
+          <div className="member">
+            <MemberCards
+              imgsource={"/images/mentors/bisht13.jpeg"}
+              name="Aditya Bisht"
+            />
+          </div>
+          <div className="member">
+            <MemberCards
+              imgsource={"/images/mentors/bisht13.jpeg"}
+              name="Aditya Bisht"
+            />
+          </div>
+          <div className="member">
+            <MemberCards
+              imgsource={"/images/mentors/bisht13.jpeg"}
+              name="Aditya Bisht"
+            />
+          </div>
+          <div className="member">
+            <MemberCards
+              imgsource={"/images/mentors/bisht13.jpeg"}
+              name="Aditya Bisht"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="about">
+        <p className="role-title">designers &amp; developers</p>
         <div className="members">
           <div className="member">
             <MemberCards
