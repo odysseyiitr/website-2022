@@ -25,7 +25,7 @@ export default function Home() {
             </div>
         </div> */}
       <div className="about">
-        <p>Mentors</p>
+        <p class="mentors">Mentors</p>
         <div className="members">
           <div className="member">
             <MemberCards
