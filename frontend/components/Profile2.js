@@ -13,7 +13,8 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
   const [formContact, setContact] = useState("");
   const [formField, setField] = useState("Developer");
 
-  async function setData() {
+  async function setData(e) {
+    e.preventDefault();
     let data = {
       access_token: session.accessToken,
       id_token: session.user.id,
@@ -31,7 +32,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
 
   return (
     <div className="signup">
-      <form className="user-form">
+      <form className="user-form" onSubmit={setData}>
         <div className="avatar">
           <div
             className="imageCropper"
@@ -48,7 +49,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
               true
             )}
           </div>
-          {editProfile === true ? (
+          {editProfile === true && (
             <div>
               <input
                 type="image"
@@ -59,18 +60,6 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 }}
               />
             </div>
-          ) : (
-            <select
-              className="dropDown"
-              onChange={(e) => {
-                setField(e.target.value);
-              }}
-            >
-              <option value="Designer">DESIGNER</option>
-              <option value="Developer" selected>
-                DEVELOPER
-              </option>
-            </select>
           )}
         </div>
         {editProfile && <hr />}
@@ -95,54 +84,58 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
           </div>
         ) : (
           <div className="user-details">
-            <div className="form-floating">
-              <label>ACTUAL NAME</label>
-              <input
-                type="text"
-                placeholder="ENTER YOUR NAME"
-                className="input"
-                onChange={(e) => setName(e.target.value)}
-                value={formName}
-              />
-            </div>
-            <div className="form-floating">
-              <label>ENROLLMENT NO</label>
-              <input
-                type="text"
-                placeholder="ENTER ENROLLMENT NO."
-                className="input"
-                onChange={(e) => setEno(e.target.value)}
-                value={formEno}
-              />
-            </div>
-            <div className="form-floating">
-              <label>CONTACT NO</label>
-              <input
-                type="text"
-                placeholder="ENTER CONTACT NO."
-                pattern="[0-9]{10}"
-                className="input"
-                onChange={(e) => setContact(e.target.value)}
-                value={formContact}
-              />
-            </div>
-            <div className="form-floating">
-              <label>EMAIL ID</label>
-              <input
-                type="email"
-                placeholder="ENTER EMAIL ID"
-                className="input"
-                onChange={(e) => setEmail(e.target.value)}
-                value={formEmail}
-              />
-            </div>
-            <div
-              style={{
-                height: "50px",
-              }}
-            >
-              <Button onClick={() => setData()} text={"Sign Up"} />
-            </div>
+              <div className="form-floating">
+                <label>ACTUAL NAME</label>
+                <input
+                  type="text"
+                  placeholder="ENTER YOUR NAME"
+                  className="input"
+                  onChange={(e) => setName(e.target.value)}
+                  value={formName}
+                />
+              </div>
+              <div className="form-floating">
+                <label>ENROLLMENT NO</label>
+                <input
+                  type="text"
+                  placeholder="ENTER ENROLLMENT NO."
+                  pattern="[0-9]{8}"
+                  className="input"
+                  title="enrollment number should contain only 8 numeric digits"
+                  onChange={(e) => setEno(e.target.value)}
+                  value={formEno}
+                />
+              </div>
+              <div className="form-floating">
+                <label>CONTACT NO</label>
+                <input
+                  type="tel"
+                  placeholder="ENTER CONTACT NO."
+                  pattern="[0-9]{10}"
+                  title="phone number should contain only 10 numeric digits"
+                  className="input"
+                  onChange={(e) => setContact(e.target.value)}
+                  value={formContact}
+                />
+              </div>
+              <div className="form-floating">
+                <label>EMAIL ID</label>
+                <input
+                  type="email"
+                  placeholder="ENTER EMAIL ID"
+                  className="input"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={formEmail}
+                />
+              </div>
+                <div
+                style={{
+                  height: "50px",
+                }}
+              >
+                <Button type="submit" text={"Sign Up"} />
+              </div>
+
           </div>
         )}
       </form>
