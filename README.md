@@ -22,6 +22,10 @@ cd odyssey/frontend/
 NEXTAUTH_URL=Your GitHub OAuth callback url
 GITHUB_ID= Your GitHub OAuth Id
 GITHUB_SECRET=Your GitHub OAuth Secret
+NEXT_PUBLIC_GOOGLE_SHEETS_PRIVATE_KEY=Your Google Sheets Service Account private key
+NEXT_PUBLIC_GOOGLE_SHEETS_CLIENT_EMAIL=Your Google Sheets Service Account Email Id
+NEXT_PUBLIC_SPREADSHEET_ID=Your SpreadSheet Id
+NEXT_PUBLIC_MENTOR_SHEET_ID=Your Mentor Sheet Id
 ```
 
 4. Next, change the directory to `odyssey/` and run the following command to enter python's virtual environment.
