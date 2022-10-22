@@ -8,7 +8,7 @@ export default function Home() {
   const timeline = useRef();
   const [announcement, setAnnouncement] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:8000/api/get-announcements/").then((res) => {
+    axios.get("https://odyssey.iitr.ac.in/backend/api/get-announcements/").then((res) => {
       setAnnouncement(res.data);
     });
   }, []);

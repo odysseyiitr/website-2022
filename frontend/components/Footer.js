@@ -23,21 +23,21 @@ class Footer extends Component {
                 <a
                   href="https://www.github.com/sdslabs/"
                   target="_blank"
-                  referrerPolicy="norefferer"
+                  rel="noreferrer"
                 >
                   <img className="icon_img" src="/images/github.svg" />
                 </a>
                 <a
                   href="https://www.instagram.com/sdslabs/"
                   target="_blank"
-                  referrerPolicy="norefferer"
+                  rel="noreferrer"
                 >
                   <img className="icon_img" src="/images/instagram.svg" />
                 </a>
                 <a
                   href="mailto:contact@sdslabs.co"
                   target="_blank"
-                  referrerPolicy="norefferer"
+                  rel="noreferrer"
                 >
                   <img className="icon_img" src="/images/email.svg" />
                 </a>
