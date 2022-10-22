@@ -6,14 +6,28 @@ import MemberCardGrid from "../../components/MemberCardGrid";
 
 export default function Home() {
   const [mentors, setMentors] = useState([]);
+  const [organizers, setOrganizers] = useState([]);
+  const [developers, setDevelopers] = useState([]);
   
   useEffect(() => {
     const fetchMentors = async () => {
-      const mentors = await readMembersFromSheet(process.env.NEXT_PUBLIC_MENTOR_SHEET_ID);
-      setMentors(mentors);
+      const mentorsList = await readMembersFromSheet(process.env.NEXT_PUBLIC_MENTOR_SHEET_ID);
+      setMentors(mentorsList);
+    }
+
+    const fetchOragnizers = async () => {
+      const organizersList = await readMembersFromSheet(process.env.NEXT_PUBLIC_ORGANIZERS_SHEET_ID);
+      setOrganizers(organizersList);
+    }
+
+    const fetchDevelopersAndDesigners = async () => {
+      const developersList = await readMembersFromSheet(process.env.NEXT_PUBLIC_DEVELOPERS_AND_DESIGNERS_SHEET_ID);
+      setDevelopers(developersList);
     }
 
     fetchMentors();
+    fetchOragnizers();
+    fetchDevelopersAndDesigners();
 
   }, []);
 
@@ -22,38 +36,7 @@ export default function Home() {
       <AboutTop />
       <div className="about">
         <p className="role-title">organizers</p>
-        <div className="members">
-          <div className="member">
-            <MemberCards
-              imgsource={"/images/mentors/bisht13.jpeg"}
-              name="Aditya Bisht"
-            />
-          </div>
-          <div className="member">
-            <MemberCards
-              imgsource={"/images/mentors/MayankMittal1.jpeg"}
-              name="Mayank Mittal"
-            />
-          </div>
-          <div className="member">
-            <MemberCards
-              imgsource={"/images/mentors/avii.jpeg"}
-              name="Archit Gosian"
-            />
-          </div>
-          <div className="member">
-            <MemberCards
-              imgsource={"/images/mentors/anshul.png"}
-              name="Anshul Singh"
-            />
-          </div>
-          <div className="member">
-            <MemberCards
-              imgsource={"/images/mentors/pragyansh.jpeg"}
-              name="Pragyansh Chaturvedi"
-            />
-          </div>
-        </div>
+        <MemberCardGrid members={organizers} />
       </div>
       <div className="about">
         <p className="role-title">mentors</p>
@@ -61,38 +44,7 @@ export default function Home() {
       </div>
       <div className="about">
         <p className="role-title">designers &amp; developers</p>
-      <div className="members">
-          <div className="member">
-            <MemberCards
-              imgsource={"/images/mentors/bisht13.jpeg"}
-              name="Aditya Bisht"
-            />
-          </div>
-          <div className="member">
-            <MemberCards
-              imgsource={"/images/mentors/MayankMittal1.jpeg"}
-              name="Mayank Mittal"
-            />
-          </div>
-          <div className="member">
-            <MemberCards
-              imgsource={"/images/mentors/avii.jpeg"}
-              name="Archit Gosian"
-            />
-          </div>
-          <div className="member">
-            <MemberCards
-              imgsource={"/images/mentors/anshul.png"}
-              name="Anshul Singh"
-            />
-          </div>
-          <div className="member">
-            <MemberCards
-              imgsource={"/images/mentors/pragyansh.jpeg"}
-              name="Pragyansh Chaturvedi"
-            />
-          </div>
-        </div>
+        <MemberCardGrid members={developers} />
         </div>
     </div>
   );
