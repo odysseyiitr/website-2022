@@ -11,6 +11,7 @@ const axios = require("axios").default;
 
 export default function Home() {
   const [CardData, setCardData] = useState([]);
+   const [Loading, setLoading] = useState(true);
   const ParticipationDetailsData = [
     "Sign up to start your contributions.",
     "Go through the issues and claim any unassigned issue that interests you.",
