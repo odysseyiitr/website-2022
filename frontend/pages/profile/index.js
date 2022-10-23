@@ -38,18 +38,12 @@ export default function Home() {
       {user ? (
         <div className="profile-page-content">
           <Profile
-            // uname={user.uname}
-            // aname={user.aname}
-            // role={user.role}
-            // eno={user.eno}
-            // contact={user.contact}
-            // email={user.email}
-            uname="Siddharth"
-            aname="Siddharth"
-            role="Student"
-            eno="2019CS10301"
-            contact="1234567890"
-            email="example@gmail.com"
+            uname={user.uname}
+            aname={user.aname}
+            role={user.role}
+            eno={user.eno}
+            contact={user.contact}
+            email={user.email}
             pfp={user.pfp}
           />
           <UserProgress progress={0} rank={"NA"} />
