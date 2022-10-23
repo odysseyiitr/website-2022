@@ -46,7 +46,7 @@ export default function Home() {
             email={user.email}
             pfp={user.pfp}
           />
-          <UserProgress progress={0} rank={"NA"} />
+        {/* <UserProgress progress={0} rank={"NA"} /> */}
         </div>
       ) : (
         <div>loading</div>
