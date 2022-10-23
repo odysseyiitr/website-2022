@@ -24,6 +24,7 @@ export default function Home() {
     const { data } = await axios.get(
       `https://odyssey.iitr.ac.in/backend/api/get-all-issues/`
     );
+    console.log({ data });
     let repos = [];
     data.forEach(async (element) => {
       var repoInfo = element.issue.split("/");
@@ -45,12 +46,16 @@ export default function Home() {
         assignee: element.assigneeId,
         issueUrl: element.issue,
       });
+      console.log({ repos });
       setCardData(JSON.parse(JSON.stringify(repos)));
     });
   };
+
   useEffect(() => {
+    console.log({ session });
     if (session) fetchRepos();
   }, [session]);
+
   return (
     <>
       <div className="about" style={{ marginTop: "100px" }}>
