@@ -77,17 +77,39 @@
 }
 
 .icons{
-    width: 40rem;
+    width: 80vw;
     display: flex;
-    flex-direction: row;
+    // flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
 .members{
-    display: grid;
+    // display: grid;
+    display:flex;
+    flex-wrap: wrap;
     grid-template-columns: auto auto auto auto;
     row-gap: 50px;
-    padding-left: 4rem;
+    // padding-left: 4rem;
 }
 
+.member{
+    padding: 1rem;
+}
+
+.mentors{
+    padding-top: 4rem;
+}
+
+@media only screen and (max-width: 768px){
+    .icons{
+        display: flex;
+        flex-wrap:wrap;
+        flex-direction: initial;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .icon{
+        padding: 0.5rem;
+    }
+}

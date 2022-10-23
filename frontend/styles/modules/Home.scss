@@ -250,6 +250,15 @@ header > nav {
   }
 }
 
+@media (max-width: 420px) {
+  // .odysseyimage{
+  //   display: none;
+  // }
+  h1{
+    font-size: 2rem;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .card,
   .footer {
