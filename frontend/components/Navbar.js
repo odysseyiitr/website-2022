@@ -8,7 +8,7 @@ const MENU_LIST = [
   //{ text: "Events", href: "/events" },
   //{ text: "Leaderboard", href: "/leaderboard" },
   { text: "About", href: "/about" },
-  { text: "Participation", href: "/participation", sessionOnly: true },
+  { text: "Participation", href: "/participation" },
 ];
 
 const Navbar = () => {
@@ -51,20 +51,17 @@ const Navbar = () => {
           <div></div>
         </div>
         <div className={`${navActive ? "active" : ""} nav__menu-list`}>
-          {MENU_LIST.map(
-            (menu, idx) =>
-              (!menu.sessionOnly || (menu.sessionOnly && session)) && (
-                <div
-                  onClick={() => {
-                    setActiveIdx(idx);
-                    setNavActive(false);
-                  }}
-                  key={menu.text}
-                >
-                  <NavItem active={activeIdx === idx} {...menu} />
-                </div>
-              )
-          )}
+          {MENU_LIST.map((menu, idx) => (
+            <div
+              onClick={() => {
+                setActiveIdx(idx);
+                setNavActive(false);
+              }}
+              key={menu.text}
+            >
+              <NavItem active={activeIdx === idx} {...menu} />
+            </div>
+          ))}
           {!session ? (
             <button
               className="login_signupButton"
