@@ -66,19 +66,19 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
         {editProfile === true ? (
           <div className="user-details">
             <div className="form-floating">
-              <label>ACTUAL NAME</label>
+              <label className="detail-label">ACTUAL NAME</label>
               <label className="details">{aname}</label>
             </div>
             <div className="form-floating">
-              <label>ENROLLMENT NO</label>
+              <label className="detail-label">ENROLMENT NO</label>
               <label className="details">{eno}</label>
             </div>
             <div className="form-floating">
-              <label>CONTACT NO</label>
+              <label className="detail-label">CONTACT NO</label>
               <label className="details">{contact}</label>
             </div>
             <div className="form-floating">
-              <label>EMAIL ID</label>
+              <label className="detail-label">EMAIL ID</label>
               <label className="details">{email}</label>
             </div>
           </div>
@@ -95,7 +95,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 />
               </div>
               <div className="form-floating">
-                <label>ENROLLMENT NO</label>
+                <label>ENROLMENT NO</label>
                 <input
                   type="text"
                   placeholder="ENTER ENROLLMENT NO."
