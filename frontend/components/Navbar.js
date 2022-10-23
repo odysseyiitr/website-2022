@@ -19,15 +19,19 @@ const Navbar = () => {
   const { data: session } = useSession();
 
   const fetchUserData = async () => {
-    const response = await axios.post('https://odyssey.iitr.ac.in/backend/api/get-user/', { access_token: session.accessToken, id_token: session.user.id }, {headers:{"Content-Type" : "application/json"}});
-    return response
-  }
-
+    const response = await axios.post(
+      "https://odyssey.iitr.ac.in/backend/api/get-user/",
+      { access_token: session.accessToken, id_token: session.user.id },
+      { headers: { "Content-Type": "application/json" } }
+    );
+    return response;
+  };
 
   useEffect(() => {
-    if (session) fetchUserData().then((response)=>{
-      setUserId(response.data.username)
-    });
+    if (session)
+      fetchUserData().then((response) => {
+        setUserId(response.data.username);
+      });
   }, [session]);
 
   return (
@@ -58,18 +62,26 @@ const Navbar = () => {
               <NavItem active={activeIdx === idx} {...menu} />
             </div>
           ))}
-          {!session && (
-            <button className="login_signupButton" onClick={() => signIn('github')}>LOGIN / SIGNUP</button>
-          )}
-          {session && 
+          {!session ? (
+            <button
+              className="login_signupButton"
+              onClick={() => signIn("github")}
+            >
+              LOGIN / SIGNUP
+            </button>
+          ) : (
             <div className="dropdownmenu">
               {userId}
               <div className="dropdown">
-              	<button className="profile_button"><NavItem { ...{ text: "Profile", href: "/profile" } } /></button>
-                <button className="logout_button" onClick={() => signOut()}>Logout</button>
+                <button className="profile_button">
+                  <NavItem {...{ text: "Profile", href: "/profile" }} />
+                </button>
+                <button className="logout_button" onClick={() => signOut()}>
+                  Logout
+                </button>
               </div>
             </div>
-          }
+          )}
         </div>
       </nav>
     </header>

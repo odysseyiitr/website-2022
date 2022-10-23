@@ -2,7 +2,9 @@
   height: 564px;
   width: max-content;
   color: white;
+  margin: auto;
   display: flex;
+  flex-wrap: wrap;
   padding: 2rem;
   flex-direction: column;
   align-items: center;
@@ -20,4 +22,12 @@
 
 .rank {
   font-size: 3rem;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .progresspanel {
+    margin-bottom: 2rem;
+  }
+
 }

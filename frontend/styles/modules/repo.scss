@@ -1,11 +1,3 @@
-.content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  height: 100%;
-}
-
 .repobox {
   border: 0.125rem solid #fff;
   margin: 2rem;
@@ -19,18 +11,14 @@
   flex-direction: column;
   align-items: center;
   padding: 1.5rem;
-  margin-left: 0.625rem;
+  margin-left: 6.375rem;
+  margin-right: 4.5rem;
   background-color: 0.125rem solid #fff;
-  width: 95%;
-  margin-right: 5%;
+  // width: 95vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
-  margin-left: 0.625rem;
   background-color: 0.125rem solid #fff;
-  width: 210%;
-  margin-right: 5%;
   border-radius: 0.5rem;
   border: 0.125rem solid #fff;
   box-shadow: 0 0 0.5rem #fff;
