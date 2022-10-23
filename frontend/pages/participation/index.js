@@ -3,7 +3,7 @@ import Resources from "../../components/Resources";
 import Searchbar from "../../components/Searchbar";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Octokit, App } from "octokit";
+import { Octokit } from "@octokit/rest";
 import Info from "../../components/Info";
 
 const axios = require("axios").default;
@@ -23,6 +23,7 @@ export default function Home() {
     const { data } = await axios.get(
       `https://odyssey.iitr.ac.in/backend/api/get-all-issues/`
     );
+
     let repos = [];
     data
       .filter((issue) => !issue.completed)
