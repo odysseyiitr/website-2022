@@ -26,6 +26,7 @@ class IssueModelSerializer(ModelSerializer):
             'mentorId',
             'assigneeName',
             'assigneeId',
+            'completed',
         ]
 
     def create(self, validated_data):

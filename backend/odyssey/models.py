@@ -60,6 +60,7 @@ class IssueModel(models.Model):
     mentorId = models.CharField(max_length = 32)
     assigneeName = models.CharField(max_length = 50, null = True, blank = True)
     assigneeId = models.CharField(max_length = 32, null = True, blank = True)
+    completed = models.BooleanField(default = False)
 
     class Meta:
         verbose_name = 'Issue'
