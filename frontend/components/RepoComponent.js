@@ -29,7 +29,11 @@ const Repo = ({ Card, callback }) => {
               marginLeft: "auto",
               marginTop: "15px",
             }}
-            onClick={() => claimIssue(Card, session).then(() => callback())}
+            onClick={() =>
+              claimIssue(Card, session).then(() => {
+                callback().then(() => setLoading(false));
+              })
+            }
           >
             Claim
           </button>
@@ -45,11 +49,14 @@ const Repo = ({ Card, callback }) => {
 };
 
 async function claimIssue(Card, session) {
-  const response = await axios.post("https://odyssey.iitr.ac.in/backend/api/claim-issue/", {
-    access_token: session.accessToken,
-    id_token: session.user.id,
-    issue: Card.issueUrl,
-  });
+  const response = await axios.post(
+    "https://odyssey.iitr.ac.in/backend/api/claim-issue/",
+    {
+      access_token: session.accessToken,
+      id_token: session.user.id,
+      issue: Card.issueUrl,
+    }
+  );
 }
 
 export default Repo;

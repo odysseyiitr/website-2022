@@ -1,6 +1,7 @@
 import ReposToContribute from "../../components/RepoList";
 import Resources from "../../components/Resources";
 import Searchbar from "../../components/Searchbar";
+import Loader from "../../components/loader";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { Octokit, App } from "octokit";
@@ -10,6 +11,7 @@ const axios = require("axios").default;
 
 export default function Home() {
   const [CardData, setCardData] = useState([]);
+  const [Loading, setLoading] = useState(true);
   const { data: session } = useSession();
   const ParticipationDetailsData = [
     "Sign up to start your contributions.",
@@ -21,9 +23,11 @@ export default function Home() {
     const octokit = new Octokit({
       auth: session.accessToken,
     });
+
     const { data } = await axios.get(
       `https://odyssey.iitr.ac.in/backend/api/get-all-issues/`
     );
+    console.log(data);
     let repos = [];
     data.forEach(async (element) => {
       var repoInfo = element.issue.split("/");
@@ -49,28 +53,35 @@ export default function Home() {
     });
   };
   useEffect(() => {
-    if (session) fetchRepos();
+    if (session) fetchRepos().then(() => setLoading(false));
   }, [session]);
-  return (
-    <>
-      <div className="about" style={{ marginTop: "100px" }}>
-        <div className="searchandissues">
-          <p className="heading">PICK YOUR ISSUES</p>
-          <Searchbar />
+  if (Loading) {
+    return <Loader />;
+  } else {
+    return (
+      <>
+        <div className="about" style={{ marginTop: "100px" }}>
+          <div className="searchandissues">
+            <p className="heading">PICK YOUR ISSUES</p>
+            <Searchbar />
+          </div>
         </div>
-      </div>
-      <div className="content">
-        <ReposToContribute list={CardData} callback={fetchRepos} />
-      </div>
-      <div className="participationB">
-        <Info
-          heading={"Participation Details"}
-          text={ParticipationDetailsData}
-        />
-        {/* <Info heading={"Pull Merge Request Details"} text={[]} />
+        <div className="content">
+          <ReposToContribute
+            list={CardData}
+            callback={fetchRepos}
+          />
+        </div>
+        <div className="participationB">
+          <Info
+            heading={"Participation Details"}
+            text={ParticipationDetailsData}
+          />
+          {/* <Info heading={"Pull Merge Request Details"} text={[]} />
         <Info heading={"Code of Conduct"} text={[]} />
         <Resources /> */}
-      </div>
-    </>
-  );
+        </div>
+      </>
+    );
+  }
 }
