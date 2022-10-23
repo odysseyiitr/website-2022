@@ -1,17 +1,15 @@
 .signup {
   box-sizing: border-box;
   width: 50%;
+  min-width: 550px;
   height: 564px;
+  margin:auto;
   background: rgba(255, 255, 255, 0.1);
   border: 0.24rem solid #ffffff;
-  //backdrop-filter: blur(4.82599px);
-
-  /* Note: backdrop-filter has minimal browser support */
   border-radius: 1rem;
-  //filter: blur(15.9258px);
-  text-align: center;
   vertical-align: middle;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
 }
@@ -41,7 +39,8 @@
 .avatar {
   display: flex;
   flex-direction: row;
-  height: 20%;
+  position: relative;
+  height: 10%;
   justify-content: space-around;
   align-items: center;
   margin-top: 8%;
@@ -54,8 +53,8 @@
 }
 
 .imageCropper {
-  width: 100px;
-  height: 100px;
+  min-width: 9rem;
+  height: 9rem;
   position: relative;
   border-radius: 50%;
   background-size: cover;
@@ -66,7 +65,7 @@
 .labels {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   font-size: 10px;
 }
 
@@ -90,12 +89,13 @@
   height: 100%;
   width: 100%;
 }
+
 .user-details {
   display: flex;
-  height: 50%;
+  height: 60%;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 1.625rem;
+  margin-top: 5rem;
 }
 
 .userHandle {
@@ -109,7 +109,7 @@
 .field {
   font-style: normal;
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 5rem;
   line-height: 97.69%;
   letter-spacing: -0.045em;
   text-transform: uppercase;
@@ -120,16 +120,39 @@
 .details {
   font-style: normal;
   font-weight: 400;
-
   font-size: 2rem;
-
-  line-height: 97.69%;
+  line-height: 95%;
   letter-spacing: -0.045em;
   text-transform: uppercase;
   color: #cfcdcd;
   background-color: rgba(0, 0, 0, 0);
-  padding-left: 1.56rem;
-  margin-left: 1.56rem;
-  width: 33.4rem;
-  text-align: center;
+  padding: 2.5%;
+  width: 75%;
+  text-align: left;
+}
+
+.detail-label {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 95%;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: #cfcdcd;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 2.5%;
+  width: 50%;
+  text-align: left;
+}
+
+@media only screen and (max-width: 1024px) {
+  .detail, .detail-label {
+    width: 120%;
+    display: block;
+  }
+
+  .signup, .progresspanel {
+    margin-bottom: 2rem;
+  }
+
 }

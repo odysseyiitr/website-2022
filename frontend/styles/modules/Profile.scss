@@ -10,32 +10,35 @@
   backdrop-filter: blur(0.281rem);
   border-radius: 1.086rem;
 }
+
 .image {
   position: relative;
   left: 5%;
-  top: 10%;
-  margin-left: 5%;
+  top: 2%;
+  //margin-left: 5%;
   background-color: rgba(0, 0, 0, 0);
 }
+
 .userimage {
-  height: 10.438rem;
-  width: 10.438rem;
+  height: 18rem;
+  width: 18rem;
   border-radius: 50%;
 }
 
 hr {
-  position: absolute;
-  width: 35.125rem;
-  left: 10.18rem;
-  top: 17rem;
+  position: relative;
+  width: 90%;
+  margin:auto;
+  top: 4.5rem;
   border: 0.125rem solid rgba(255, 255, 255, 0.4);
+  border-radius: 5px
+  
 }
 
 .username {
   position: absolute;
   top: 5.563rem;
   left: 15.813rem;
-  font-style: normal;
   font-weight: 400;
   font-size: 2.5rem;
   line-height: 97.69%;
@@ -106,4 +109,17 @@ hr {
   display: flex;
   justify-content: space-around;
   min-height: 100vh;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .profile-page-content {
+    flex-direction: column;
+  }
+
+  .userimage {
+    height: 16rem;
+    width: 1rem;
+  
+  }
 }
