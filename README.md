@@ -36,7 +36,7 @@ NEXT_PUBLIC_DEVELOPERS_AND_DESIGNERS_SHEET_ID=Your Designers and Developers Shee
 source bin/activate
 ```
 
-5. Change directory to backen and install the requirements using `pip install`.
+5. Change directory to `backend` and install the requirements using `pip install`.
 
 ```
 pip install -r requirements.txt
@@ -70,7 +70,7 @@ Add Client id (same as added in .env.local in step 3)
 Add Secret key (same as added in .env.local in step 3)
 ```
 
-11. Then click on `example.com` and click on the right shift arrow, this will be changed during production.
+11. Then click on `example.com` and click on the right shift arrow, this will be changed during production. Save and exit.
 
 12. Change directory to `odyssey/frontend` and run,
 
