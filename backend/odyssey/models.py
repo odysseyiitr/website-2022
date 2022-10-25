@@ -47,7 +47,8 @@ class CustomUserModel(AbstractBaseUser, PermissionsMixin):
 
     created_on = models.DateTimeField(auto_now_add = True, blank = True, null = True)
     updated_on = models.DateTimeField(auto_now = True)
-
+    assignedIssue = models.ForeignKey('IssueModel', null = True, blank = True, on_delete = models.SET_NULL)
+    completedIssues = models.ManyToManyField('IssueModel', related_name = 'completedIssues', blank = True)
     objects = CustomUserModelManager()
 
     class Meta:
@@ -61,7 +62,7 @@ class IssueModel(models.Model):
     assigneeName = models.CharField(max_length = 50, null = True, blank = True)
     assigneeId = models.CharField(max_length = 32, null = True, blank = True)
     completed = models.BooleanField(default = False)
-
+    issueName = models.CharField(max_length = 100, null = True, blank = True)
     class Meta:
         verbose_name = 'Issue'
 

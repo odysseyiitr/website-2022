@@ -108,7 +108,24 @@ hr {
 .profile-page-content {
   display: flex;
   justify-content: space-around;
+}
+
+.profile {
   min-height: 100vh;
+}
+
+.profile_issues {
+  margin-top: 5rem;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 6%;
+}
+.profile_issues p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 59.5169px;
+  line-height: 97.69%;
 }
 
 
