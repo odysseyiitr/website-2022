@@ -2,6 +2,7 @@ import Profile from "../../components/Profile2";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import UserProgress from "../../components/UserProgress";
+import ProfileIssues from "../../components/ProfileIssues";
 
 const axios = require("axios").default;
 
@@ -10,11 +11,14 @@ export default function Home() {
   const [user, setUser] = useState(null);
 
   const fetchUserData = async () => {
-    const response = await axios.post("https://odyssey.iitr.ac.in/backend/api/get-user/", {
-      access_token: session.accessToken,
-      id_token: session.user.id,
-    },
-    {headers:{"Content-Type" : "application/json"}});
+    const response = await axios.post(
+      "https://odyssey.iitr.ac.in/backend/api/get-user/",
+      {
+        access_token: session.accessToken,
+        id_token: session.user.id,
+      },
+      { headers: { "Content-Type": "application/json" } }
+    );
     return response;
   };
 
@@ -36,17 +40,20 @@ export default function Home() {
   return (
     <>
       {user ? (
-        <div className="profile-page-content">
-          <Profile
-            uname={user.uname}
-            aname={user.aname}
-            role={user.role}
-            eno={user.eno}
-            contact={user.contact}
-            email={user.email}
-            pfp={user.pfp}
-          />
-        {/* <UserProgress progress={0} rank={"NA"} /> */}
+        <div className="profile">
+          <div className="profile-page-content">
+            <Profile
+              uname={user.uname}
+              aname={user.aname}
+              role={user.role}
+              eno={user.eno}
+              contact={user.contact}
+              email={user.email}
+              pfp={user.pfp}
+            />
+            {/* <UserProgress progress={0} rank={"NA"} /> */}
+          </div>
+          <ProfileIssues issue={user.issue} />
         </div>
       ) : (
         <div>loading</div>

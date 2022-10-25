@@ -11,6 +11,8 @@ class CustomUserModelSerializer(ModelSerializer):
             'enrollmentNo',
             'contactNo',
             'email',
+            'assignedIssue',
+            'completedIssues',
         ]
 
     def create(self, validated_data):
@@ -27,6 +29,7 @@ class IssueModelSerializer(ModelSerializer):
             'assigneeName',
             'assigneeId',
             'completed',
+            'issueName'
         ]
 
     def create(self, validated_data):
