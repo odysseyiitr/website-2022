@@ -53,7 +53,7 @@ export default function Home() {
             />
             {/* <UserProgress progress={0} rank={"NA"} /> */}
           </div>
-          <ProfileIssues issue={user.issue} />
+          {user.issue && <ProfileIssues issue={user.issue} />}
         </div>
       ) : (
         <div>loading</div>
