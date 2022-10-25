@@ -1,15 +1,17 @@
 import ReposToContribute from "../../components/RepoList";
 import Resources from "../../components/Resources";
 import Searchbar from "../../components/Searchbar";
+import Loader from "../../components/loader";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import { Octokit } from "@octokit/rest";
 import Info from "../../components/Info";
-import SocialIcons from "../../components/SocialIcons";
+
 const axios = require("axios").default;
 
 export default function Home() {
   const [CardData, setCardData] = useState([]);
-  const { data: session } = useSession();
+   const [Loading, setLoading] = useState(true);
   const ParticipationDetailsData = [
     "Sign up to start your contributions.",
     "Go through the issues and claim any unassigned issue that interests you.",
@@ -37,19 +39,20 @@ export default function Home() {
     });
   };
   useEffect(() => {
-    console.log(session);
-    fetchRepos();
-  }, [session]);
-  return (
-    <>
-      <div className="about" style={{ marginTop: "100px" }}>
-        <div className="searchandissues">
-          <p className="heading">PICK YOUR ISSUES</p>
-          <Searchbar />
+    fetchRepos().then(() => setLoading(false));
+  }, []);
+  if (Loading) {
+    return <Loader />;
+  } else {
+    return (
+      <>
+        <div className="about" style={{ marginTop: "100px" }}>
+          <div className="searchandissues">
+            <p className="heading">PICK YOUR ISSUES</p>
+            <Searchbar />
+          </div>
         </div>
-      </div>
       <div className="content">
-        <SocialIcons />
         <ReposToContribute list={CardData} callback={fetchRepos} />
       </div>
       <div className="participationB">
@@ -63,4 +66,5 @@ export default function Home() {
       </div>
     </>
   );
+}
 }
