@@ -1,4 +1,4 @@
-import Profile from "../../components/Profile2";
+import Profile from "../../components/Profile";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import UserProgress from "../../components/UserProgress";
