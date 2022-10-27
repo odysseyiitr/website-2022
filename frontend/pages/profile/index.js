@@ -12,7 +12,7 @@ export default function Home() {
 
   const fetchUserData = async () => {
     const response = await axios.post(
-      "https://odyssey.iitr.ac.in/backend/api/get-user/",
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/get-user/`,
       {
         access_token: session.accessToken,
         id_token: session.user.id,

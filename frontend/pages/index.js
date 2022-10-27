@@ -9,7 +9,7 @@ export default function Home() {
   const [announcement, setAnnouncement] = useState([]);
   useEffect(() => {
     axios
-      .get("https://odyssey.iitr.ac.in/backend/api/get-announcements/")
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/get-announcements/`)
       .then((res) => {
         setAnnouncement(res.data);
       });

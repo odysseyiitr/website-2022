@@ -18,7 +18,7 @@ const settings = {
         if (account.provider === 'github') {
           try {
             const response = await axios.post(
-              'https://odyssey.iitr.ac.in/backend/api/github/',
+              `${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/github/`,
               {
                 access_token: account.access_token,
                 id_token: profile.id,
