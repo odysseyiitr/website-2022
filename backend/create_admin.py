@@ -8,9 +8,8 @@ django.setup()
 
 User = get_user_model()
 
-user = User.objects.get(username='admin')
-
-if(user is None):
-    user = User.objects.create_superuser('admin', 'admin@localhost', 'admin')
-    user.save()
+try:
+    User.objects.create_superuser('admin', 'admin@localhost', 'admin')
     print('Admin created')
+except:
+    print('Admin already exists')

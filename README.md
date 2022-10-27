@@ -37,7 +37,7 @@ docker-compose up --build -d
 
 ```
 username: admin
-password: password
+password: admin
 ```
 
 8.  Click on `Social applications` (in the bottom left). Click on add in front of it. Fill the following details
