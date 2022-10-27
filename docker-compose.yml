@@ -1,0 +1,21 @@
+version: "3"
+services:
+  frontend:
+    build:
+        context: ./frontend/
+        dockerfile: ./Dockerfile
+    container_name: "odyssey-frontend"
+    volumes:
+        - ".:/app"
+        - "/app/node_modules"
+    extra_hosts:
+        - "localhost:127.0.0.1"
+    ports:
+        - 3000:3000
+  backend:
+    build:
+        context: ./backend/
+        dockerfile: ./Dockerfile
+    container_name: "odyssey-backend"
+    ports:
+        - 8000:8000
