@@ -2,9 +2,9 @@
 
 ## Setup
 
-Kindly follow the following steps to setup
+Kindly follow the following steps to setup,
 
-1. Clone the repository.
+1. Clone the repository
 
 ```
 git clone git@github.com:sdslabs/odyssey.git
@@ -16,52 +16,31 @@ git clone git@github.com:sdslabs/odyssey.git
 cd odyssey/frontend/
 ```
 
-3. Create a file `.env.local` if not present and write the following things in it
+3. Create a file `.env.local` from `.env.local.example` and fill in the values
+
+4. Change directory to backend in the directory backend in odyssey
 
 ```
-NEXTAUTH_URL=Your GitHub OAuth callback url
-GITHUB_ID= Your GitHub OAuth Id
-GITHUB_SECRET=Your GitHub OAuth Secret
-NEXT_PUBLIC_GOOGLE_SHEETS_PRIVATE_KEY=Your Google Sheets Service Account private key
-NEXT_PUBLIC_GOOGLE_SHEETS_CLIENT_EMAIL=Your Google Sheets Service Account Email Id
-NEXT_PUBLIC_SPREADSHEET_ID=Your SpreadSheet Id
-NEXT_PUBLIC_MENTOR_SHEET_ID=Your Mentor Sheet Id
-NEXT_PUBLIC_ORGANIZERS_SHEET_ID=Your Organizers Sheet Id
-NEXT_PUBLIC_DEVELOPERS_AND_DESIGNERS_SHEET_ID=Your Designers and Developers Sheet Id
+cd ../backend/backend
 ```
 
-4. Next, change the directory to `odyssey/` and run the following command to enter python's virtual environment.
+5. Create a file `secrets.py` from `secrets.py.example` and fill in the values
+
+6. Go to the root directory of odyssey and start the docker containers
 
 ```
-source bin/activate
+cd ../..
+docker-compose up --build -d
 ```
 
-5. Change directory to `backend` and install the requirements using `pip install`.
+7. Go to `localhost:8000/admin` on a browser and login with the following credentials
 
 ```
-pip install -r requirements.txt
+username: admin
+password: password
 ```
 
-6. Next, run the following commands,
-
-```
-python manage.py makemigrations
-python manage.py migrate odyssey
-python manage.py migrate
-python manage.py createsuperuser
-```
-
-7. Then create a superuser by filling the required details (username, email, password).
-
-8. Start the server.
-
-```
-python manage.py runserver
-```
-
-9. Go to `localhost:8000/admin` on a browser.
-
-10. Click on `Social applications` (in the bottom left). Click on add in front of it.
+8.  Click on `Social applications` (in the bottom left). Click on add in front of it. Fill the following details
 
 ```
 Select provider as GitHub
@@ -70,12 +49,6 @@ Add Client id (same as added in .env.local in step 3)
 Add Secret key (same as added in .env.local in step 3)
 ```
 
-11. Then click on `example.com` and click on the right shift arrow, this will be changed during production. Save and exit.
+9. Then click on `example.com` and click on the right shift arrow, this will be changed during production. Save and exit.
 
-12. Change directory to `odyssey/frontend` and run,
-
-```
-npm i && npm run dev
-```
-
-13. Go to `localhost:3000` in a browser.
+10.  Go to `localhost:3000` in a browser and login with your GitHub account.
