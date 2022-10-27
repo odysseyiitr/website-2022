@@ -7,4 +7,10 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
 django.setup()
 
 User = get_user_model()
-User.objects.create_superuser('admin', 'admin@myproject.com', 'password')
+
+user = User.objects.get(username='admin')
+
+if(user is None):
+    user = User.objects.create_superuser('admin', 'admin@localhost', 'admin')
+    user.save()
+    print('Admin created')
