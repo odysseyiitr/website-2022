@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
-import Loader from "../components/Loader"; 
+import Loader from "./Loader"; 
 
 const axios = require("axios").default;
 

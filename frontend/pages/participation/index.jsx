@@ -1,7 +1,7 @@
 import ReposToContribute from "../../components/RepoList";
 import Resources from "../../components/Resources";
 import Searchbar from "../../components/Searchbar";
-import Loader from "../../components/loader";
+import Loader from "../../components/Loader";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Info from "../../components/Info";
