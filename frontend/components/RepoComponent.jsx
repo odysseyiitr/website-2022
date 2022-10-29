@@ -1,8 +1,28 @@
 import { useSession } from "next-auth/react";
+import { useState } from "react";
+import Loader from "./Loader"; 
+
 const axios = require("axios").default;
 
 const Repo = ({ Card, callback }) => {
   const { data: session } = useSession();
+  const [loading, setLoading] = useState(true);
+
+  async function claimIssue(Card) {
+    if(loading){
+      return <Loader />
+    }
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/claim-issue/`,
+      {
+        access_token: session.accessToken,
+        id_token: session.user.id,
+        issue: Card.issueUrl,
+      }
+    );
+  }
+  
+
   return (
     <div className="repobox">
       <div
@@ -47,16 +67,5 @@ const Repo = ({ Card, callback }) => {
     </div>
   );
 };
-
-async function claimIssue(Card, session) {
-  const response = await axios.post(
-    "https://odyssey.iitr.ac.in/backend/api/claim-issue/",
-    {
-      access_token: session.accessToken,
-      id_token: session.user.id,
-      issue: Card.issueUrl,
-    }
-  );
-}
 
 export default Repo;

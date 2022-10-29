@@ -18,22 +18,22 @@ const AboutTop = () => {
         </div>
         <h4>IN ASSOCIATION WITH</h4>
         <div className="icons">
-          <div class="icon">
+          <div className="icon">
             <img src="/images/labs.svg" />
           </div>
-          <div class="icon">
+          <div className="icon">
             <img src="/images/mdg.svg" />
           </div>
-          <div class="icon">
+          <div className="icon">
             <img src="/images/acm.svg" />
           </div>
-          <div class="icon">
+          <div className="icon">
             <img src="/images/dsg.svg" />
           </div>
-          <div class="icon">
+          <div className="icon">
             <img src="/images/ds.svg" />
           </div>
-          <div class="icon">
+          <div className="icon">
             <img src="/images/infosec.svg" />
           </div>
         </div>

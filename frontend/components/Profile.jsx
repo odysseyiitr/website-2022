@@ -25,7 +25,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
       field: formField ? formField : field,
     };
 
-    axios.post("https://odyssey.iitr.ac.in/backend/api/set-user/", data, {headers:{"Content-Type" : "application/json"}}).then(() => {
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/set-user/`, data, {headers:{"Content-Type" : "application/json"}}).then(() => {
       window.location.reload();
     });
   }

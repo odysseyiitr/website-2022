@@ -1,17 +1,16 @@
 import ReposToContribute from "../../components/RepoList";
 import Resources from "../../components/Resources";
 import Searchbar from "../../components/Searchbar";
-import Loader from "../../components/loader";
+import Loader from "../../components/Loader";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Octokit } from "@octokit/rest";
 import Info from "../../components/Info";
 
 const axios = require("axios").default;
 
 export default function Home() {
   const [CardData, setCardData] = useState([]);
-   const [Loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const ParticipationDetailsData = [
     "Sign up to start your contributions.",
     "Go through the issues and claim any unassigned issue that interests you.",
@@ -20,7 +19,7 @@ export default function Home() {
   ];
   const fetchRepos = async () => {
     const { data } = await axios.get(
-      `https://odyssey.iitr.ac.in/backend/api/get-all-issues/`
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/get-all-issues/`
     );
     let repos = [];
     data.forEach(async (element) => {
@@ -41,7 +40,7 @@ export default function Home() {
   useEffect(() => {
     fetchRepos().then(() => setLoading(false));
   }, []);
-  if (Loading) {
+  if (loading) {
     return <Loader />;
   } else {
     return (

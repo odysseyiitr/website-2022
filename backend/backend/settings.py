@@ -27,9 +27,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['odyssey.iitr.ac.in','www.odyssey.iitr.ac.in','https://odyssey.iitr.ac.in']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -135,7 +135,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = os.path.join(BASE_DIR, 'static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -201,4 +201,4 @@ REST_FRAMEWORK = {
 
 ROOT_URLCONF = 'backend.urls'
 
-CSRF_TRUSTED_ORIGINS = ['https://*.odyssey.iitr.ac.in','https://*.127.0.0.1']
+# CSRF_TRUSTED_ORIGINS = ['https://*.odyssey.iitr.ac.in','https://*.127.0.0.1']

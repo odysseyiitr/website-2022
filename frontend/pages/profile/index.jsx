@@ -1,4 +1,4 @@
-import Profile from "../../components/Profile2";
+import Profile from "../../components/Profile";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import UserProgress from "../../components/UserProgress";
@@ -12,7 +12,7 @@ export default function Home() {
 
   const fetchUserData = async () => {
     const response = await axios.post(
-      "https://odyssey.iitr.ac.in/backend/api/get-user/",
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/get-user/`,
       {
         access_token: session.accessToken,
         id_token: session.user.id,

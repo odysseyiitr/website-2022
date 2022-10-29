@@ -7,7 +7,7 @@ const ProfileIssues = ({ issue }) => {
   const [issues, setIssues] = React.useState({});
   const fetchIssue = async () => {
     const response = await axios.get(
-      `https://odyssey.iitr.ac.in/backend/api/get-issue/?issue=${issue}`
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/get-issue/?issue=${issue}`
     );
     return response.data;
   };
