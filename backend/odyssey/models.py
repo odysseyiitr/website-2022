@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from uuid import uuid4
 
+
 class CustomUserModelManager(BaseUserManager):
     def create_user(self, username, email, password=None):
         user = self.model(
@@ -29,26 +30,30 @@ class CustomUserModelManager(BaseUserManager):
 
 
 class CustomUserModel(AbstractBaseUser, PermissionsMixin):
-    userId = models.CharField(max_length = 32, default = uuid4, primary_key = True, editable = False)
-    name = models.CharField(max_length=50, null = True)
-    username = models.CharField(max_length=32, unique=True, null = False, blank = False)
-    email = models.EmailField(max_length = 100, null = False, blank = False)
-    enrollmentNo = models.CharField(max_length = 8)
-    contactNo = models.CharField(max_length = 10)
-    field = models.CharField(max_length = 20)
+    userId = models.CharField(
+        max_length=32, default=uuid4, primary_key=True, editable=False)
+    name = models.CharField(max_length=50, null=True)
+    username = models.CharField(
+        max_length=32, unique=True, null=False, blank=False)
+    email = models.EmailField(max_length=100, null=False, blank=False)
+    enrollmentNo = models.CharField(max_length=8)
+    contactNo = models.CharField(max_length=10)
+    field = models.CharField(max_length=20)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
 
-    active = models.BooleanField(default = True)
+    active = models.BooleanField(default=True)
 
-    is_staff = models.BooleanField(default = False)
-    is_superuser = models.BooleanField(default = False)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
 
-    created_on = models.DateTimeField(auto_now_add = True, blank = True, null = True)
-    updated_on = models.DateTimeField(auto_now = True)
-    assignedIssue = models.ForeignKey('IssueModel', null = True, blank = True, on_delete = models.SET_NULL)
-    completedIssues = models.ManyToManyField('IssueModel', related_name = 'completedIssues', blank = True)
+    created_on = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    assignedIssue = models.ForeignKey(
+        'IssueModel', null=True, blank=True, on_delete=models.SET_NULL)
+    completedIssues = models.ManyToManyField(
+        'IssueModel', related_name='completedIssues', blank=True)
     objects = CustomUserModelManager()
 
     class Meta:
@@ -56,21 +61,24 @@ class CustomUserModel(AbstractBaseUser, PermissionsMixin):
 
 
 class IssueModel(models.Model):
-    issue = models.CharField(max_length = 100, primary_key = True, editable = True)
-    mentorName = models.CharField(max_length = 50, null=True, blank=True)
-    mentorId = models.CharField(max_length = 32, null=True, blank=True)
-    assigneeName = models.CharField(max_length = 50, null = True, blank = True)
-    assigneeId = models.CharField(max_length = 32, null = True, blank = True)
-    completed = models.BooleanField(default = False)
-    issueName = models.CharField(max_length = 100, null = True, blank = True)
+    issue = models.CharField(max_length=100, primary_key=True, editable=True)
+    mentorName = models.CharField(max_length=50, null=True, blank=True)
+    mentorId = models.CharField(max_length=32, null=True, blank=True)
+    assigneeName = models.CharField(max_length=50, null=True, blank=True)
+    assigneeId = models.CharField(max_length=32, null=True, blank=True)
+    completed = models.BooleanField(default=False)
+    issueName = models.CharField(max_length=100, null=True, blank=True)
+    issueDifficulty = models.CharField(max_length=10, choices=(
+        (1, "Easy"), (2, "Medium"), (3, "Hard")), default='Easy', null=False, blank=False)
+
     class Meta:
         verbose_name = 'Issue'
 
+
 class AnnouncementModel(models.Model):
-    title = models.CharField(max_length = 100)
-    description = models.CharField(max_length = 500)
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=500)
     date = models.DateField()
 
     class Meta:
         verbose_name = 'Announcement'
-        
