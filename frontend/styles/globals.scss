@@ -233,7 +233,7 @@ input::placeholder {
   font-family: BankGothicMdBT, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 59.5169px;
+  font-size: 3.75rem;
   line-height: 97.69%;
   letter-spacing: -0.045em;
   text-transform: uppercase;
@@ -253,4 +253,28 @@ input::placeholder {
 
   color: #ffffff;
   padding-left: 10px;
+}
+
+.filter p{
+  font-family: BankGothicMdBT, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 103.6%;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.filter img{
+  line-height: 56.29%;
+  width: 1.875rem;
+  height: 2.11rem;
+  top: 0.35125rem;
+}
+
+.filter{
+  display: flex;
+  flex-direction: row;
+  gap: 1.53125rem;
 }

@@ -2,6 +2,7 @@ import ReposToContribute from "../../components/RepoList";
 import Resources from "../../components/Resources";
 import Searchbar from "../../components/Searchbar";
 import Loader from "../../components/Loader";
+import Filter from "../../components/Filter";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Info from "../../components/Info";
@@ -48,7 +49,8 @@ export default function Home() {
         <div className="about" style={{ marginTop: "100px" }}>
           <div className="searchandissues">
             <p className="heading">PICK YOUR ISSUES</p>
-            <Searchbar />
+            {/* <Searchbar /> */}
+              <Filter />
           </div>
         </div>
       <div className="content">
