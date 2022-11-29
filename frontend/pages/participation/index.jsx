@@ -53,18 +53,18 @@ export default function Home() {
               <Filter />
           </div>
         </div>
-      <div className="content">
-        <ReposToContribute list={CardData} callback={fetchRepos} />
-      </div>
-      <div className="participationB">
-        <Info
-          heading={"Participation Details"}
-          text={ParticipationDetailsData}
-        />
-        {/* <Info heading={"Pull Merge Request Details"} text={[]} />
-        <Info heading={"Code of Conduct"} text={[]} />
-        <Resources /> */}
-      </div>
+        <div className="content">
+          <ReposToContribute list={CardData} callback={fetchRepos} />
+        </div>
+        <div className="participationB">
+          <Info
+            heading={"Participation Details"}
+            text={ParticipationDetailsData}
+          />
+          {/* <Info heading={"Pull Merge Request Details"} text={[]} />
+          <Info heading={"Code of Conduct"} text={[]} />
+          <Resources /> */}
+        </div>
     </>
   );
 }
