@@ -129,9 +129,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 />
               </div>
                 <div
-                style={{
-                  height: "50px",
-                }}
+                className="submit-button-profile"
               >
                 <Button type="submit" text={"Sign Up"} />
               </div>

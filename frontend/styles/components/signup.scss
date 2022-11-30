@@ -66,7 +66,7 @@
   display: flex;
   flex-direction: column;
   align-items: left;
-  font-size: 10px;
+  font-size: 5.5rem;
 }
 
 .mainForm {
@@ -79,8 +79,8 @@
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 15px;
-  line-height: 20px;
+  font-size: 1.5rem;
+  line-height: 2.8rem;
   padding-left: 1.2rem;
   padding-right: 0.8rem;
 }
@@ -144,6 +144,15 @@
   width: 50%;
   text-align: left;
 }
+.submit-button-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
 
 @media only screen and (max-width: 1024px) {
   .detail, .detail-label {
