@@ -15,10 +15,17 @@ export default function Home() {
       });
   }, []);
   return (
-    <div>
-      <HomePage refs={timeline} />
-      <Timeline refs={timeline} />
-      <Announcement data={announcement} />
+    // <div>
+    //   <HomePage refs={timeline} />
+    //   <Timeline refs={timeline} />
+    //   <Announcement data={announcement} />
+    // </div>
+    <div className="anouncementCard">
+      <div className="anouncementCard_container">
+        <div className="AnouncementCard_content">
+        </div>
+      </div>
     </div>
+
   );
 }
