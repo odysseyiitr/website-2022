@@ -1,9 +1,48 @@
 .repobox {
   border: 0.125rem solid #fff;
-  margin: 2rem;
-  padding: 0.625;
-  border-radius: 0.625rem;
-  background-image: linear-gradient(to right, #1d0f44, #3d0e3d);
+  border-radius: 1rem;
+  margin: auto;
+  height: 10.5rem;
+  width: 70.5rem;
+  position: relative;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, rgba(50, 18, 138, 0.207) 0%, rgba(80, 41, 189, 0.207) 0.01%, rgba(170, 28, 100, 0.237) 58.85%, rgba(233, 69, 96, 0.3) 100%), linear-gradient(90deg, #1D0F44 0%, #3D0E3D 100%);
+}
+
+.cardTag {
+  min-width: 8.8125rem;
+  width: auto;
+  height: 2.065rem;
+  border-radius: 0.8rem 0 0.8rem 0;
+  background-color: #ffffff;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #1D0F44;
+  letter-spacing: 0em;
+  line-height: 135.3%;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: BankGothicMdBT;
+}
+
+.issueDetails {
+  display: flex;
+  flex-direction: row;
+}
+
+.issue {
+  font-family: BankGothicMdBT;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 135.3%;
+  letter-spacing: 0em;
+  text-align: center;
+  top: 2.875rem;
+  left: 2.8125rem;
+  position: absolute;
 }
 
 .repodialogue {
@@ -27,14 +66,34 @@
   height: 50rem;
   font-size: 1.5rem;
 }
+
 .description {
   color: #fff;
   text-align: center;
 }
+
 .mentor {
-  color: #ffe600;
-  text-align: right;
-  padding: 1rem;
+  font-family: BankGothicMdBT;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 135.3%;
+  letter-spacing: 0em;
+  top: 5.625rem;
+  left: 2.8125rem;
+  position: absolute;
+  color: #FFE600;
+}
+
+.assignee {
+  font-family: BankGothicMdBT;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 135.3%;
+  letter-spacing: 0em;
+  top: 5.625rem;
+  left: 2.8125rem;
+  position: absolute;
+  color: #FFE600;
 }
 
 .scroll {

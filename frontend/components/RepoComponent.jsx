@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
-import Loader from "./Loader"; 
+import Loader from "./Loader";
 
 const axios = require("axios").default;
 
@@ -9,7 +9,7 @@ const Repo = ({ Card, callback }) => {
   const [loading, setLoading] = useState(true);
 
   async function claimIssue(Card) {
-    if(loading){
+    if (loading) {
       return <Loader />
     }
     const response = await axios.post(
@@ -21,48 +21,51 @@ const Repo = ({ Card, callback }) => {
       }
     );
   }
-  
+
 
   return (
     <div className="repobox">
-      <div
-        style={{
-          textAlign: "center",
-          margin: "1rem",
-        }}
-      >
-        <h4>
-          <b>
-            {Card.repoName} - {Card.tag}
-          </b>
-        </h4>
-        <a href={Card.issueUrl} target="_blank" rel="noreferrer">
-          {Card.issueTitle}
-        </a>
-      </div>
-      <div className="mentor">
-        {/* Mentored by - {Card.mentor} */}
-        {Card.claim == false ? (
-          <button
-            className="button"
-            style={{
-              marginLeft: "auto",
-              marginTop: "15px",
-            }}
-            onClick={() =>
-              claimIssue(Card, session).then(() => {
-                callback().then(() => setLoading(false));
-              })
-            }
-          >
-            Claim
-          </button>
-        ) : (
-          <>
-            <br />
-            Assigned to - {Card.assignee}
-          </>
-        )}
+      <div className="cardTag">{Card.tag}</div>
+      <div className="issueDetails">
+        <div>
+          <h4>
+            <b className="issue">
+              ISSUE NAME - {Card.repoName} -
+              <a href={Card.issueUrl} target="_blank" rel="noreferrer">
+                {Card.issueTitle}
+              </a>
+            </b>
+          </h4>
+        </div>
+        <div className="mentor">
+          MENTOR : {Card.mentor}
+        </div>
+        <div >
+          {true == false ? (
+            <button
+              className="button"
+              style={{
+                position: "absolute",
+                right: "2.75rem",
+                bottom: "1.875rem",
+              }}
+              onClick={() =>
+                claimIssue(Card, session).then(() => {
+                  callback().then(() => setLoading(false));
+                })
+              }
+            >
+              Claim
+            </button>
+          ) : (
+            <>
+              <div className='assignee'>
+                <br />
+                ASSIGNEE : {Card.assignee}
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

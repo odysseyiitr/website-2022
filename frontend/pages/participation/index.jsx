@@ -46,11 +46,11 @@ export default function Home() {
   } else {
     return (
       <>
-        <div className="about" style={{ marginTop: "100px" }}>
-          <div className="searchandissues">
-            <p className="heading">PICK YOUR ISSUES</p>
+        <div className="about" style={{ marginTop: "6.25rem" }}>
+          <div className="pickIssues">
+            <p>PICK YOUR ISSUES</p>
             {/* <Searchbar /> */}
-              <Filter />
+            <Filter />
           </div>
         </div>
         <div className="content">
@@ -65,7 +65,7 @@ export default function Home() {
           <Info heading={"Code of Conduct"} text={[]} />
           <Resources /> */}
         </div>
-    </>
-  );
-}
+      </>
+    );
+  }
 }
