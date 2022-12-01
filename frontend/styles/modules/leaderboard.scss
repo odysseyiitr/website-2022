@@ -1,0 +1,103 @@
+.leaderboard-cont {
+  width: 100%;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.leaderboard-header {
+  display: flex;
+  align-items: center;
+  width: 89%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.leaderboard-heading {
+  flex-grow: 1;
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: 2px 2px 3px white;
+}
+
+.leaderboard-table {
+  height: 100%;
+  text-align: center;
+  width: 89%;
+  border-collapse: collapse;
+  box-shadow: 0px 0px 3px 2px white;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.leaderboard-table td,
+.leaderboard-table th {
+  padding: 0.7%;
+}
+
+.leaderboard-table-cont {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-height: 75%;
+  overflow: hidden;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+}
+
+.leaderboard-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 1);
+}
+
+.leaderboard-table thead {
+  box-shadow: 0px 0px 3px 3px white;
+}
+
+.leaderboard-table thead th {
+  border-left: 1px solid rgba(255, 255, 255, 1);
+}
+
+.bd {
+  border: 1px solid white;
+}
+
+.pagination button {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 3px;
+}
+
+.pagination .page-btn {
+  background-color: transparent;
+  color: white;
+}
+
+.pagination .page-btn-active {
+  background-color: #dddddd;
+  color: black;
+}
+
+.pagination {
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  padding: auto;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.page-active {
+  background-color: rgb(0, 244, 244);
+}
+
+.pagination button {
+  cursor: pointer;
+}
+
+.no-data-mssg {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
