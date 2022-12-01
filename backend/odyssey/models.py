@@ -74,3 +74,13 @@ class AnnouncementModel(models.Model):
     class Meta:
         verbose_name = 'Announcement'
         
+class LeaderboardModel(models.Model):
+    username = models.CharField(max_length = 50, primary_key = True)
+    name = models.CharField(max_length = 50, null = False)
+    easy = models.IntegerField(default = 0)
+    medium = models.IntegerField(default = 0)
+    hard = models.IntegerField(default = 0)
+    points = models.IntegerField(default = 0)
+
+    class Meta:
+        verbose_name = 'Leaderboard'
