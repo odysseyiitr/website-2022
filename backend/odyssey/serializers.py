@@ -1,4 +1,4 @@
-from .models import CustomUserModel, IssueModel, AnnouncementModel
+from .models import CustomUserModel, IssueModel, AnnouncementModel, LeaderboardModel
 from rest_framework.serializers import ModelSerializer
 
 class CustomUserModelSerializer(ModelSerializer):
@@ -49,3 +49,18 @@ class AnnouncementModelSerializer(ModelSerializer):
         announcement = AnnouncementModel.objects.create(**validated_data)
         return announcement
         
+class LeaderboardModelSerializer(ModelSerializer):
+    class Meta:
+        model = LeaderboardModel
+        fields = [
+            'username',
+            'name',
+            'easy',
+            'medium',
+            'hard',
+            'points',
+        ]
+
+    def create(self, validated_data):
+        leaderboard = LeaderboardModel.objects.create(**validated_data)
+        return leaderboard

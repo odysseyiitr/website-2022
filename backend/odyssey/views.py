@@ -1,8 +1,8 @@
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from .serializers import CustomUserModelSerializer, IssueModelSerializer, AnnouncementModelSerializer
-from .models import CustomUserModel, IssueModel, AnnouncementModel
+from .serializers import CustomUserModelSerializer, IssueModelSerializer, AnnouncementModelSerializer, LeaderboardModelSerializer
+from .models import CustomUserModel, IssueModel, AnnouncementModel, LeaderboardModel
 from allauth.socialaccount.providers.github.views import GitHubOAuth2Adapter
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 from dj_rest_auth.registration.views import SocialLoginView
@@ -85,5 +85,16 @@ def get_issue(request):
     if request.method == 'GET':
         issues = IssueModel.objects.get(issue=request.GET['issue'])
         serializer = IssueModelSerializer(issues, many=False)
+        return JsonResponse(serializer.data, safe=False, status=200)
+    return JsonResponse({'message': 'error'}, status=400)
+
+@csrf_exempt
+def get_leaderboard(request, page):
+    if request.method == 'GET':
+        if(page < 1):
+            return JsonResponse({'message': 'error'}, status=400)
+        number_of_users_per_page = 10
+        users = LeaderboardModel.objects.all().order_by('-points')[(page - 1) * number_of_users_per_page : page * number_of_users_per_page]
+        serializer = LeaderboardModelSerializer(users, many=True)
         return JsonResponse(serializer.data, safe=False, status=200)
     return JsonResponse({'message': 'error'}, status=400)
