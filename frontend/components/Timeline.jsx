@@ -96,7 +96,7 @@ const Timeline = ({ refs }) =>
             position: absolute;
             top: calc(50% - 2.3rem);
             left: 7%;
-            width: ${100 * computeTimelineLength(100) * 0.78}%;
+            width: ${35 * computeTimelineLength(100) * 0.78}%;
             height: 1.25rem;
             z-index: 10;
             border-radius: 3.026rem;

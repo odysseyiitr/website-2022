@@ -1,4 +1,4 @@
-# Odyssey
+# Odyssey Website 2022
 
 ## Setup
 
@@ -7,13 +7,13 @@ Kindly follow the following steps to setup,
 1. Clone the repository
 
 ```
-git clone git@github.com:sdslabs/odyssey.git
+git clone git@github.com:odysseyiitr/website-2022.git
 ```
 
 2. Change directory to frontend in odyssey
 
 ```
-cd odyssey/frontend/
+cd website-2022/frontend/
 ```
 
 3. Create a file `.env.local` from `.env.local.example` and fill in the values
