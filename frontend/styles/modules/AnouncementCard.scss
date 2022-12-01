@@ -1,51 +1,91 @@
-.anouncementCard_container {
-    // -webkit-clip-path: polygon(5% 0%, 0% 5%, 0% 100%, 90% 100%, 100% 90%, 100% 0%, 100% 0%);
-    // clip-path: polygon(10% 0%, 0% 10%, 0% 100%, 90% 100%, 100% 90%, 100% 0%, 100% 0%);
-    margin: 1rem;
-    width: 20.25rem;
-    height: 26.25rem;
-    border-style: solid;
-    border-width: 0.1525rem;
-    border-color: #0D941A;
-    border-radius: 0rem 1rem 0rem 1rem;
+.anouncementCard {
+    width: 21.75rem;
+    height: 26.75rem;
+    background-size: cover;
     position: relative;
-    left: 20px;
+    background-image: url("../../public/images/anouncementGreen.svg");
+    display: flex;
 }
 
-.anouncementCard_container:before,
-.anouncementCard_container:after,
-.anouncementCard_container>:first-child:before,
-.anouncementCard_container>:first-child:after {
+.anouncementHeading p {
     position: absolute;
-    border-color: #0D941A;
-    border-style: solid;
-    content: ' ';
+    font-family: 'BankGothicMdBT';
+    font-style: normal;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 2.75rem;
+    color: #0D941A;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 115.8%;
+    text-align: center;
+    text-transform: uppercase;
 }
 
-.anouncementCard_container:before {
-    width: 3.75rem;
-    height: 3.75rem;
-    top: -0.3rem;
-    left: -0.3rem;
-    border-width: 0.375rem 0 0 0.375rem
+.anouncementDescription {
+    position: absolute;
+    font-family: 'Montserrat';
+    font-style: normal;
+    text-transform: capitalize;
+    font-weight: 300;
+    font-size: 1.125rem;
+    line-height: 125.3%;
+    left: 2.3125rem;
+    right: 2.3125rem;
+    margin: auto;
+    top: 7.75rem;
+    letter-spacing: -0.045em;
+    color: #FFFFFF;
 }
 
-.anouncementCard_container:after {
-    top: 0;
-    right: 0;
-    border-width: 0 0 0 0
+.anouncementDetails {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    gap: 1.5rem;
+    left: 5.375rem;
+    top: 16.125rem;
 }
 
-.anouncementCard_container>:first-child:before {
-    bottom: -0.3rem;
-    right: -0.3rem;
-    width: 6.25rem;
-    height: 6.25rem;
-    border-width: 0 0.375rem 0.375rem 0
+.fields h5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 145.8%;
+    letter-spacing: -0.045em;
+    text-transform: capitalize;
+    color: #0D941A;
 }
 
-.anouncementCard_container>:first-child:after {
-    bottom: 0;
-    left: 0;
-    border-width: 0 0 0 0
+.anouncementValues h5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 145.8%;
+    align-items: center;
+    letter-spacing: -0.045em;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}
+
+.anouncementNote {
+    position: absolute;
+    width: 17.0625rem;
+    height: auto;
+    top: 21.8125rem;
+    right: 3.125rem;
+    text-align: center;
+}
+
+.anouncementNote h5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 125.3%;
+    letter-spacing: -0.045em;
+    text-transform: capitalize;
+    color: #0D941A;
 }

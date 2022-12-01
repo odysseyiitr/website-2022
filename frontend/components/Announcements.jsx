@@ -40,6 +40,9 @@ const Announcement = ({ data }) => {
                 key={i}
                 heading={item.title}
                 description={item.description}
+                venue={item.venue}
+                time={item.time}
+                note={item.note}
               />
             );
           })}

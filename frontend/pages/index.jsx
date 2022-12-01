@@ -4,8 +4,9 @@ import Announcement from "../components/Announcements";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 
-export default function Home() {
+export default function Home(time) {
   const timeline = useRef();
+  console.log(typeof time); 
   const [announcement, setAnnouncement] = useState([]);
   useEffect(() => {
     axios
@@ -15,17 +16,10 @@ export default function Home() {
       });
   }, []);
   return (
-    // <div>
-    //   <HomePage refs={timeline} />
-    //   <Timeline refs={timeline} />
-    //   <Announcement data={announcement} />
-    // </div>
-    <div className="anouncementCard">
-      <div className="anouncementCard_container">
-        <div className="AnouncementCard_content">
-        </div>
-      </div>
+    <div>
+      <HomePage refs={timeline} />
+      <Timeline refs={timeline} />
+      <Announcement data={announcement} />
     </div>
-
   );
 }
