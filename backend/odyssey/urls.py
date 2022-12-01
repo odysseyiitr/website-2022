@@ -11,4 +11,5 @@ urlpatterns = [
     path('get-announcements/', views.get_announcements, name='get-announcements'),
     path('claim-issue/', views.claim_issue, name='claim_issue'),
     path('leaderboard/<int:page>', views.get_leaderboard, name='leaderboard'),
+    path('get-search-leaderboard/', views.get_search_leaderboard, name='get-search-leaderboard'),
 ]
