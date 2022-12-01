@@ -2,11 +2,12 @@
   box-sizing: border-box;
   width: 50%;
   min-width: 550px;
-  height: 564px;
-  margin:auto;
+  height: auto;
+  margin:auto ;
+  margin-top: 9rem;
   background: rgba(255, 255, 255, 0.1);
-  border: 0.24rem solid #ffffff;
-  border-radius: 1rem;
+  border: 0.24rem solid #E95F8D;
+  border-radius: 2rem;
   vertical-align: middle;
   display: flex;
   flex-wrap: wrap;
@@ -40,7 +41,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  height: 10%;
+  height: 30%;
   justify-content: space-around;
   align-items: center;
   margin-top: 8%;
@@ -53,20 +54,25 @@
 }
 
 .imageCropper {
-  min-width: 9rem;
-  height: 9rem;
+  width: 30rem;
+  height: 19rem;
   position: relative;
-  border-radius: 50%;
+  margin: auto;
+  padding: 3%;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 15px 10px #cfcdcd41;
   background-size: cover;
   background-position: center;
   object-fit: cover;
 }
 
 .labels {
-  display: flex;
+  display: block;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   font-size: 10px;
+  text-align: center;
+  padding: 1rem;
 }
 
 .mainForm {
@@ -102,6 +108,12 @@
   font-size: 2.5rem;
 }
 
+.rankHandle{
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 2.5rem;
+}
+
 .actualName {
   font-size: 2rem;
 }
@@ -120,7 +132,7 @@
 .details {
   font-style: normal;
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 95%;
   letter-spacing: -0.045em;
   text-transform: uppercase;
@@ -134,14 +146,14 @@
 .detail-label {
   font-style: normal;
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 95%;
   letter-spacing: -0.045em;
   text-transform: uppercase;
   color: #cfcdcd;
   background-color: rgba(0, 0, 0, 0);
   padding: 2.5%;
-  width: 50%;
+  width: 70%;
   text-align: left;
 }
 

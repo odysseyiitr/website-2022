@@ -40,7 +40,8 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
               backgroundImage: `url(${pfp})`,
             }}
           ></div>
-          <div className="labels">
+       
+          {/* <div className="labels">
             <label className="userHandle">{uname}</label>
             <label className="actualName">{aname}</label>
             {editProfile === true ? (
@@ -48,8 +49,8 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
             ) : (
               true
             )}
-          </div>
-          {editProfile === true && (
+          </div> */}
+          {/* {editProfile === true && (
             <div>
               <input
                 type="image"
@@ -60,16 +61,21 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 }}
               />
             </div>
-          )}
+          )} */}
         </div>
-        {editProfile && <hr />}
+           <div className="labels">
+            <label className="userHandle">{uname}</label>
+            <label className="actualName">{aname}</label>
+            {editProfile === true ? (
+              <label className="role">{role}</label>
+            ) : (
+              true
+            )}
+          </div>
+        {editProfile }
         {editProfile === true ? (
           <div className="user-details">
-            <div className="form-floating">
-              <label className="detail-label">ACTUAL NAME</label>
-              <label className="details">{aname}</label>
-            </div>
-            <div className="form-floating">
+               <div className="form-floating">
               <label className="detail-label">ENROLMENT NO</label>
               <label className="details">{eno}</label>
             </div>
@@ -81,6 +87,15 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
               <label className="detail-label">EMAIL ID</label>
               <label className="details">{email}</label>
             </div>
+            {/* <div className="form-floating">
+              <label className="detail-label">ACTUAL NAME</label>
+              <label className="details">{aname}</label>
+            </div> */}
+             <div className="form-floating">
+              <label className="detail-label">GITHUB HANDLE</label>
+              <label className="details">{uname}</label>
+            </div>
+            <label className="rankHandle">#RANK</label>
           </div>
         ) : (
           <div className="user-details">
@@ -139,6 +154,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
           </div>
         )}
       </form>
+     
     </div>
   );
 };

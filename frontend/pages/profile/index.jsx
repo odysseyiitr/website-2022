@@ -41,7 +41,7 @@ export default function Home() {
     <>
       {user ? (
         <div className="profile">
-          <div className="profile-page-content">
+          <div className="profile-page-content split_left">
             <Profile
               uname={user.uname}
               aname={user.aname}
@@ -54,6 +54,12 @@ export default function Home() {
             {/* <UserProgress progress={0} rank={"NA"} /> */}
           </div>
           {user.issue && <ProfileIssues issue={user.issue} />}
+
+          <div className="split_right">
+            <h1 className="request">merged pull requests</h1>
+
+            <h1 className="request">pending pull requests</h1>
+          </div>
         </div>
       ) : (
         <div>loading</div>
