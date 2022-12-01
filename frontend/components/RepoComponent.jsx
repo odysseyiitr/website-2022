@@ -13,7 +13,7 @@ const Repo = ({ Card, callback }) => {
       return <Loader />
     }
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/claim-issue/`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/claim-issue/`,
       {
         access_token: session.accessToken,
         id_token: session.user.id,

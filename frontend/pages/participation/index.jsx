@@ -19,7 +19,7 @@ export default function Home() {
   ];
   const fetchRepos = async () => {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/get-all-issues/`
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-all-issues/`
     );
     let repos = [];
     data.forEach(async (element) => {
