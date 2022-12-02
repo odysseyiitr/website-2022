@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import NavItem from "./NavItem";
 import { signIn, signOut, useSession } from "next-auth/react";
 import axios from "axios";
+import { useRouter } from 'next/router';
 
 const MENU_LIST = [
   //{ text: "Events", href: "/events" },
@@ -18,14 +19,31 @@ const Navbar = () => {
 
   const { data: session } = useSession();
 
+  const router = useRouter();
+
   const fetchUserData = async () => {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
       { access_token: session.accessToken, id_token: session.user.id },
       { headers: { "Content-Type": "application/json" } }
     );
+    if (typeof response.data.enrollmentNo != 'string'
+      || typeof response.data.contactNo != 'string'
+      || typeof response.data.email != 'string'
+      || typeof response.data.name != 'string') {
+      router.push({
+        pathname: '/profile',
+        query: { details: 0 }
+      });
+    }
+    else if (router.query.details == 0 && router.pathname == '/profile') {
+      router.push({
+        pathname: '/profile',
+      });
+    }
     return response;
   };
+
 
   useEffect(() => {
     if (session)

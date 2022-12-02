@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import Button from "./Button";
+import { useRouter } from 'next/router';
 
 const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
   const { data: session } = useSession();
@@ -12,6 +13,14 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
   const [formEno, setEno] = useState("");
   const [formContact, setContact] = useState("");
   const [formField, setField] = useState("Developer");
+  const router = useRouter();
+
+  if (router.query.details == 0) {
+    console.log(router.query.details);
+    console.log(router.pathname);
+    editProfile = false;
+  }
+
 
   async function setData(e) {
     e.preventDefault();
@@ -25,7 +34,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
       field: formField ? formField : field,
     };
 
-    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/set-user/`, data, {headers:{"Content-Type" : "application/json"}}).then(() => {
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/set-user/`, data, { headers: { "Content-Type": "application/json" } }).then(() => {
       window.location.reload();
     });
   }
@@ -41,7 +50,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
             }}
           ></div>
           <div className="labels">
-            <label className="userHandle">{uname}</label>
+            <label className="userHandle" >{uname}</label>
             <label className="actualName">{aname}</label>
             {editProfile === true ? (
               <label className="role">{role}</label>
@@ -84,57 +93,57 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
           </div>
         ) : (
           <div className="user-details">
-              <div className="form-floating">
-                <label>ACTUAL NAME</label>
-                <input
-                  type="text"
-                  placeholder="ENTER YOUR NAME"
-                  className="input"
-                  onChange={(e) => setName(e.target.value)}
-                  value={formName}
-                />
-              </div>
-              <div className="form-floating">
-                <label>ENROLMENT NO</label>
-                <input
-                  type="text"
-                  placeholder="ENTER ENROLLMENT NO."
-                  pattern="[0-9]{8}"
-                  className="input"
-                  title="enrollment number should contain only 8 numeric digits"
-                  onChange={(e) => setEno(e.target.value)}
-                  value={formEno}
-                />
-              </div>
-              <div className="form-floating">
-                <label>CONTACT NO</label>
-                <input
-                  type="tel"
-                  placeholder="ENTER CONTACT NO."
-                  pattern="[0-9]{10}"
-                  title="phone number should contain only 10 numeric digits"
-                  className="input"
-                  onChange={(e) => setContact(e.target.value)}
-                  value={formContact}
-                />
-              </div>
-              <div className="form-floating">
-                <label>EMAIL ID</label>
-                <input
-                  type="email"
-                  placeholder="ENTER EMAIL ID"
-                  className="input"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={formEmail}
-                />
-              </div>
-                <div
-                style={{
-                  height: "50px",
-                }}
-              >
-                <Button type="submit" text={"Sign Up"} />
-              </div>
+            <div className="form-floating">
+              <label>ACTUAL NAME</label>
+              <input
+                type="text"
+                placeholder="ENTER YOUR NAME"
+                className="input"
+                onChange={(e) => setName(e.target.value)}
+                value={formName}
+              />
+            </div>
+            <div className="form-floating">
+              <label>ENROLMENT NO</label>
+              <input
+                type="text"
+                placeholder="ENTER ENROLLMENT NO."
+                pattern="[0-9]{8}"
+                className="input"
+                title="enrollment number should contain only 8 numeric digits"
+                onChange={(e) => setEno(e.target.value)}
+                value={formEno}
+              />
+            </div>
+            <div className="form-floating">
+              <label>CONTACT NO</label>
+              <input
+                type="tel"
+                placeholder="ENTER CONTACT NO."
+                pattern="[0-9]{10}"
+                title="phone number should contain only 10 numeric digits"
+                className="input"
+                onChange={(e) => setContact(e.target.value)}
+                value={formContact}
+              />
+            </div>
+            <div className="form-floating">
+              <label>EMAIL ID</label>
+              <input
+                type="email"
+                placeholder="ENTER EMAIL ID"
+                className="input"
+                onChange={(e) => setEmail(e.target.value)}
+                value={formEmail}
+              />
+            </div>
+            <div
+              style={{
+                height: "50px",
+              }}
+            >
+              <Button type="submit" text={"Sign Up"} />
+            </div>
 
           </div>
         )}
