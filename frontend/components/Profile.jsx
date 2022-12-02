@@ -16,8 +16,6 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
   const router = useRouter();
 
   if (router.query.details == 0) {
-    console.log(router.query.details);
-    console.log(router.pathname);
     editProfile = false;
   }
 

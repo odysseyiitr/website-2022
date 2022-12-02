@@ -3,7 +3,7 @@
   width: 50%;
   min-width: 550px;
   height: 564px;
-  margin:auto;
+  margin: auto;
   background: rgba(255, 255, 255, 0.1);
   border: 0.24rem solid #ffffff;
   border-radius: 1rem;
@@ -147,12 +147,15 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  .detail, .detail-label {
+
+  .detail,
+  .detail-label {
     width: 120%;
     display: block;
   }
 
-  .signup, .progresspanel {
+  .signup,
+  .progresspanel {
     margin-bottom: 2rem;
   }
 
