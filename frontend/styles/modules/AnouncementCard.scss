@@ -3,8 +3,15 @@
     height: 26.75rem;
     background-size: cover;
     position: relative;
-    background-image: url("../../public/images/anouncementGreen.svg");
     display: flex;
+}
+
+.anouncementContent {
+    color: inherit;
+}
+
+.anouncementHeading {
+    color: inherit;
 }
 
 .anouncementHeading p {
@@ -14,12 +21,12 @@
     left: 1.5rem;
     right: 1.5rem;
     top: 2.75rem;
-    color: #0D941A;
     font-weight: 400;
     font-size: 1.5rem;
     line-height: 115.8%;
     text-align: center;
     text-transform: uppercase;
+    color: inherit;
 }
 
 .anouncementDescription {
@@ -35,7 +42,7 @@
     margin: auto;
     top: 7.75rem;
     letter-spacing: -0.045em;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 
 .anouncementDetails {
@@ -45,6 +52,7 @@
     gap: 1.5rem;
     left: 5.375rem;
     top: 16.125rem;
+    color: inherit;
 }
 
 .fields h5 {
@@ -55,7 +63,11 @@
     line-height: 145.8%;
     letter-spacing: -0.045em;
     text-transform: capitalize;
-    color: #0D941A;
+    color: inherit;
+}
+
+.fields {
+    color: inherit;
 }
 
 .anouncementValues h5 {
@@ -67,7 +79,7 @@
     align-items: center;
     letter-spacing: -0.045em;
     text-transform: capitalize;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 
 .anouncementNote {
@@ -77,6 +89,7 @@
     top: 21.8125rem;
     right: 3.125rem;
     text-align: center;
+    color: inherit;
 }
 
 .anouncementNote h5 {
@@ -87,5 +100,5 @@
     line-height: 125.3%;
     letter-spacing: -0.045em;
     text-transform: capitalize;
-    color: #0D941A;
+    color: inherit;
 }
