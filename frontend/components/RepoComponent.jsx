@@ -41,7 +41,7 @@ const Repo = ({ Card, callback }) => {
           MENTOR : {Card.mentor}
         </div>
         <div >
-          {true == false ? (
+          {Card.claim == false ? (
             <button
               className="button"
               style={{
