@@ -16,7 +16,7 @@ const AboutTop = () => {
             THIS EVENT.
           </p>
         </div>
-        <h4>IN ASSOCIATION WITH</h4>
+        <h4 className="ass-heading">IN ASSOCIATION WITH</h4>
         <div className="icons">
           <div className="icon">
             <img src="/images/labs.svg" />
