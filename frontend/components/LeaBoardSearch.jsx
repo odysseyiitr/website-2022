@@ -1,26 +1,60 @@
-import { useRef } from "react";
+import axios from "axios";
+import { paginate } from "./Pagination";
 
-const Searchbar = ({ arr }) => {
-  const srchRef = useRef();
+const Searchbar = ({
+  arr,
+  setDisplay,
+  setPaginateArr,
+  setNoDataMssg,
+  setCurrentPage,
+}) => {
+  const handleSearch = async (e) => {
+    const srch = e.target.value;
+    try {
+      setNoDataMssg("");
+      if (srch !== "") {
+        if (e.key === "Enter") {
+          const res = await axios.get(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-search-leaderboard/?query=${srch}`
+          );
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    for (let i = 0; i < arr.length; i++)
-      if (arr[i] === srchRef.current.value) {
-        return;
+          let data = res.data.sort(function (a, b) {
+            return b.points - a.points;
+          });
+          if (data.length === 0) {
+            setNoDataMssg("no results are found");
+          }
+          let newData = [];
+          for (let i = 0; i < data.length && i < 8; i++)
+            newData.push({ ...data[i], rank: i + 1 });
+          setPaginateArr(newData);
+          setDisplay(false);
+        }
+      } else {
+        setDisplay(true);
+        if (arr.length === 0) {
+          setNoDataMssg("no more data to show");
+        }
+        setPaginateArr(paginate(arr, 1, 10));
+        setCurrentPage(1);
       }
+    } catch (err) {
+      setNoDataMssg(err?.message || "error ocurred while querying data");
+    }
   };
 
   return (
-    <form onSubmit={handleSearch} className="searchbar">
+    <div className="searchbar">
       <img src="/images/searchIcon.svg" className="searchIcon"></img>
       <input
-        ref={srchRef}
+        onKeyUp={(e) => {
+          handleSearch(e);
+        }}
         className="searchText"
         placeholder="SEARCH"
         style={{ backgroundColor: "transparent" }}
       ></input>
-    </form>
+    </div>
   );
 };
 

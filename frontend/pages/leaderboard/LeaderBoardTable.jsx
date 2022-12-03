@@ -9,7 +9,9 @@ const LeaderBoardTable = () => {
   const [fetchedPage, setFetchedPage] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [paginateArr, setPaginateArr] = useState([]);
-  const [noDataMssg, setNoDataMssg] = useState(false);
+  const [noDataMssg, setNoDataMssg] = useState("");
+  const [display, setDisplay] = useState(true);
+
   const pageSize = 10;
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -31,7 +33,7 @@ const LeaderBoardTable = () => {
           });
 
           if (res.data.length === 0) {
-            setNoDataMssg(true);
+            setNoDataMssg("no More Data to show");
             return;
           }
 
@@ -41,9 +43,9 @@ const LeaderBoardTable = () => {
           setFetchedPage([...fetchedPage, currentPage]);
           setLbData(data);
         }
-        setNoDataMssg(false);
+        setNoDataMssg("");
       } catch (err) {
-        console.log("Error");
+        setNoDataMssg(err?.message || "Error in fetching data");
       }
     };
     func();
@@ -55,7 +57,13 @@ const LeaderBoardTable = () => {
       <div className="leaderboard-cont">
         <div className="leaderboard-header">
           <h1 className="leaderboard-heading">LEADERBOARD</h1>
-          <Searchbar arr={lbData} />
+          <Searchbar
+            arr={lbData}
+            setCurrentPage={setCurrentPage}
+            setPaginateArr={setPaginateArr}
+            setDisplay={setDisplay}
+            setNoDataMssg={setNoDataMssg}
+          />
         </div>
         <div className="leaderboard-table-cont">
           <table className="leaderboard-table">
@@ -70,7 +78,7 @@ const LeaderBoardTable = () => {
               </tr>
             </thead>
             <tbody>
-              {!noDataMssg ? (
+              {noDataMssg === "" ? (
                 paginateArr.map((ele, index) => {
                   return (
                     <tr key={`leaderboard${ele.username}`}>
@@ -85,19 +93,21 @@ const LeaderBoardTable = () => {
                 })
               ) : (
                 <tr className="no-data-mssg">
-                  <td>No More Data to Show</td>
+                  <td>{noDataMssg}</td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
       </div>{" "}
-      <Pagination
-        items={lbData.length}
-        currentPage={currentPage}
-        pageSize={pageSize}
-        onPageChange={handlePageChange}
-      />
+      {display && (
+        <Pagination
+          items={lbData.length}
+          currentPage={currentPage}
+          pageSize={pageSize}
+          onPageChange={handlePageChange}
+        />
+      )}
     </>
   );
 };

@@ -10,7 +10,7 @@ export const paginate = (items, pageNumber, pageSize) => {
 const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
   let pagecount = items / pageSize;
   if (items % pageSize === 0) pagecount++;
-  if (Math.ceil(pagecount) === 1) return null;
+  if (Math.ceil(pagecount) <= 1) return null;
   const pages = _.range(1, pagecount + 1);
 
   const handleNext = () => {
