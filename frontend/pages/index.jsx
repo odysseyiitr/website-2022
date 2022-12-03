@@ -4,8 +4,9 @@ import Announcement from "../components/Announcements";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 
-export default function Home() {
+export default function Home(time) {
   const timeline = useRef();
+  console.log(typeof time); 
   const [announcement, setAnnouncement] = useState([]);
   useEffect(() => {
     axios

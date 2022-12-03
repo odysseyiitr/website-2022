@@ -1,0 +1,91 @@
+.anouncementCard {
+    width: 21.75rem;
+    height: 26.75rem;
+    background-size: cover;
+    position: relative;
+    background-image: url("../../public/images/anouncementGreen.svg");
+    display: flex;
+}
+
+.anouncementHeading p {
+    position: absolute;
+    font-family: 'BankGothicMdBT';
+    font-style: normal;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 2.75rem;
+    color: #0D941A;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 115.8%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.anouncementDescription {
+    position: absolute;
+    font-family: 'Montserrat';
+    font-style: normal;
+    text-transform: capitalize;
+    font-weight: 300;
+    font-size: 1.125rem;
+    line-height: 125.3%;
+    left: 2.3125rem;
+    right: 2.3125rem;
+    margin: auto;
+    top: 7.75rem;
+    letter-spacing: -0.045em;
+    color: #FFFFFF;
+}
+
+.anouncementDetails {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    gap: 1.5rem;
+    left: 5.375rem;
+    top: 16.125rem;
+}
+
+.fields h5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 145.8%;
+    letter-spacing: -0.045em;
+    text-transform: capitalize;
+    color: #0D941A;
+}
+
+.anouncementValues h5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 145.8%;
+    align-items: center;
+    letter-spacing: -0.045em;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}
+
+.anouncementNote {
+    position: absolute;
+    width: 17.0625rem;
+    height: auto;
+    top: 21.8125rem;
+    right: 3.125rem;
+    text-align: center;
+}
+
+.anouncementNote h5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 125.3%;
+    letter-spacing: -0.045em;
+    text-transform: capitalize;
+    color: #0D941A;
+}
