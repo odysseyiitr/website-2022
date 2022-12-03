@@ -98,3 +98,11 @@ def get_leaderboard(request, page):
         serializer = LeaderboardModelSerializer(users, many=True)
         return JsonResponse(serializer.data, safe=False, status=200)
     return JsonResponse({'message': 'error'}, status=400)
+
+@csrf_exempt
+def get_search_leaderboard(request):
+    if request.method == 'GET':
+        users = LeaderboardModel.objects.filter(name__icontains=request.GET['query'])
+        serializer = LeaderboardModelSerializer(users, many=True)
+        return JsonResponse(serializer.data, safe=False, status=200)
+    return JsonResponse({'message': 'error'}, status=400)
