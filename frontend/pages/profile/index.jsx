@@ -19,9 +19,9 @@ export default function Home() {
       },
       { headers: { "Content-Type": "application/json" } }
     );
+
     return response;
   };
-
   useEffect(() => {
     if (session)
       fetchUserData().then((response) => {

@@ -1,9 +1,9 @@
-import EventCard from "./EventCard";
+import AnouncementCard from "./AnouncementCard";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const Announcement = ({ data }) => {
   function slideLeft() {
-    var slider = document.getElementById("events");
+    var slider = document.getElementById("anouncementList");
     if (!slider) {
       return;
     }
@@ -12,7 +12,7 @@ const Announcement = ({ data }) => {
       (document.getElementsByClassName("card")[0].scrollWidth + 35) * 3;
   }
   function slideRight() {
-    var slider = document.getElementById("events");
+    var slider = document.getElementById("anouncementList");
     if (!slider) {
       return;
     }
@@ -32,14 +32,17 @@ const Announcement = ({ data }) => {
             marginTop: "220px",
           }}
         />
-        <div className="events" id="events">
+        <div className="anouncementList" id="anouncementList">
           {data.map((item, i) => {
             return (
-              <EventCard
+              <AnouncementCard
                 date={item.date}
                 key={i}
                 heading={item.title}
                 description={item.description}
+                venue={item.venue}
+                time={item.time}
+                note={item.note}
               />
             );
           })}
