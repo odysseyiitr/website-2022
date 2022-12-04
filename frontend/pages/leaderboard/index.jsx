@@ -6,7 +6,7 @@ const LeaderBoard = () => {
   return (
     <>
       <LeaderBoardTable />
-      <RepoTable />
+      {/* <RepoTable /> */}
     </>
   );
 };

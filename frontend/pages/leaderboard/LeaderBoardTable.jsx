@@ -99,7 +99,7 @@ const LeaderBoardTable = () => {
             </tbody>
           </table>
         </div>
-      </div>{" "}
+      </div>
       {display && (
         <Pagination
           items={lbData.length}
