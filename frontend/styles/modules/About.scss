@@ -76,10 +76,14 @@
     padding-bottom: 2rem;
 }
 
-.icons{
-    width: 80vw;
+.ass-heading {
+    margin-top: 5rem;
+}
+
+.icons {
+    margin-bottom: 5rem;
     display: flex;
-    // flex-direction: row;
+    gap: 2rem;
     align-items: center;
     justify-content: space-between;
 }
