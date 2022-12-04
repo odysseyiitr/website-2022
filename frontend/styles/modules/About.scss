@@ -1,4 +1,4 @@
-.about{
+.about {
     display: flex;
     flex-direction: column;
     row-gap: 0.625rem;
@@ -6,7 +6,8 @@
     margin-right: 4.5rem;
     background-color: rgba(0, 0, 0, 0);
     margin-bottom: 2rem;
-    .searchandissues{
+
+    .pickIssues {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -14,23 +15,23 @@
         padding-bottom: 2rem;
     }
 
-    .truelist{
+    .truelist {
         background-color: rgba(0, 0, 0, 0);
     }
 
-    .falselist{
+    .falselist {
         display: none;
         background-color: rgba(0, 0, 0, 0);
     }
 
-    .textsmall{
+    .textsmall {
         display: flex;
         flex-direction: row;
         align-items: center;
         padding: 0.5rem;
     }
 
-    .textsmall p{
+    .textsmall p {
         font-family: BankGothicLtBT;
         font-size: 1.375rem;
         line-height: 135.3%;
@@ -39,11 +40,11 @@
         margin-bottom: auto;
     }
 
-    .textmedium{
+    .textmedium {
         margin-left: 1.5rem;
     }
 
-    .textmedium p{
+    .textmedium p {
         font-family: BankGothicLtBT;
         font-size: 2.25rem;
         line-height: 97.7%;
@@ -51,11 +52,11 @@
         color: #FFFFFF;
     }
 
-    .textcirclecont{
+    .textcirclecont {
         margin-left: 3rem;
     }
 
-    .role-title{
+    .role-title {
         font-family: BankGothicLtBT;
         text-shadow: 2px 1px 8px #FFFFFF;
         font-weight: 900;
@@ -63,15 +64,20 @@
     }
 }
 
-.about p{
-    font-size: 3.72rem;
+.about p {
+    font-family: BankGothicMdBT, sans-serif;
     font-style: normal;
-    letter-spacing: -0.1674rem;
-    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 3.75rem;
+    top: 15.4375rem;
+    line-height: 97.69%;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+    color: #ffffff;
     margin-bottom: auto;
 }
 
-.participationB{
+.participationB {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
@@ -80,7 +86,7 @@
     margin-top: 5rem;
 }
 
-.icons {
+.icons  {
     margin-bottom: 5rem;
     display: flex;
     gap: 2rem;
@@ -88,32 +94,33 @@
     justify-content: space-between;
 }
 
-.members{
+.members {
     // display: grid;
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
     grid-template-columns: auto auto auto auto;
     row-gap: 50px;
     // padding-left: 4rem;
 }
 
-.member{
+.member {
     padding: 1rem;
 }
 
-.mentors{
+.mentors {
     padding-top: 4rem;
 }
 
-@media only screen and (max-width: 768px){
-    .icons{
+@media only screen and (max-width: 768px) {
+    .icons {
         display: flex;
-        flex-wrap:wrap;
+        flex-wrap: wrap;
         flex-direction: initial;
         align-items: center;
         justify-content: space-evenly;
     }
-    .icon{
+
+    .icon {
         padding: 0.5rem;
     }
 }
