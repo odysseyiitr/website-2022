@@ -16,6 +16,7 @@
 @import "./components/signoutButton.scss";
 @import "./modules/loader.scss";
 @import "./modules/AnouncementCard.scss";
+@import "./modules/Filter.scss";
 
 @font-face {
   font-family: BankGothicLtBT;
@@ -265,30 +266,4 @@ input::placeholder {
 
   color: #ffffff;
   padding-left: 10px;
-}
-
-.filter p {
-  font-family: BankGothicMdBT, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 2rem;
-  line-height: 103.6%;
-  top: 16.375rem;
-  letter-spacing: -0.045em;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-
-.filter img {
-  line-height: 56.29%;
-  width: 1.875rem;
-  top: 16.375rem;
-  height: 2.11rem;
-  top: 0.35125rem;
-}
-
-.filter {
-  display: flex;
-  flex-direction: row;
-  gap: 1.53125rem;
 }
