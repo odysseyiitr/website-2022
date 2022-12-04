@@ -27,13 +27,15 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
 
   return (
     <div className="pagination">
-      <button
-        onClick={handlePrev}
-        style={{ border: "none", fontSize: "large" }}
-        className="page-btn"
-      >
-        &laquo;
-      </button>
+      {pages.length > 5 && (
+        <button
+          onClick={handlePrev}
+          style={{ border: "none", fontSize: "large" }}
+          className="page-btn"
+        >
+          &laquo;
+        </button>
+      )}
       {pages.slice(strI, strI + 5).map((page) => {
         return (
           <button
@@ -45,13 +47,15 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
           </button>
         );
       })}
-      <button
-        style={{ border: "none", fontSize: "large" }}
-        className="page-btn"
-        onClick={handleNext}
-      >
-        &raquo;
-      </button>
+      {pages.length > 5 && (
+        <button
+          style={{ border: "none", fontSize: "large" }}
+          className="page-btn"
+          onClick={handleNext}
+        >
+          &raquo;
+        </button>
+      )}
     </div>
   );
 };
