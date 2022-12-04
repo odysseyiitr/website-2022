@@ -40,8 +40,23 @@ const Repo = ({ Card, callback }) => {
         <div className="mentor">
           MENTOR : {Card.mentor}
         </div>
+
+        {true == false ? (
+          <div className='assignee'>
+            <br />
+            ASSIGNEE : None
+          </div>
+        ) : (
+          <>
+            <div className='assignee'>
+              <br />
+              ASSIGNEE : {Card.assignee}
+            </div>
+          </>
+        )}
+
         <div >
-          {Card.claim == false ? (
+          {Card.claim  == false ? (
             <button
               className="button"
               style={{
@@ -58,12 +73,24 @@ const Repo = ({ Card, callback }) => {
               Claim
             </button>
           ) : (
-            <>
-              <div className='assignee'>
-                <br />
-                ASSIGNEE : {Card.assignee}
-              </div>
-            </>
+            <button
+              className="button"
+              style={{
+                position: "absolute",
+                right: "2.75rem",
+                bottom: "1.875rem",
+                backgroundColor: "#E95F8D",
+                borderColor: "#E95F8D",
+                color: "#FFF"
+              }}
+              onClick={() =>
+                unclaimIssue(Card, session).then(() => {
+                  callback().then(() => setLoading(false));
+                })
+              }
+            >
+              UnClaim
+            </button>
           )}
         </div>
       </div>
