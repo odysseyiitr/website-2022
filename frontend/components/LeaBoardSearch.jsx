@@ -7,6 +7,7 @@ const Searchbar = ({
   setPaginateArr,
   setNoDataMssg,
   setCurrentPage,
+  setSrchArr,
 }) => {
   const handleSearch = async (e) => {
     const srch = e.target.value;
@@ -25,9 +26,11 @@ const Searchbar = ({
             setNoDataMssg("no results are found");
           }
           let newData = [];
-          for (let i = 0; i < data.length && i < 8; i++)
+          for (let i = 0; i < data.length; i++)
             newData.push({ ...data[i], rank: i + 1 });
-          setPaginateArr(newData);
+          setSrchArr(newData);
+          setPaginateArr(paginate(newData, 1, 10));
+          setCurrentPage(1);
           setDisplay(false);
         }
       } else {

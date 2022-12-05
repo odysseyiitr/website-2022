@@ -11,6 +11,7 @@ const LeaderBoardTable = () => {
   const [paginateArr, setPaginateArr] = useState([]);
   const [noDataMssg, setNoDataMssg] = useState("");
   const [display, setDisplay] = useState(true);
+  const [srchArr, setSrchArr] = useState([]);
 
   const pageSize = 10;
   const handlePageChange = (page) => {
@@ -48,8 +49,12 @@ const LeaderBoardTable = () => {
         setNoDataMssg(err?.message || "Error in fetching data");
       }
     };
-    func();
-    setPaginateArr(paginate(lbData, currentPage, pageSize));
+    if (display) {
+      func();
+      setPaginateArr(paginate(lbData, currentPage, pageSize));
+    } else {
+      setPaginateArr(paginate(srchArr, currentPage, pageSize));
+    }
   }, [currentPage, lbData]);
 
   return (
@@ -63,6 +68,7 @@ const LeaderBoardTable = () => {
             setPaginateArr={setPaginateArr}
             setDisplay={setDisplay}
             setNoDataMssg={setNoDataMssg}
+            setSrchArr={setSrchArr}
           />
         </div>
         <div className="leaderboard-table-cont">
@@ -100,9 +106,16 @@ const LeaderBoardTable = () => {
           </table>
         </div>
       </div>
-      {display && (
+      {display ? (
         <Pagination
           items={lbData.length}
+          currentPage={currentPage}
+          pageSize={pageSize}
+          onPageChange={handlePageChange}
+        />
+      ) : (
+        <Pagination
+          items={srchArr.length}
           currentPage={currentPage}
           pageSize={pageSize}
           onPageChange={handlePageChange}
