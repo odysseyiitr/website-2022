@@ -1,4 +1,5 @@
 import Button from "./Button";
+import JoinSlackButton from "./ButtonJoinSlack";
 import SocialIcons from "./SocialIcons";
 const HomePage = ({ refs }) => {
   return (
@@ -16,7 +17,7 @@ const HomePage = ({ refs }) => {
             and win some cool swag!
           </p>
         </div>
-        <div>
+        <div className="home-buttons">
           <Button
             text={"TIMELINE"}
             onClick={() => {
@@ -29,6 +30,14 @@ const HomePage = ({ refs }) => {
               }
             }}
           />
+          <div>
+            <JoinSlackButton
+              text={"JOIN SLACK"}
+              onClick={() => {
+                window.open('https://join.slack.com/t/odysseyiitr/shared_invite/zt-1l5j7y9kh-_MOuheVROJdNeInlbdct6A', '_blank');
+              }}
+            />
+          </div>
         </div>
       </div>
       <div className="rightlane">
