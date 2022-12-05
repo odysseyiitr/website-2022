@@ -1,4 +1,4 @@
-import ReposToContribute from "../../../components/RepoList";
+import ReposToContributeTest from "../../../components/RepoList-test";
 import Resources from "../../../components/Resources";
 import Searchbar from "../../../components/Searchbar";
 import Loader from "../../../components/Loader";
@@ -55,7 +55,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="content">
-                    <ReposToContribute list={CardData} callback={fetchRepos} />
+                    <ReposToContributeTest list={CardData} callback={fetchRepos} />
                 </div>
                 <div className="participationB">
                     <Info
