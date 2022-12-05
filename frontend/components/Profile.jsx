@@ -15,8 +15,8 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
   const [formField, setField] = useState("Developer");
   const router = useRouter();
 
-  if (router.query.details == 0) {
-    editProfile = false;
+  if (router.query.details == 0) {    //
+    editProfile = false;              
   }
 
 
