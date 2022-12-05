@@ -15,6 +15,9 @@
 @import "./components/LoginSignupButton.scss";
 @import "./components/signoutButton.scss";
 @import "./modules/loader.scss";
+@import "./modules/leaderboard.scss";
+@import "./modules/AnouncementCard.scss";
+@import "./modules/Filter.scss";
 
 @font-face {
   font-family: BankGothicLtBT;
@@ -24,6 +27,10 @@
 @font-face {
   font-family: BankGothicMdBT;
   src: url("./fonts/BankGothicMediumBT.ttf");
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("./fonts/Montserrat.ttf");
 }
 
 * {
@@ -41,9 +48,11 @@
   background-size: 100%;
   font-size: 1rem;
 }
+
 body {
   background-color: black;
 }
+
 a {
   text-decoration: none;
   color: inherit;
@@ -154,6 +163,7 @@ nav {
   .nav__menu-bar {
     display: none;
   }
+
   .nav__menu-list {
     position: unset;
     flex-direction: row;
@@ -162,6 +172,7 @@ nav {
     column-gap: 1.5rem;
     align-items: center;
   }
+
   .nav__link::before {
     content: "";
     position: absolute;
@@ -229,16 +240,18 @@ input::placeholder {
   color: #e2e2e2;
   font-size: 1rem;
 }
+
 .heading {
   font-family: BankGothicMdBT, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 59.5169px;
+  font-size: 3.75rem;
   line-height: 97.69%;
   letter-spacing: -0.045em;
   text-transform: uppercase;
   color: #ffffff;
 }
+
 .info {
   font-style: normal;
   font-weight: 400;
@@ -253,4 +266,30 @@ input::placeholder {
 
   color: #ffffff;
   padding-left: 10px;
+}
+
+.filter p {
+  font-family: BankGothicMdBT, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 103.6%;
+  top: 16.375rem;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.filter img {
+  line-height: 56.29%;
+  width: 1.875rem;
+  top: 16.375rem;
+  height: 2.11rem;
+  top: 0.35125rem;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  gap: 1.53125rem;
 }

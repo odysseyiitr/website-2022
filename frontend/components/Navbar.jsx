@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 const MENU_LIST = [
   //{ text: "Events", href: "/events" },
-  //{ text: "Leaderboard", href: "/leaderboard" },
+  { text: "Leaderboard", href: "/leaderboard" },
   { text: "About", href: "/about" },
   { text: "Participation", href: "/participation" },
 ];
