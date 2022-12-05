@@ -2,6 +2,7 @@ import ReposToContribute from "../../components/RepoList";
 import Resources from "../../components/Resources";
 import Searchbar from "../../components/Searchbar";
 import Loader from "../../components/Loader";
+import Filter from "../../components/Filter";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Info from "../../components/Info";
@@ -45,25 +46,26 @@ export default function Home() {
   } else {
     return (
       <>
-        <div className="about" style={{ marginTop: "100px" }}>
-          <div className="searchandissues">
-            <p className="heading">PICK YOUR ISSUES</p>
-            <Searchbar />
+        <div className="about" style={{ marginTop: "6.25rem" }}>
+          <div className="pickIssues">
+            <p>PICK YOUR ISSUES</p>
+            {/* <Searchbar /> */}
+            <Filter />
           </div>
         </div>
-      <div className="content">
-        <ReposToContribute list={CardData} callback={fetchRepos} />
-      </div>
-      <div className="participationB">
-        <Info
-          heading={"Participation Details"}
-          text={ParticipationDetailsData}
-        />
-        {/* <Info heading={"Pull Merge Request Details"} text={[]} />
-        <Info heading={"Code of Conduct"} text={[]} />
-        <Resources /> */}
-      </div>
-    </>
-  );
-}
+        <div className="content">
+          <ReposToContribute list={CardData} callback={fetchRepos} />
+        </div>
+        <div className="participationB">
+          <Info
+            heading={"Participation Details"}
+            text={ParticipationDetailsData}
+          />
+          {/* <Info heading={"Pull Merge Request Details"} text={[]} />
+          <Info heading={"Code of Conduct"} text={[]} />
+          <Resources /> */}
+        </div>
+      </>
+    );
+  }
 }
