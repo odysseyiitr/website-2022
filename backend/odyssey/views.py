@@ -1,8 +1,8 @@
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from .serializers import CustomUserModelSerializer, IssueModelSerializer, AnnouncementModelSerializer
-from .models import CustomUserModel, IssueModel, AnnouncementModel
+from .serializers import CustomUserModelSerializer, IssueModelSerializer, AnnouncementModelSerializer, LeaderboardModelSerializer
+from .models import CustomUserModel, IssueModel, AnnouncementModel, LeaderboardModel
 from allauth.socialaccount.providers.github.views import GitHubOAuth2Adapter
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 from dj_rest_auth.registration.views import SocialLoginView
@@ -22,7 +22,7 @@ def set_custom_user_details(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
         post_data = {'access_token': data['access_token'], 'id_token': data['id_token']}
-        response = requests.post(BACKEND_URL+'backend/api/github/', data=post_data)
+        response = requests.post(BACKEND_URL+'api/github/', data=post_data)
         content = response.json()
         user = CustomUserModel.objects.get(username=content['user']['username'])
         user.name = data['name']
@@ -39,7 +39,7 @@ def get_custom_user_details(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
         post_data = {'access_token': data['access_token'], 'id_token': data['id_token']}
-        response = requests.post(BACKEND_URL+'backend/api/github/', data=post_data)
+        response = requests.post(BACKEND_URL+'api/github/', data=post_data)
         content = response.json()
         user = CustomUserModel.objects.get(username=content['user']['username'])
         serializer = CustomUserModelSerializer(user)
@@ -68,7 +68,7 @@ def claim_issue(request):
         data = JSONParser().parse(request)
         issue = IssueModel.objects.get(issue=data['issue'])
         post_data = {'access_token': data['access_token'], 'id_token': data['id_token']}
-        response = requests.post(BACKEND_URL+'backend/api/github/', data=post_data)
+        response = requests.post(BACKEND_URL+'api/github/', data=post_data)
         content = response.json()
         user = CustomUserModel.objects.get(username=content['user']['username'])
         if(user.assignedIssue is None):
@@ -85,5 +85,24 @@ def get_issue(request):
     if request.method == 'GET':
         issues = IssueModel.objects.get(issue=request.GET['issue'])
         serializer = IssueModelSerializer(issues, many=False)
+        return JsonResponse(serializer.data, safe=False, status=200)
+    return JsonResponse({'message': 'error'}, status=400)
+
+@csrf_exempt
+def get_leaderboard(request, page):
+    if request.method == 'GET':
+        if(page < 1):
+            return JsonResponse({'message': 'error'}, status=400)
+        number_of_users_per_page = 10
+        users = LeaderboardModel.objects.all().order_by('-points')[(page - 1) * number_of_users_per_page : page * number_of_users_per_page]
+        serializer = LeaderboardModelSerializer(users, many=True)
+        return JsonResponse(serializer.data, safe=False, status=200)
+    return JsonResponse({'message': 'error'}, status=400)
+
+@csrf_exempt
+def get_search_leaderboard(request):
+    if request.method == 'GET':
+        users = LeaderboardModel.objects.filter(name__icontains=request.GET['query'])
+        serializer = LeaderboardModelSerializer(users, many=True)
         return JsonResponse(serializer.data, safe=False, status=200)
     return JsonResponse({'message': 'error'}, status=400)

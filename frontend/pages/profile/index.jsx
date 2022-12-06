@@ -1,8 +1,10 @@
 import Profile from "../../components/Profile";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import UserProgress from "../../components/UserProgress";
 import ProfileIssues from "../../components/ProfileIssues";
+import RequestsCard from "../../components/pendingRequests";
+import PendingCard from "../../components/pendingRequests";
+import MergedCard from "../../components/mergedRequests";
 
 const axios = require("axios").default;
 
@@ -12,16 +14,16 @@ export default function Home() {
 
   const fetchUserData = async () => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/get-user/`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
       {
         access_token: session.accessToken,
         id_token: session.user.id,
       },
       { headers: { "Content-Type": "application/json" } }
     );
+
     return response;
   };
-
   useEffect(() => {
     if (session)
       fetchUserData().then((response) => {
@@ -51,14 +53,14 @@ export default function Home() {
               email={user.email}
               pfp={user.pfp}
             />
-            {/* <UserProgress progress={0} rank={"NA"} /> */}
           </div>
           {user.issue && <ProfileIssues issue={user.issue} />}
 
           <div className="split_right">
             <h1 className="request">merged pull requests</h1>
-
+            <MergedCard />
             <h1 className="request">pending pull requests</h1>
+            <PendingCard />
           </div>
         </div>
       ) : (

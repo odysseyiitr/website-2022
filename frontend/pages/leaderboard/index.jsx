@@ -1,9 +1,12 @@
-import Searchbar from '../../components/Searchbar'
+import React from "react";
+import LeaderBoardTable from "./LeaderBoardTable";
 
-export default function Leaderboard() {
+const LeaderBoard = () => {
   return (
-    <div className="center">
-        <Searchbar />
-    </div>
+    <>
+      <LeaderBoardTable />
+    </>
   );
-}
+};
+
+export default LeaderBoard;
