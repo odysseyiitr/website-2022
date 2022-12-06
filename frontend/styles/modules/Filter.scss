@@ -24,24 +24,21 @@
     gap: 1.53125rem;
 }
 
-// .filterDropDown {
-//     position: relative;
-// }
-
-
 .filterMenu {
     display: none;
     flex-direction: column;
     width: 16rem;
     height: 12rem;
     position: absolute;
-    margin-left: -6rem;
+    margin-left: -5.5rem;
     background-size: cover;
     background: url("../../public/images/filterBackground.svg");
+    z-index: 1;
 }
 
 .filterDropDown:hover .filterMenu {
     display: flex;
+    margin-top: 2.4rem;
 }
 
 .filterDropDown:hover .filter p {
@@ -56,10 +53,8 @@
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom: 0rem solid white;
-    opacity: 1;
     cursor: pointer;
     background: transparent;
-
 }
 
 .medium,
@@ -94,4 +89,23 @@
     letter-spacing: -0.045em;
     text-transform: uppercase;
     text-align: left;
+}
+
+.dot {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #E95F8D;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: -0.7rem;
+    margin-right: -0.3rem;
+    color: #000;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.filterDropDown {
+    display: flex;
+    flex-direction: row;
+    gap: 0rem;
 }
