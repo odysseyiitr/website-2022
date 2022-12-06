@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import NavItem from "./NavItem";
 import { signIn, signOut, useSession } from "next-auth/react";
 import axios from "axios";
+import { useRouter } from 'next/router';
 
 const MENU_LIST = [
   //{ text: "Events", href: "/events" },
-  //{ text: "Leaderboard", href: "/leaderboard" },
+  { text: "Leaderboard", href: "/leaderboard" },
   { text: "About", href: "/about" },
   { text: "Participation", href: "/participation" },
 ];
@@ -18,14 +19,31 @@ const Navbar = () => {
 
   const { data: session } = useSession();
 
+  const router = useRouter();
+
   const fetchUserData = async () => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/get-user/`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
       { access_token: session.accessToken, id_token: session.user.id },
       { headers: { "Content-Type": "application/json" } }
     );
+    if (typeof response.data.enrollmentNo != 'string'      //this condition will redirect the user directly to profile
+      || typeof response.data.contactNo != 'string'        //page with edit profile if their profile is not complete
+      || typeof response.data.email != 'string'
+      || typeof response.data.name != 'string') {
+      router.push({
+        pathname: '/profile',                              //details=0 is sent as parameter which opens the edit option
+        query: { details: 0 }                              //on the profile page
+      });
+    }
+    else if (router.query.details == 0 && router.pathname == '/profile') {   //even after filling the details the user still remains on the same
+      router.push({                                                          //page with query details=0 so to get the user back to normal page
+        pathname: '/profile',                                                //if all details are filled
+      });
+    }
     return response;
   };
+
 
   useEffect(() => {
     if (session)

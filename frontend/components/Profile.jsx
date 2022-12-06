@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import Button from "./Button";
+import { useRouter } from 'next/router';
 
 const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
   const { data: session } = useSession();
@@ -12,6 +13,12 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
   const [formEno, setEno] = useState("");
   const [formContact, setContact] = useState("");
   const [formField, setField] = useState("Developer");
+  const router = useRouter();
+
+  if (router.query.details == 0) {
+    editProfile = false;
+  }
+
 
   async function setData(e) {
     e.preventDefault();
@@ -25,7 +32,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
       field: formField ? formField : field,
     };
 
-    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/set-user/`, data, {headers:{"Content-Type" : "application/json"}}).then(() => {
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/set-user/`, data, { headers: { "Content-Type": "application/json" } }).then(() => {
       window.location.reload();
     });
   }
@@ -41,7 +48,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
             }}
           ></div>
           <div className="labels">
-            <label className="userHandle">{uname}</label>
+            <label className="userHandle" >{uname}</label>
             <label className="actualName">{aname}</label>
             {editProfile === true ? (
               <label className="role">{role}</label>
