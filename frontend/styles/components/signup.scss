@@ -146,17 +146,22 @@
   text-align: left;
 }
 .submit-button-profile {
+  font-weight: 600;
+  font-size: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
+.submit-button-profile > button {
+  background: transparent;
+    font-weight: 600;
+  font-size: 2rem;
 
-
+}
 
 @media only screen and (max-width: 1024px) {
-
   .detail,
   .detail-label {
     width: 120%;
@@ -167,5 +172,4 @@
   .progresspanel {
     margin-bottom: 2rem;
   }
-
 }
