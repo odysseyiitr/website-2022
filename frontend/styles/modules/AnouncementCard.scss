@@ -102,3 +102,8 @@
     text-transform: capitalize;
     color: inherit;
 }
+
+.anouncementList {
+    overflow-x: auto;
+    display: flex;
+}
