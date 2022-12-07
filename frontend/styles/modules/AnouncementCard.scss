@@ -3,7 +3,6 @@
     height: 26.75rem;
     background-size: cover;
     position: relative;
-    display: flex;
 }
 
 .anouncementContent {
@@ -104,6 +103,9 @@
 }
 
 .anouncementList {
-    overflow-x: auto;
+    width: 83rem;
+    overflow: hidden;
+    overflow-x: scroll;
     display: flex;
+    column-gap: 480px;
 }
