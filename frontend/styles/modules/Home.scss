@@ -170,6 +170,12 @@
   flex-direction: row;
 }
 
+@media screen and (max-width:768px){
+  .home-buttons {
+    flex-direction: column;
+  }
+}
+
 .anouncebox {
   display: flex;
   flex: row;

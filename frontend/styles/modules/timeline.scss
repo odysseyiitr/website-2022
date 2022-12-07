@@ -10,7 +10,6 @@
   flex-direction: row;
   position: relative;
   margin: 2.5rem 0;
-  //padding-left: 4rem;
 }
 
 .timeline > h1 {
@@ -46,12 +45,11 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
+  padding: 0 2.5rem;
   align-items: center;
 
   .timeline-item-date {
-    padding-bottom: 0.938rem;
+    padding: 0 0 0.938rem 0;
     width: 8.438rem;
   }
 
@@ -65,8 +63,40 @@
   }
 
   .timeline-item-text {
-    padding-top: 0.938rem;
+    padding: 0.938rem 0 0 0;
     width: 8.438rem;
     text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .timeline-container {
+    flex-direction: column;
+  }
+
+  .timeline-container::after {
+    top: 4rem;
+    left: calc(50% - 4rem);
+    width: 1.25rem;
+    height: 39rem;
+  }
+
+  .timeline-item {
+    left: calc(50% - 6rem);
+  }
+
+  .timeline-item-content {
+    flex-direction: row;
+
+    .timeline-item-date{
+      padding: 0 0.938rem 0 0;
+    }
+
+    .timeline-item-text{
+      padding: 0 0 0 0.938rem;
+      p{
+        margin: 0;
+      }
+    }
   }
 }
