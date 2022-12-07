@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const currentPage = 0;
 
 const Announcement = ({ data }) => {
-  var data = [{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:3},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:1},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:1},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2}] 
+  var data = [{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:3},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:1},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:1},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2}] 
   const [ABC,setABC]=useState(false);
   var pages = Math.ceil(data.length/3);
   // var pages =5;
@@ -23,7 +23,7 @@ const Announcement = ({ data }) => {
       setABC(current => !current)
       slider.scrollLeft =
       slider.scrollLeft +
-      (document.getElementsByClassName("anouncementCard")[0].scrollWidth+280) * 3 * shift;
+      (document.getElementsByClassName("anouncementCard")[0].scrollWidth+285) * 3 * shift;
     }
     else {
         var shift=currentPage-x;
@@ -31,7 +31,7 @@ const Announcement = ({ data }) => {
         setABC(current => !current)
         slider.scrollLeft =
         slider.scrollLeft -
-        (document.getElementsByClassName("anouncementCard")[0].scrollWidth+280) * 3 * shift;
+        (document.getElementsByClassName("anouncementCard")[0].scrollWidth+285) * 3 * shift;
     }
   }
   function slideLeft() {
@@ -43,7 +43,7 @@ const Announcement = ({ data }) => {
     setABC(current => !current);
     slider.scrollLeft =
       slider.scrollLeft -
-      (document.getElementsByClassName("anouncementCard")[0].scrollWidth+290) * 3;
+      (document.getElementsByClassName("anouncementCard")[0].scrollWidth+285) * 3;
   }
   function slideRight() {
     var slider = document.getElementById("anouncementList");
@@ -54,7 +54,7 @@ const Announcement = ({ data }) => {
     setABC(current => !current);
     slider.scrollLeft =
       slider.scrollLeft +
-      (document.getElementsByClassName("anouncementCard")[0].scrollWidth + 290) * 3;
+      (document.getElementsByClassName("anouncementCard")[0].scrollWidth + 285) * 3;
   }
   return (
     <div className="announcement">
