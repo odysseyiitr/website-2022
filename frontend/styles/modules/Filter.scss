@@ -4,7 +4,6 @@
     font-weight: 400;
     font-size: 2rem;
     line-height: 103.6%;
-    // top: 16.375rem;
     letter-spacing: -0.045em;
     text-transform: uppercase;
     color: #ffffff;
@@ -19,7 +18,7 @@
 .filter {
     display: flex;
     flex-direction: row;
-    gap: 1.53125rem;
+    gap: 1.0625rem;
 }
 
 .filterMenu {
@@ -106,4 +105,33 @@
     display: flex;
     flex-direction: row;
     gap: 0rem;
+}
+
+@media screen and (max-width: 576px) {
+    .filter {
+        gap: 0.5rem;
+        p {
+            font-size: 1.2rem;
+        }
+
+        img {
+            width: 0.9rem;
+            height: 1.05rem;
+        }
+    }
+
+    .filterMenu {
+        width: 8rem;
+        height: 6rem;
+        margin-left: -2.25rem;
+
+        button div {
+            font-size: 0.7rem;
+        }
+    }
+
+    .filterDropDown:hover .filterMenu {
+        display: flex;
+        margin-top: 1.4rem;
+    }
 }

@@ -2,7 +2,17 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 const Filter = () => {
-    var margin = '-5.5rem';
+    var screenwidth = window.innerWidth;
+    var marginActiveFilter, marginInactiveFilter;
+    if (screenwidth < 576) {
+        marginInactiveFilter = "-2.25rem"
+        marginActiveFilter = "-1.05rem";
+    }
+    else {
+        marginInactiveFilter = "-5.5rem"
+        marginActiveFilter = "-4.3rem";
+    }
+    const [margin, changeMargin] = useState(marginInactiveFilter);
     const [count, setCount] = useState(0);
     const [easy, setEasy] = useState();
     const [medium, setMedium] = useState();
@@ -11,9 +21,9 @@ const Filter = () => {
     const [unclaim, setUnclaim] = useState();
     useEffect(() => {
         if (count != 0)                                             //currently the when a filter is selected the drop down moves a little right
-            margin = "-4.5rem"                                      //so this was applied to change the css of the dropdown menu cause no better fix 
+            changeMargin(marginActiveFilter)                                     //so this was applied to change the css of the dropdown menu cause no better fix 
         else                                                        //came to mind the value of margin is changing but it not refected in inspect element
-            margin = "-5.5rem"
+            changeMargin(marginInactiveFilter)
         console.log(margin);
     }, [count]);
     return (
@@ -42,8 +52,8 @@ const Filter = () => {
                             if (easy == undefined) { setEasy("#E95F8D"); setCount(count + 1) }  //function changes the color of the div everytime it is 
                             else { setEasy(); setCount(count - 1) }                             // clicked and accordingly the count is altered             
                         }}>                                                                      {/* //the rest of the four buttons are also similar */}
-                        <div>easy</div>                                                         
-                    </button>                                                                   
+                        <div>easy</div>
+                    </button>
                     <button className="medium"
                         style={{ background: medium }}
                         onClick={() => {

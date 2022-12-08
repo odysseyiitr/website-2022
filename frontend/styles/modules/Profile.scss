@@ -28,11 +28,10 @@
 hr {
   position: relative;
   width: 90%;
-  margin:auto;
+  margin: auto;
   top: 4.5rem;
   border: 0.125rem solid rgba(255, 255, 255, 0.4);
   border-radius: 5px
-  
 }
 
 .username {
@@ -121,6 +120,7 @@ hr {
   flex-direction: column;
   margin-left: 6%;
 }
+
 .profile_issues p {
   font-style: normal;
   font-weight: 400;
@@ -137,19 +137,22 @@ hr {
   .userimage {
     height: 16rem;
     width: 1rem;
-  
+
   }
 }
+
 @media screen and (max-width: 576px) {
   .about {
     p {
       font-size: 2rem;
     }
   }
-  .about .textsmall p{
+
+  .about .textsmall p {
     font-size: 1rem;
   }
-  .about{
+
+  .about {
     margin-left: 1rem;
     margin-right: 1rem;
   }
