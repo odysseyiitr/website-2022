@@ -1,103 +1,49 @@
 import AnouncementCard from "./AnouncementCard";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import React, { useState } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 const currentPage = 0;
 
 const Announcement = ({ data }) => {
-  var data = [{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:3},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:1},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:1},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc", index_no:2}] 
-  const [ABC,setABC]=useState(false);
   var pages = Math.ceil(data.length/3);
-  // var pages =5;
-  var pagearray=[];
-  for (let i=0; i< pages; i++){
-    pagearray.push(i);
-  }
-  function page(x){
-    var slider = document.getElementById("anouncementList");
-    if (!slider) {
-      return;
+  var array=[];
+  var subarr=[];
+  for(let i=0; i<data.length; i++) {
+    if (i%3==0 && i!=0){
+      array.push(subarr);
+      var subarr=[];
+      subarr.push(i);
     }
-    if (x>currentPage){
-      var shift=x-currentPage;
-      currentPage=x;
-      setABC(current => !current)
-      slider.scrollLeft =
-      slider.scrollLeft +
-      (document.getElementsByClassName("anouncementCard")[0].scrollWidth+285) * 3 * shift;
-    }
-    else {
-        var shift=currentPage-x;
-        currentPage=x;
-        setABC(current => !current)
-        slider.scrollLeft =
-        slider.scrollLeft -
-        (document.getElementsByClassName("anouncementCard")[0].scrollWidth+285) * 3 * shift;
+    else{
+      subarr.push(i)
     }
   }
-  function slideLeft() {
-    var slider = document.getElementById("anouncementList");
-    if (!slider) {
-      return;
-    }
-    currentPage=(currentPage-1)%pages;
-    setABC(current => !current);
-    slider.scrollLeft =
-      slider.scrollLeft -
-      (document.getElementsByClassName("anouncementCard")[0].scrollWidth+285) * 3;
-  }
-  function slideRight() {
-    var slider = document.getElementById("anouncementList");
-    if (!slider) {
-      return;
-    }
-    currentPage=(currentPage+1)%pages;
-    setABC(current => !current);
-    slider.scrollLeft =
-      slider.scrollLeft +
-      (document.getElementsByClassName("anouncementCard")[0].scrollWidth + 285) * 3;
-  }
+  console.log(array)
   return (
     <div className="announcement">
       <h1>Announcement</h1>
 
       <div className="anouncebox">
-        <MdChevronLeft
-          onClick={() => slideLeft()}
-          size={50}
-          style={{
-            marginTop: "220px",
-          }}
-        />
-        <div className="anouncementList" id="anouncementList">
-          {data.map((item, i) => {
-            return (
-              <AnouncementCard
-                date={item.date}
-                key={i}
-                heading={item.title}
-                description={item.description}
-                venue={item.venue}
-                time={item.time}
-                note={item.note}
-              />
-            );
-          })}
-        </div>
-        <MdChevronRight
-          onClick={() => slideRight()}
-          size={50}
-          style={{
-            marginTop: "220px",
-          }}
-        />
-      </div>
-      <div className="pagination" id="pagination">
-          {pagearray.map((item, i) => {
-            return (
-              (currentPage === i) ? (<div className="selected" id="selected" onClick={() => page(i)}></div>) : (<div className="unselected" id="unselected" onClick={() => page(i)}></div>)
-            );
+      <Carousel showArrows={true} showThumbs={false}>
+        {array.map((page, i)=>{
+          return (
+            <div className="carouselBox">
+            {page.map((item,j) => {
+              return (<AnouncementCard
+                date={data[item].date}
+                key={item}
+                heading={data[item].title}
+                description={data[item].description}
+                venue={data[item].venue}
+                time={data[item].time}
+                note={data[item].note}
+              />)
             })}
-      </div>        
+            </div>
+          )
+        })}
+      </Carousel>
+    </div>
     </div>
   );
 };

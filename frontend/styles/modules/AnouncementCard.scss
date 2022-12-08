@@ -1,6 +1,6 @@
 .anouncementCard {
     width: 30rem;
-    height: 26.75rem;
+    height: 40rem;
     background-size: cover;
     position: relative;
     display: flex;
@@ -103,10 +103,7 @@
     color: inherit;
 }
 
-.anouncementList {
-    width: 83rem;
-    overflow: hidden;
-    overflow-x: scroll;
+.carouselBox {
     display: flex;
-    column-gap: 29rem;
+    justify-content: space-evenly;
 }
