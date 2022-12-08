@@ -2,8 +2,8 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import Button from "./Button";
 import { useRouter } from 'next/router';
+import Button from "./Button";
 
 const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
   const { data: session } = useSession();
