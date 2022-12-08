@@ -1,6 +1,6 @@
 .anouncementCard {
-    width: 21.75rem;
-    height: 26.75rem;
+    width: 25rem;
+    height: 32rem;
     background-size: cover;
     position: relative;
     display: flex;
@@ -101,4 +101,28 @@
     letter-spacing: -0.045em;
     text-transform: capitalize;
     color: inherit;
+}
+
+.carouselBox {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 960px) {
+    .carouselBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1500px) {
+    .anouncementCard {
+    width: 20rem;
+    height: 25rem;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    }
 }

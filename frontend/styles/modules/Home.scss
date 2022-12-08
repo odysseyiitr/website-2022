@@ -171,14 +171,8 @@
   flex-direction: row;
 }
 
-.anouncebox {
-  display: flex;
-  flex: row;
-  justify-content: space-between;
-}
-
 .announcement {
-  margin: 2rem;
+  padding-bottom: 1rem;
   h1 {
     font-size: 3.75rem;
     margin-left: 9%;
