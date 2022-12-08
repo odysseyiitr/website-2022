@@ -1,11 +1,9 @@
 import AnouncementCard from "./AnouncementCard";
 import React, { useState } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-const currentPage = 0;
 
 const Announcement = ({ data }) => {
-  var pages = Math.ceil(data.length/3);
   var array=[];
   var subarr=[];
   for(let i=0; i<data.length; i++) {
