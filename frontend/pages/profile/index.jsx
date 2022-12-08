@@ -56,7 +56,7 @@ export default function Home() {
           {user.issue && <ProfileIssues issue={user.issue} />}
         </div>
       ) : (
-        <div>loading</div>
+        <div className="profile-loading">LOADING</div>
       )}
     </>
   );
