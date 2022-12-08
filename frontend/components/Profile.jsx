@@ -138,7 +138,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 <div
                 className="submit-button-profile"
               >
-                <Button className="btn-submit" type="submit" text={"Sign Up"} />
+                <Button type="submit" text={"Sign Up"} />
               </div>
 
           </div>
