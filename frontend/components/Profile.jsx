@@ -2,7 +2,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import Button from "./Button";
+import GradientButton from "./GradientButton";
 import { useRouter } from 'next/router';
 
 const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
@@ -140,7 +140,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 height: "50px",
               }}
             >
-              <Button type="submit" text={"Sign Up"} />
+              <GradientButton type="submit" text={"Sign Up"} />
             </div>
 
           </div>
