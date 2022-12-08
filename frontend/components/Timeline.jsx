@@ -42,13 +42,14 @@ function computeTimelineLength() {
   // calculate the fraction of timeline to be highlighted
   let i = 0;
   for (let x of timelineData) {
-    if (x.dateObj > new Date("October 28, 2022 00:00:00")) {
-      i += (new Date("October 28, 2022 00:00:00") - timelineData[i-1].dateObj) / (x.dateObj - timelineData[i - 1].dateObj);
+    if (x.dateObj > new Date()) {
+      i +=
+        (new Date() - timelineData[i - 1].dateObj) /
+        (x.dateObj - timelineData[i - 1].dateObj);
       break;
-    }
-    else i++;
+    } else i++;
   }
-  return (i - 1)/(timelineData.length - 1);
+  return (i - 1) / (timelineData.length - 1);
 }
 
 const TimelineItem = ({ data }) => (
@@ -57,7 +58,7 @@ const TimelineItem = ({ data }) => (
       <div className="timeline-item-date">
         <time>{data.date}</time>
       </div>
-      {data.dateObj <= new Date("October 28, 2022 00:00:00") ? (
+      {data.dateObj <= new Date() ? (
         <div className="timeline-item-logo">
           <img src="/TimelineCheckMark.svg" />
         </div>
@@ -82,7 +83,7 @@ const Timeline = ({ refs }) =>
         {timelineData.map((data, idx) => (
           <TimelineItem data={data} key={idx} />
         ))}
-      <div className="timeline-active" />
+        <div className="timeline-active" />
         <style jsx>{`
           .timeline-active {
             color: blue;
@@ -101,8 +102,8 @@ const Timeline = ({ refs }) =>
             z-index: 10;
             border-radius: 3.026rem;
           }
-          @media screen and (max-width: 992px){
-            .timeline-active{
+          @media screen and (max-width: 992px) {
+            .timeline-active {
               background: linear-gradient(
                 0deg,
                 rgba(80, 41, 189, 0.69) 0%,
@@ -110,7 +111,7 @@ const Timeline = ({ refs }) =>
                 rgba(233, 69, 96, 1) 100%
               );
               top: 4rem;
-              left: calc(50% - 4rem);
+              left: calc(50% - 0.5rem);
               width: 1.25rem;
               height: ${computeTimelineLength() * 39}rem;
             }
