@@ -116,11 +116,11 @@
 }
 
 .user-form {
-  height: auto;
   width: 100%;
   background-image: url("../../public/images/profile.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  aspect-ratio: 565 / 937; // dimensions of the profile border svg
 }
 
 .user-details {
