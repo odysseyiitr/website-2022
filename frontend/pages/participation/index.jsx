@@ -53,9 +53,9 @@ export default function Home() {
             <Filter />
           </div>
         </div>
-        <div className="content">
-          <ReposToContribute list={CardData} callback={fetchRepos} />
-        </div>
+          {/* <div className="content">
+            <ReposToContribute list={CardData} callback={fetchRepos} />
+          </div> */}
         <div className="participationB">
           <Info
             heading={"Participation Details"}

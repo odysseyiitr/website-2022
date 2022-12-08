@@ -140,3 +140,17 @@ hr {
   
   }
 }
+@media screen and (max-width: 576px) {
+  .about {
+    p {
+      font-size: 2rem;
+    }
+  }
+  .about .textsmall p{
+    font-size: 1rem;
+  }
+  .about{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}

@@ -41,11 +41,11 @@ const Repo = ({ Card, callback }) => {
             </b>
           </h4>
         </div>
-        <div className="mentor">
+        {/* <div className="mentor">
           MENTOR : {Card.mentor}
-        </div>
+        </div> */}
 
-        {Card.claim == false ? (
+        {/* {Card.claim == false ? (
           <div className='assignee'>
             <br />
             ASSIGNEE : None
@@ -96,7 +96,7 @@ const Repo = ({ Card, callback }) => {
               UnClaim
             </button>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );
