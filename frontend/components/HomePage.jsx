@@ -1,5 +1,4 @@
 import Button from "./Button";
-import GradientButton from "./GradientButton";
 import JoinSlackButton from "./ButtonJoinSlack";
 import SocialIcons from "./SocialIcons";
 const HomePage = ({ refs }) => {
@@ -19,7 +18,7 @@ const HomePage = ({ refs }) => {
           </p>
         </div>
         <div className="home-buttons">
-          <GradientButton
+          <Button
             text={"TIMELINE"}
             onClick={() => {
               if (refs && refs.current) {

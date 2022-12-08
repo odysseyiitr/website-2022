@@ -2,8 +2,8 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import GradientButton from "./GradientButton";
 import { useRouter } from 'next/router';
+import Button from "./Button";
 
 const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
   const { data: session } = useSession();
@@ -140,7 +140,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 height: "50px",
               }}
             >
-              <GradientButton type="submit" text={"Sign Up"} />
+              <Button type="submit" text={"Sign Up"} />
             </div>
 
           </div>
