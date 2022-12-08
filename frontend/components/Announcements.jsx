@@ -1,60 +1,47 @@
 import AnouncementCard from "./AnouncementCard";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import React, { useState } from "react";
+import { Carousel } from 'react-responsive-carousel';
 
 const Announcement = ({ data }) => {
-  function slideLeft() {
-    var slider = document.getElementById("anouncementList");
-    if (!slider) {
-      return;
+  var data = [{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"}] 
+  var array=[];
+  var subarr=[];
+  for(let i=0; i<data.length; i++) {
+    if (i%3==0 && i!=0){
+      array.push(subarr);
+      var subarr=[];
+      subarr.push(i);
     }
-    slider.scrollLeft =
-      slider.scrollLeft -
-      (document.getElementsByClassName("card")[0].scrollWidth + 35) * 3;
-  }
-  function slideRight() {
-    var slider = document.getElementById("anouncementList");
-    if (!slider) {
-      return;
+    else{
+      subarr.push(i)
     }
-    slider.scrollLeft =
-      slider.scrollLeft +
-      (document.getElementsByClassName("card")[0].scrollWidth + 35) * 3;
   }
+  console.log(array)
   return (
     <div className="announcement">
       <h1>Announcement</h1>
 
       <div className="anouncebox">
-        <MdChevronLeft
-          onClick={() => slideLeft()}
-          size={50}
-          style={{
-            marginTop: "220px",
-          }}
-        />
-        <div className="anouncementList" id="anouncementList">
-          {data.map((item, i) => {
-            return (
-              <AnouncementCard
-                date={item.date}
-                key={i}
-                heading={item.title}
-                description={item.description}
-                venue={item.venue}
-                time={item.time}
-                note={item.note}
-              />
-            );
-          })}
-        </div>
-        <MdChevronRight
-          onClick={() => slideRight()}
-          size={50}
-          style={{
-            marginTop: "220px",
-          }}
-        />
-      </div>
+      <Carousel showArrows={true} showThumbs={false}>
+        {array.map((page, i)=>{
+          return (
+            <div className="carouselBox">
+            {page.map((item,j) => {
+              return (<AnouncementCard
+                date={data[item].date}
+                index_no={item}
+                heading={data[item].title}
+                description={data[item].description}
+                venue={data[item].venue}
+                time={data[item].time}
+                note={data[item].note}
+              />)
+            })}
+            </div>
+          )
+        })}
+      </Carousel>
+    </div>
     </div>
   );
 };
