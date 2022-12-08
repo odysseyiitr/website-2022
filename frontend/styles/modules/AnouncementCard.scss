@@ -1,6 +1,6 @@
 .anouncementCard {
-    width: 30rem;
-    height: 40rem;
+    width: 25rem;
+    height: 32rem;
     background-size: cover;
     position: relative;
     display: flex;
@@ -106,4 +106,22 @@
 .carouselBox {
     display: flex;
     justify-content: space-evenly;
+}
+
+@media (max-width: 960px) {
+    .carouselBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1500px) {
+    .anouncementCard {
+    width: 20rem;
+    height: 25rem;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    }
 }
