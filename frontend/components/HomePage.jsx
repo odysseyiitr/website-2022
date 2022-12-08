@@ -5,7 +5,6 @@ const HomePage = ({ refs }) => {
   return (
     <div className="placard">
       <SocialIcons />
-
       <div className="placard-text">
         <div>
           <h1>OPEN SOURCE ODYSSEY</h1>
@@ -18,23 +17,28 @@ const HomePage = ({ refs }) => {
           </p>
         </div>
         <div className="home-buttons">
-          <Button
-            text={"TIMELINE"}
-            onClick={() => {
-              if (refs && refs.current) {
-                refs.current.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                  inline: "nearest",
-                });
-              }
-            }}
-          />
+          <div>
+            <Button
+              text={"TIMELINE"}
+              onClick={() => {
+                if (refs && refs.current) {
+                  refs.current.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest",
+                  });
+                }
+              }}
+            />
+          </div>
           <div>
             <JoinSlackButton
               text={"JOIN SLACK"}
               onClick={() => {
-                window.open('https://join.slack.com/t/odysseyiitr/shared_invite/zt-1l5j7y9kh-_MOuheVROJdNeInlbdct6A', '_blank');
+                window.open(
+                  "https://join.slack.com/t/odysseyiitr/shared_invite/zt-1l5j7y9kh-_MOuheVROJdNeInlbdct6A",
+                  "_blank"
+                );
               }}
             />
           </div>
