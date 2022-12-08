@@ -3,26 +3,19 @@ import { useSession } from "next-auth/react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import Button from "./Button";
-import { useRouter } from 'next/router';
-
+  
 const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
-  const { data: session } = useSession();
+  const { data: session } = useSession();                           
   const [editProfile, setEdit] = useState(true);
   const [formName, setName] = useState("");
   const [formEmail, setEmail] = useState("");
   const [formEno, setEno] = useState("");
   const [formContact, setContact] = useState("");
   const [formField, setField] = useState("Developer");
-  const router = useRouter();
-
-  if (router.query.details == 0) {
-    editProfile = false;
-  }
-
-
+  
   async function setData(e) {
     e.preventDefault();
-    let data = {
+    let data = {                     
       access_token: session.accessToken,
       id_token: session.user.id,
       name: formName ? formName : aname,
@@ -32,33 +25,34 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
       field: formField ? formField : field,
     };
 
-    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/set-user/`, data, { headers: { "Content-Type": "application/json" } }).then(() => {
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/set-user/`, data, {headers:{"Content-Type" : "application/json"}}).then(() => {
       window.location.reload();
-    });
-  }
-
-  return (
+    });                   
+  }         
+  
+  return (          
     <div className="signup">
       <form className="user-form" onSubmit={setData}>
         <div className="avatar">
           <div
             className="imageCropper"
-            style={{
+            style={{ 
               backgroundImage: `url(${pfp})`,
-            }}
-          ></div>
-          <div className="labels">
-            <label className="userHandle" >{uname}</label>
+            }}            
+          ></div>  
+  
+          {/* <div className="labels">
+            <label className="userHandle">{uname}</label>
             <label className="actualName">{aname}</label>
             {editProfile === true ? (
               <label className="role">{role}</label>
-            ) : (
+            ) : (     
               true
-            )}
-          </div>
-          {editProfile === true && (
+            )}       
+          </div> */}          
+          {/* {editProfile === true && (
             <div>
-              <input
+              <input              
                 type="image"
                 className="edit"
                 src="images/edit.svg"
@@ -67,16 +61,21 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 }}
               />
             </div>
-          )}
+          )} */}
         </div>
-        {editProfile && <hr />}
+           <div className="labels">
+            <label className="userHandle">{uname}</label>
+            <label className="actualName capitalised">{aname}</label>
+            {editProfile === true ? (
+              <label className="role">{role}</label>
+            ) : (
+              true
+            )}
+          </div>
+        {editProfile }
         {editProfile === true ? (
           <div className="user-details">
-            <div className="form-floating">
-              <label className="detail-label">ACTUAL NAME</label>
-              <label className="details">{aname}</label>
-            </div>
-            <div className="form-floating">
+               <div className="form-floating">
               <label className="detail-label">ENROLMENT NO</label>
               <label className="details">{eno}</label>
             </div>
@@ -87,6 +86,14 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
             <div className="form-floating">
               <label className="detail-label">EMAIL ID</label>
               <label className="details">{email}</label>
+            </div>
+             <div className="form-floating">
+              <label className="detail-label">GITHUB HANDLE</label>
+              <label className="details">{uname}</label>
+            </div>
+            <div className="rankHandle">
+            <label className="userHandle">()</label>
+            <label className="userHandle">#RANK</label>
             </div>
           </div>
         ) : (
@@ -146,6 +153,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
           </div>
         )}
       </form>
+     
     </div>
   );
 };

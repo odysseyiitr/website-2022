@@ -1,0 +1,46 @@
+.requestsTop{
+    width: auto;
+    height: auto;
+}
+
+.mergedCard{
+    width: 53rem;
+    height: 8.125rem;
+    background-image: linear-gradient(90deg, #28155d, #711e49);
+    border: 2px solid #FFFFFF;
+    border-radius: 1rem;
+    margin: 1.5rem;
+    padding: 1.5rem;    
+}
+
+.pendingCard {
+    width: 53rem;
+    height: 8.125rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #FFFFFF;
+    border-radius: 1rem;
+    margin: 1.5rem;
+    padding: 1.5rem;
+}
+
+
+.top{
+    text-transform: uppercase;
+    color: #e95f8d;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    display: inline;
+    word-wrap: break-word;
+    padding: 2rem;
+    font-size: 2rem;
+}
+
+.prTitle{
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    display: inline;
+    word-wrap: break-word;
+    padding: 2rem;
+    font-size: 1.688rem;
+}

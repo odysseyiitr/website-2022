@@ -1,30 +1,55 @@
-.signup {
+.signup {      
   box-sizing: border-box;
-  width: 50%;
-  min-width: 550px;
-  height: 564px;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.1);
-  border: 0.24rem solid #ffffff;
-  border-radius: 1rem;
+  width: 10%;        
+  width: 29.8rem;
+  height: auto;    
+  margin:auto ; 
+  margin-top: 9rem;                                              
+
   vertical-align: middle;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
+}         
+  
+.border{                             
+  content: "";
+  position:relative;
+  width:2.5rem;
+  height:2.5rem;
+  overflow:hidden;
+  border-right: 0.5rem solid #E95F8D;
 }
 
-.input {
+.a {
+  // top: -10rem;    
+  // left: 1rem;
+  transform:rotate(45deg);
+}           
+  
+.b{                 
+  top: -11rem;
+  left: 8rem;
+}
+
+.c {       
+  top: -7.6rem;      
+  left: 8rem;   
+  transform:rotate(90deg);
+}                  
+  
+.input {              
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  border: none;
+  border-radius: 0.5rem;    
+  border: none;                      
   font-size: 1.75rem;
   line-height: 1.7rem;
   height: 2.81rem;
-  width: 60%;
-  padding-left: 1.56rem;
+  width: 60%;        
+  padding-left: 1.56rem;      
   margin-left: 1.56rem;
-}
+}                
 
 .dropDown {
   background: rgba(255, 255, 255, 0.1);
@@ -40,7 +65,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  height: 10%;
+  height: 30%;
   justify-content: space-around;
   align-items: center;
   margin-top: 8%;
@@ -53,20 +78,25 @@
 }
 
 .imageCropper {
-  min-width: 9rem;
-  height: 9rem;
+  width: 25rem;
+  height: 15rem;
   position: relative;
-  border-radius: 50%;
+  margin: auto;
+  padding: 3%;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 15px 10px #cfcdcd41;
   background-size: cover;
   background-position: center;
   object-fit: cover;
 }
 
 .labels {
-  display: flex;
+  display: block;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   font-size: 10px;
+  text-align: center;
+  padding: 1rem;
 }
 
 .mainForm {
@@ -80,26 +110,41 @@
   flex-direction: row;
   justify-content: space-between;
   font-size: 15px;
-  line-height: 20px;
+  line-height: 15px;
   padding-left: 1.2rem;
   padding-right: 0.8rem;
 }
 
 .user-form {
-  height: 100%;
   width: 100%;
+  background-image: url("../../public/images/profile.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  aspect-ratio: 565 / 937; // dimensions of the profile border svg
 }
 
 .user-details {
   display: flex;
-  height: 60%;
+  height: 40%;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 5rem;
 }
 
 .userHandle {
-  font-size: 2.5rem;
+  font-size: 2rem;
+  display: block;
+}
+
+.rank-label, .rank {
+  display: block;
+  
+}
+
+.rankHandle{
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
 }
 
 .actualName {
@@ -120,14 +165,14 @@
 .details {
   font-style: normal;
   font-weight: 400;
-  font-size: 2rem;
-  line-height: 95%;
+  font-size: 1.5rem;
+  line-height: 90%;
   letter-spacing: -0.045em;
   text-transform: uppercase;
   color: #cfcdcd;
   background-color: rgba(0, 0, 0, 0);
   padding: 2.5%;
-  width: 75%;
+  width: 50%;
   text-align: left;
   word-wrap: break-word;
 }
@@ -135,8 +180,8 @@
 .detail-label {
   font-style: normal;
   font-weight: 600;
-  font-size: 2rem;
-  line-height: 95%;
+  font-size: 1.5rem;
+  line-height: 90%;
   letter-spacing: -0.045em;
   text-transform: uppercase;
   color: #cfcdcd;

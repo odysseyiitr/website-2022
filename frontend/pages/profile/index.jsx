@@ -1,8 +1,10 @@
 import Profile from "../../components/Profile";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import UserProgress from "../../components/UserProgress";
 import ProfileIssues from "../../components/ProfileIssues";
+import RequestsCard from "../../components/pendingRequests";
+import PendingCard from "../../components/pendingRequests";
+import MergedCard from "../../components/mergedRequests";
 
 const axios = require("axios").default;
 
@@ -41,7 +43,7 @@ export default function Home() {
     <>
       {user ? (
         <div className="profile">
-          <div className="profile-page-content">
+          <div className="profile-page-content split_left">
             <Profile
               uname={user.uname}
               aname={user.aname}
@@ -51,9 +53,15 @@ export default function Home() {
               email={user.email}
               pfp={user.pfp}
             />
-            {/* <UserProgress progress={0} rank={"NA"} /> */}
           </div>
           {user.issue && <ProfileIssues issue={user.issue} />}
+
+          <div className="split_right">
+            <h1 className="request">merged pull requests</h1>
+            <MergedCard />
+            <h1 className="request">pending pull requests</h1>
+            <PendingCard />
+          </div>
         </div>
       ) : (
         <div>loading</div>
