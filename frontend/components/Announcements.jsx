@@ -4,6 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 const Announcement = ({ data }) => {
+  var data = [{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"}] 
   var array=[];
   var subarr=[];
   for(let i=0; i<data.length; i++) {
@@ -29,7 +30,7 @@ const Announcement = ({ data }) => {
             {page.map((item,j) => {
               return (<AnouncementCard
                 date={data[item].date}
-                key={item}
+                index_no={item}
                 heading={data[item].title}
                 description={data[item].description}
                 venue={data[item].venue}
