@@ -5,21 +5,23 @@
   border-bottom-right-radius: 1rem;
   height: 4.063rem;
   width: 15.625rem;
-  outline-style: solid;
-  outline-width: 0.125rem;
-  box-shadow: 0.063rem 0.063rem 0rem 0.125rem rgba (0, 0, 0, 0.3);
+  // box-shadow: 0.063rem 0.063rem 0rem 0.125rem rgba (0, 0, 0, 0.3);
   cursor: pointer;
 }
 
 
 .true {
   border: 0;
-  background: linear-gradient(to bottom right, #d4088dbe, #470689bd);
-  outline-color: rgba(255, 255, 255, 0.719);
+  background: linear-gradient(to bottom right, #480689, #D4088C) padding-box,
+    linear-gradient(to bottom right, #A92FFB, #F8359E) border-box;
+  border: 0.1rem solid transparent;
+  box-shadow: 0px 0.2rem 0.5rem 0.1rem rgba(221, 230, 243, 0.1);
 }
 
 .false {
   border: 0;
-  background: linear-gradient(to bottom right, #d4088c, #480689);
-  outline-color: white;
+  background: linear-gradient(to bottom right, #480689, #D4088C) padding-box,
+    linear-gradient(to bottom right, #A92FFB, #F8359E) border-box;
+  border: 0.1rem solid transparent;
+  box-shadow: 0px 0.2rem 0.5rem 0.1rem rgba(221, 230, 243, 0.25);
 }
