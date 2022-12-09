@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import NavItem from "./NavItem"
 
 const Filter = () => {
     var screenwidth = window.innerWidth;

@@ -19,6 +19,17 @@
     align-self: center;
 }
 
+@media screen and (max-width: 576px) {
+
+    .footer-1{
+        justify-content: center;
+    }
+    .footer-1_text{
+        font-size: 2.5rem;
+        padding: 0 0.5rem;
+    }
+}
+
 .footer-text {
     width: 24rem;
     text-align: center;

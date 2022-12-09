@@ -15,6 +15,7 @@
     "dotenv": "^16.0.3",
     "fs": "^0.0.1-security",
     "google-spreadsheet": "^3.3.0",
+    "lodash": "^4.17.21",
     "next": "12.3.1",
     "next-auth": "^4.13.0",
     "pm2": "^5.2.2",
@@ -23,6 +24,7 @@
     "react-dom": "18.2.0",
     "react-horizontal-scrolling-menu": "^3.2.0",
     "react-icons": "^4.6.0",
+    "react-responsive-carousel": "^3.2.23",
     "sass": "^1.55.0"
   },
   "devDependencies": {
