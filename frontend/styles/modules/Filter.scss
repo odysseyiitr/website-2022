@@ -4,7 +4,6 @@
     font-weight: 400;
     font-size: 2rem;
     line-height: 103.6%;
-    top: 16.375rem;
     letter-spacing: -0.045em;
     text-transform: uppercase;
     color: #ffffff;
@@ -13,21 +12,14 @@
 .filter img {
     line-height: 56.29%;
     width: 1.875rem;
-    top: 16.0625rem;
-    right: 8.375rem;
     height: 2.11rem;
 }
 
 .filter {
     display: flex;
     flex-direction: row;
-    gap: 1.53125rem;
+    gap: 1.0625rem;
 }
-
-// .filterDropDown {
-//     position: relative;
-// }
-
 
 .filterMenu {
     display: none;
@@ -35,13 +27,15 @@
     width: 16rem;
     height: 12rem;
     position: absolute;
-    margin-left: -6rem;
+    margin-left: -5.5rem;
     background-size: cover;
     background: url("../../public/images/filterBackground.svg");
+    z-index: 1;
 }
 
 .filterDropDown:hover .filterMenu {
     display: flex;
+    margin-top: 2.4rem;
 }
 
 .filterDropDown:hover .filter p {
@@ -56,10 +50,8 @@
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border-bottom: 0rem solid white;
-    opacity: 1;
     cursor: pointer;
     background: transparent;
-
 }
 
 .medium,
@@ -94,4 +86,52 @@
     letter-spacing: -0.045em;
     text-transform: uppercase;
     text-align: left;
+}
+
+.dot {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: #E95F8D;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: -0.7rem;
+    margin-right: -0.3rem;
+    color: #000;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.filterDropDown {
+    display: flex;
+    flex-direction: row;
+    gap: 0rem;
+}
+
+@media screen and (max-width: 576px) {
+    .filter {
+        gap: 0.5rem;
+        p {
+            font-size: 1.2rem;
+        }
+
+        img {
+            width: 0.9rem;
+            height: 1.05rem;
+        }
+    }
+
+    .filterMenu {
+        width: 8rem;
+        height: 6rem;
+        margin-left: -2.25rem;
+
+        button div {
+            font-size: 0.7rem;
+        }
+    }
+
+    .filterDropDown:hover .filterMenu {
+        display: flex;
+        margin-top: 1.4rem;
+    }
 }

@@ -1,13 +1,31 @@
+.repodialogue {
+  align-items: center;
+  padding: 1.5rem;
+  margin-left: 6.375rem;
+  margin-right: 4.5rem;
+  background-color: 0.125rem solid #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 0.125rem solid #fff;
+  box-shadow: 0 0 0.5rem #fff;
+  // background-color: #1a1a1a;
+  background-image: url("../../public/download.jpg");
+  height: 50rem;
+  font-size: 1.5rem;
+}
+
 .repobox {
   border: 0.125rem solid #fff;
   border-radius: 1rem;
-  min-height: 10.5rem;
   height: auto;
   width: auto;
   margin-right: 2rem;
   position: relative;
   text-transform: uppercase;
-  //background: linear-gradient(90deg, rgba(50, 18, 138, 0.207) 0%, rgba(80, 41, 189, 0.207) 0.01%, rgba(170, 28, 100, 0.237) 58.85%, rgba(233, 69, 96, 0.3) 100%), linear-gradient(90deg, #1D0F44 0%, #3D0E3D 100%);
+  display: flex;
+  flex-direction: column;
 }
 
 .cardTag {
@@ -17,8 +35,6 @@
   border-radius: 0.8rem 0 0.8rem 0;
   background-color: #ffffff;
   position: absolute;
-  left: 0px;
-  top: 0px;
   font-size: 1.25rem;
   font-weight: 400;
   color: #1D0F44;
@@ -31,7 +47,11 @@
 
 .issueDetails {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin-top: 2.875rem;
+  margin-left: 2.875rem;
+  margin-right: 2.875rem;
+
 }
 
 .issue {
@@ -41,34 +61,6 @@
   line-height: 135.3%;
   letter-spacing: 0em;
   text-align: center;
-  top: 2.875rem;
-  left: 2.8125rem;
-  position: absolute;
-}
-
-.repodialogue {
-  align-items: center;
-  padding: 1.5rem;
-  margin-left: 6.375rem;
-  margin-right: 4.5rem;
-  background-color: 0.125rem solid #fff;
-  // width: 95vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: 0.125rem solid #fff;
-  border-radius: 0.5rem;
-  border: 0.125rem solid #fff;
-  box-shadow: 0 0 0.5rem #fff;
-  background-color: #1a1a1a;
-  background-image: url("../../public/download.jpg");
-  height: 50rem;
-  font-size: 1.5rem;
-}
-
-.description {
-  color: #fff;
-  text-align: center;
 }
 
 .mentor {
@@ -77,10 +69,9 @@
   font-weight: 400;
   line-height: 135.3%;
   letter-spacing: 0em;
-  top: 5.625rem;
-  left: 2.8125rem;
-  position: absolute;
   color: #FFE600;
+  margin-top: 1.0625rem;
+  min-width: 16rem;
 }
 
 .assignee {
@@ -89,10 +80,24 @@
   font-weight: 400;
   line-height: 135.3%;
   letter-spacing: 0em;
-  top: 5.625rem;
-  left: 2.8125rem;
-  position: absolute;
   color: #FFE600;
+  margin-top: 0rem;
+  margin-bottom: 0.8125rem;
+}
+
+.buttonWrap {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin-bottom: 0.5rem;
+
+  button {
+    position: absolute;
+    margin-top: 2.5%;
+    margin-bottom: 1.875rem;
+    right: 1rem;
+    bottom: -0.5rem;
+  }
 }
 
 .scroll {
@@ -121,4 +126,72 @@
     inset -2px -2px 2px rgba(0, 0, 0, 0.25);
   box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.25),
     inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+}
+
+
+@media screen and (max-width: 576px) {
+  .repodialogue {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    height: 30rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+
+  .cardTag {
+    font-size: 1.2rem;
+    min-width: 7rem;
+  }
+
+  .repobox {
+    height: fit-content;
+    margin-right: 0.5rem;
+  }
+
+  .scroll {
+    width: 100%;
+    padding-top: 1.75rem;
+    margin: 0rem;
+    padding: 0rem;
+  }
+
+  .issueDetails {
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
+
+    .issue {
+      font-size: 1rem;
+    }
+
+    .mentor,
+    .assignee {
+      font-size: 1.2rem;
+    }
+  }
+
+  .buttonWrap {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+      margin-left: 0%;
+      margin-top: 2%;
+      margin-bottom: 1.875rem;
+      width: 10rem;
+      height: 2.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .buttonWrap {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+      position: relative;
+    }
+  }
 }
