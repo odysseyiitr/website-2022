@@ -4,12 +4,14 @@ import Searchbar from "../../components/Searchbar";
 import Loader from "../../components/Loader";
 import Filter from "../../components/Filter";
 import { useEffect, useState } from "react";
+import React from "react";
 import { useSession } from "next-auth/react";
 import Info from "../../components/Info";
 
 const axios = require("axios").default;
 
 export default function Home() {
+  const [margin, setMargin] = useState();
   const [CardData, setCardData] = useState([]);
   const [loading, setLoading] = useState(true);
   const ParticipationDetailsData = [
@@ -38,7 +40,16 @@ export default function Home() {
       setCardData(JSON.parse(JSON.stringify(repos)));
     });
   };
+
+
   useEffect(() => {
+
+    if (window.innerWidth < 576) {
+      setMargin("2.5rem");
+    }
+    else {
+      setMargin("6.25rem");
+    }
     fetchRepos().then(() => setLoading(false));
   }, []);
   if (loading) {
@@ -46,7 +57,7 @@ export default function Home() {
   } else {
     return (
       <>
-        <div className="about" style={{ marginTop: "6.25rem" }}>
+        <div className="about" style={{ marginTop: margin }}>
           <div className="pickIssues">
             <p>PICK YOUR ISSUES</p>
             {/* <Searchbar /> */}
@@ -54,8 +65,8 @@ export default function Home() {
           </div>
         </div>
         <div className="content">
-          <ReposToContribute list={CardData} callback={fetchRepos} />
-        </div>
+            <ReposToContribute list={CardData} callback={fetchRepos} />
+          </div>
         <div className="participationB">
           <Info
             heading={"Participation Details"}

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 const TextDash = ({ text }) => {
   return (
     <div className="textsmall">
-      <img src="/images/list_dash.svg" width={35} />
+      <img src="/images/list_dash.svg" />
       <p className="info">{text}</p>
     </div>
   );

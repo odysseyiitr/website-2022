@@ -5,6 +5,7 @@ import Loader from "./Loader";
 const axios = require("axios").default;
 
 const Repo = ({ Card, callback }) => {
+  console.log(window.innerWidth);
   const { data: session } = useSession();
   const [loading, setLoading] = useState(true);
   if (Card.claim == true)
@@ -41,33 +42,27 @@ const Repo = ({ Card, callback }) => {
             </b>
           </h4>
         </div>
-        <div className="mentor">
-          MENTOR : {Card.mentor}
-        </div>
-
-        {Card.claim == false ? (
-          <div className='assignee'>
-            <br />
-            ASSIGNEE : None
-          </div>
-        ) : (
-          <>
-            <div className='assignee'>
-              <br />
-              ASSIGNEE : {Card.assignee}
+        <div className="buttonWrap">
+          <div>
+            <div className="mentor">
+              MENTOR : {Card.mentor}
             </div>
-          </>
-        )}
 
-        <div >
+            {Card.claim == false ? (
+              <div className='assignee'>
+                ASSIGNEE : None
+              </div>
+            ) : (
+              <>
+                <div className='assignee'>
+                  ASSIGNEE : {Card.assignee}
+                </div>
+              </>
+            )}
+          </div>
           {Card.claim == false ? (
             <button
               className="button"
-              style={{
-                position: "absolute",
-                right: "2.75rem",
-                bottom: "1.875rem",
-              }}
               onClick={() =>
                 claimIssue(Card, session).then(() => {
                   callback().then(() => setLoading(false));
@@ -80,9 +75,6 @@ const Repo = ({ Card, callback }) => {
             <button
               className="button"
               style={{
-                position: "absolute",
-                right: "2.75rem",
-                bottom: "1.875rem",
                 backgroundColor: "#E95F8D",
                 borderColor: "#E95F8D",
                 color: "#FFF"
