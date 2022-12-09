@@ -103,6 +103,10 @@ nav {
   transition: all 0.2s;
   min-height: calc(100vh - 60px);
   background-color: transparent;
+  @media screen and (max-width: 768px) {
+    min-height: 18vh;
+    background-color: #301934;
+  }
 }
 
 .nav__menu-list.active {
