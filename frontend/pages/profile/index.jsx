@@ -7,8 +7,8 @@ import MergedList from "../../components/MergedList";
 const axios = require("axios").default;
 
 export default function Home() {
-  const [MergedList, setMergedList] = useState([]);
-  const [PendingList, setPendingList] = useState([]);
+  const [Merged, setMerged] = useState([]);
+  const [Pending, setPending] = useState([]);
   const { data: session } = useSession();
   const [user, setUser] = useState(null);
 
@@ -21,34 +21,38 @@ export default function Home() {
       },
       { headers: { "Content-Type": "application/json" } }
     );
-
     return response;
   };
 
   const fetchMerged = async () => {
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/`
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`
     );
+    const issues = response.data.completedIssues;
     let repos = [];
-    data.forEach(async (element) => {
+    console.log(issues);
+    issues.forEach(async (element) => {
       var repoInfo = element.issue.split("/");
       repos = JSON.parse(JSON.stringify(repos));
       repos.push({
       });
-      setMergedList(JSON.parse(JSON.stringify(repos)));
+      setMerged(JSON.parse(JSON.stringify(repos)));
     });
   };
+
   const fetchPending = async () => {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/`
-    );
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`
+    ); 
+    const issues = response.data.assignedIssues;
     let repos = [];
+    console.log(issues);
     data.forEach(async (element) => {
       var repoInfo = element.issue.split("/");
       repos = JSON.parse(JSON.stringify(repos));
       repos.push({
       });
-      setPendingList(JSON.parse(JSON.stringify(repos)));
+      setPending(JSON.parse(JSON.stringify(repos)));
     });
   };
 
@@ -63,6 +67,7 @@ export default function Home() {
         userData.aname = response.data.name;
         userData.email = response.data.email;
         userData.pfp = session.user.image;
+        userData.rank = response.data.rank;
         setUser(userData);
       });
   }, [session]);
@@ -80,13 +85,14 @@ export default function Home() {
               contact={user.contact}
               email={user.email}
               pfp={user.pfp}
+              rank={user.rank}
             />
           </div>
           <div className="split_right">
             <h1 className="request">merged pull requests</h1>
-            <MergedList list={CardData} callback={fetchMerged} />;
+            <MergedList list={Merged} callback={fetchMerged} />
             <h1 className="request">pending pull requests</h1>
-            <PendingList list={CardData} callback={fetchPending} />;
+            <PendingList list={Pending} callback={fetchPending} />
           </div>
         </div>
       ) : (

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import Button from "./Button";
 
-const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
+const Profile = ({ uname, aname, role, eno, contact, email, pfp, rank }) => {
   const { data: session } = useSession();
   const [formName, setName] = useState("");
   const [formEmail, setEmail] = useState("");
@@ -64,14 +64,14 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
             <label className="details">{uname}</label>
           </div>
           <div className="rankHandle">
-            <label className="userHandle">()</label>
+            <label className="userHandle">{rank}</label>
             <label className="userHandle">#RANK</label>
           </div>
         </div>
       </form>
 
     </div>
-  );  
+  );
 };
 
 Profile.defaultProps = {
