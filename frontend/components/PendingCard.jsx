@@ -6,11 +6,11 @@ const PendingCard = ({ username, pr_title, pr_repo, pr_branch }) => {
   return (
     <div className="pendingCard" >
       <div className="requestsTop">
-      <p className='top'>{username}/ {pr_repo}/ {pr_branch} -&gt;</p>
-      <p className='top'>{pr_repo}/ master</p>
+        <p className='top'>{username}/ {pr_repo}/ {pr_branch} -&gt;</p>
+        <p className='top'>{pr_repo}/ master</p>
       </div>
       <div className="requestsTitle">
-      <p className='prTitle'>{pr_title}</p>      </div>
+        <p className='prTitle'>{pr_title}</p>      </div>
     </div>
   );
 };
