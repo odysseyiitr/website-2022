@@ -88,6 +88,8 @@
 }
 
 .ass-heading {
+    display: grid;
+    place-items: center;
     margin-top: 5rem;
 }
 
@@ -116,7 +118,7 @@
     padding-top: 4rem;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 960px) {
     .icons {
         display: flex;
         flex-wrap: wrap;
@@ -127,6 +129,31 @@
 
     .icon {
         padding: 0.5rem;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .icon {
+        padding: 0.5rem;
+    }
+
+    .about p {
+        font-family: BankGothicMdBT, sans-serif;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 2rem;
+        top: 15.4375rem;
+        line-height: 97.69%;
+        letter-spacing: -0.045em;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: auto;
     }
 }
 

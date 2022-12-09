@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import { Carousel } from 'react-responsive-carousel';
 
 const Announcement = ({ data }) => {
-  var data = [{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"},{date:"abc", heading:"abc", description:"abc", time:"abc", venue:"abc", note:"abc"}] 
   var array=[];
-  var subarr=[];
   for(let i=0; i<data.length; i++) {
     if (i%3==0 && i!=0){
       array.push(subarr);
@@ -16,7 +14,6 @@ const Announcement = ({ data }) => {
       subarr.push(i)
     }
   }
-  console.log(array)
   return (
     <div className="announcement">
       <h1>Announcement</h1>
