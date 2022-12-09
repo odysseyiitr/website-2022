@@ -64,8 +64,8 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp, rank }) => {
             <label className="details">{uname}</label>
           </div>
           <div className="rankHandle">
-            <label className="userHandle">{rank}</label>
-            <label className="userHandle">#RANK</label>
+            <label className="userHandle">222</label>
+            <label className>#RANK</label>
           </div>
         </div>
       </form>

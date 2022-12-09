@@ -1,11 +1,6 @@
 .signup {      
   box-sizing: border-box;
-  width: 10%;        
-  width: 29.8rem;
-  height: auto;    
-  margin:auto ; 
-  margin-top: 9rem;                                              
-
+  margin:0;                                             
   vertical-align: middle;
   display: flex;
   flex-wrap: wrap;
@@ -129,7 +124,7 @@
 }
 
 .userHandle {
-  font-size: 2rem;
+  font-size: 3.75rem;
   display: block;
 }
 
@@ -139,7 +134,7 @@
 }
 
 .rankHandle{
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 3rem;

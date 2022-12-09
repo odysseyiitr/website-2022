@@ -1,53 +1,6 @@
-.profile-card {             
-  box-sizing: border-box;
-  position: absolute;
-  width: 52rem;    
-  height: 35.25rem;
-  left: 9.75rem;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0rem 0.305rem 1rem 0.152rem rgba(221, 230, 243, 0.25);
-  border: 0.188rem solid #ffffff;
-  backdrop-filter: blur(0.281rem);
-  border-radius: 1.086rem;
-}                 
-  
-.image {                        
-  position: relative;
-  left: 5%;
-  top: 2%;
-  background-color: rgba(0, 0, 0, 0);
-}              
-  
-.userimage {      
-  height: 18rem;                     
-  width: 18rem;
-  border-radius: 50%;
-}   
-  
-hr {            
-  position: relative;
-  width: 90%;
-  margin:auto;
-  top: 5rem;
-  border: 0.125rem solid rgba(255, 255, 255, 0.4);
-  border-radius: 5px
-  
-}       
-          
-.username { 
-  position: absolute;
-  top: 5.563rem;
-  left: 15.813rem;        
-  font-weight: 400;
-  font-size: 2.5rem;
-  line-height: 97.69%;
-  letter-spacing: -0.045em;  
-  text-transform: uppercase;
-  background-color: rgba(0, 0, 0, 0);
-  color: #ffffff;    
-}                                                                                                                                                  
 
-.role, .capitalised {
+.role,
+.capitalised {
   font-family: BankGothicLtBT;
   font-style: normal;
   display: block;
@@ -61,43 +14,42 @@ hr {
   text-align: center;
 }
 
-.field {
-  position: absolute;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 2rem;
-  line-height: 97.69%;
-  letter-spacing: -0.045em;
-  text-transform: uppercase;
-  color: #ffffff;
-  background-color: rgba(0, 0, 0, 0);
-}
-
-.value {
-  position: absolute;
-  font-family: BankGothicLtBT;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 2rem;
-  line-height: 97.69%;
-  letter-spacing: -0.045em;
-  text-transform: uppercase;
-  color: #cfcdcd;
-  background-color: rgba(0, 0, 0, 0);
-}
-
 .edit {
   background: rgba(0, 0, 0, 0);
 }
 
 .profile-page-content {
-  
   display: flex;
   justify-content: space-around;
+  height: max-content;
+  margin-left: 6.375rem;
+  height: 55.8125rem;    
+  margin-top: 9rem;    
 }
 
 .profile {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.split_right {
+  height: auto;
+  padding-left: 6rem;
+  margin-top: 8.8rem;  
+}
+
+.merge_request {
+  font-size: 4rem;
+  text-shadow: 2px 2px 10px #f8f6f6;
+  margin: 0rem;
+  padding-bottom: 2.6875rem;
+}
+
+.pending_request{
+  font-size: 4rem;
+  text-shadow: 2px 2px 10px #f8f6f6;
+  margin: 0rem;
+  padding-top: 3.75rem;
 }
 
 .profile_issues {
@@ -107,6 +59,7 @@ hr {
   flex-direction: column;
   margin-left: 6%;
 }
+
 .profile_issues p {
   font-style: normal;
   font-weight: 400;
@@ -116,53 +69,16 @@ hr {
 
 
 @media only screen and (max-width: 1024px) {
-  .profile-page-content {
+  .profile{
     flex-direction: column;
   }
-
-  .userimage {
-    height: 16rem;
-    width: 1rem;
-  
+  .split_right{
+    padding-left: 4rem;
   }
 }
 
-.split_left{
-  height: max-content;
-  width: 45%;
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  left: 0;
-}
-
-.split_right{
-  height: auto;
-  width: 60%;
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  right: 0;
-  padding-top: 8rem;
-}
-
-.request{
-  font-size: 4rem;
-  text-shadow: 2px 2px 10px #f8f6f6;
-}
-
-.pullbox {
-  border: 0.125rem solid #fff;
-  margin: 2rem;
-  padding: 0.625;
-  border-radius: 0.625rem;
-  background-image: linear-gradient(to right, #1d0f44, #3d0e3d);
-}
-
-.mentora {
-  color: #ffe600;
-  text-align: right;
-  padding: 1rem;
+@media only screen and (max-width: 576px) {
+  .merge_request,.pending_request {
+    font-size: 2.5rem;
+  }
 }
