@@ -11,7 +11,7 @@ const Issue = ({ Card }) => {
       >
         <h4>
           <b>
-            //{Card.repoName} - {Card.tag}
+            {Card.repoName} - {Card.tag}
           </b>
         </h4>
         <a href={Card.issueUrl} target="_blank" rel="noreferrer">

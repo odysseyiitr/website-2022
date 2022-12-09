@@ -54,8 +54,6 @@ export default function Home() {
               pfp={user.pfp}
             />
           </div>
-          {user.issue && <ProfileIssues issue={user.issue} />}
-
           <div className="split_right">
             <h1 className="request">merged pull requests</h1>
             <MergedCard />
