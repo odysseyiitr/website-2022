@@ -43,7 +43,14 @@ def get_custom_user_details(request):
         content = response.json()
         user = CustomUserModel.objects.get(username=content['user']['username'])
         serializer = CustomUserModelSerializer(user)
-        return JsonResponse(serializer.data, status=200)
+        leaderboard = LeaderboardModel.objects.all().order_by('-points')
+        serializer_leaderboard = LeaderboardModelSerializer(leaderboard, many=True)
+        rank = 1
+        for i in serializer_leaderboard.data:
+            if i['username'] == user.username:
+                break
+            rank += 1
+        return JsonResponse({'user': serializer.data, 'rank': rank}, status=200)
     return JsonResponse({'message': 'error'}, status=400)
 
 @csrf_exempt
