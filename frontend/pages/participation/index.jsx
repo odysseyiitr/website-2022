@@ -60,7 +60,6 @@ export default function Home() {
         <div className="about" style={{ marginTop: margin }}>
           <div className="pickIssues">
             <p>PICK YOUR ISSUES</p>
-            {/* <Searchbar /> */}
             <Filter />
           </div>
         </div>
