@@ -10,7 +10,7 @@ const MENU_LIST = [
   { text: "Leaderboard", href: "/leaderboard" },
   { text: "About", href: "/about" },
   { text: "Participation", href: "/participation" },
-  { text: "Join Slack", href: "/slack link here" },
+  { text: "Join Slack", href: "https://join.slack.com/t/odysseyiitr/shared_invite/zt-1l5j7y9kh-_MOuheVROJdNeInlbdct6A" },
 ];
 
 const Navbar = () => {

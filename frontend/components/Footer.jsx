@@ -28,12 +28,12 @@ class Footer extends Component {
                   <img className="icon_img" src="/images/github.svg" />
                 </a>
                 <a
-                  href="Slack Link here"
+                  href="https://join.slack.com/t/odysseyiitr/shared_invite/zt-1l5j7y9kh-_MOuheVROJdNeInlbdct6A"
                   target="_blank"
                   referrerPolicy="norefferer"
                   rel="noreferrer"
                 >
-                  <img className="icon_img" src="/images/slack.svg" />
+                  <img className="icon_img" src="/images/slack-icon.svg" />
                 </a>
                 <a
                   href="https://www.instagram.com/odyssey.iitr/"
