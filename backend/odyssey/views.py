@@ -43,7 +43,14 @@ def get_custom_user_details(request):
         content = response.json()
         user = CustomUserModel.objects.get(username=content['user']['username'])
         serializer = CustomUserModelSerializer(user)
-        return JsonResponse(serializer.data, status=200)
+        leaderboard = LeaderboardModel.objects.all().order_by('-points')
+        serializer_leaderboard = LeaderboardModelSerializer(leaderboard, many=True)
+        rank = 1
+        for i in serializer_leaderboard.data:
+            if i['username'] == user.username:
+                break
+            rank += 1
+        return JsonResponse({'user': serializer.data, 'rank': rank}, status=200)
     return JsonResponse({'message': 'error'}, status=400)
 
 @csrf_exempt
@@ -81,6 +88,24 @@ def claim_issue(request):
     return JsonResponse({'message': 'error'}, status=400)
 
 @csrf_exempt
+def unclaim_issue(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        issue = IssueModel.objects.get(issue=data['issue'])
+        post_data = {'access_token': data['access_token'], 'id_token': data['id_token']}
+        response = requests.post(BACKEND_URL+'api/github/', data=post_data)
+        content = response.json()
+        user = CustomUserModel.objects.get(username=content['user']['username'])
+        if(user.assignedIssue is not None):
+            issue.assigneeName = None
+            issue.assigneeId = None
+            issue.save()
+            user.assignedIssue = None
+            user.save()
+        return JsonResponse({'message': 'success'}, status=200)
+    return JsonResponse({'message': 'error'}, status=400)
+
+@csrf_exempt
 def get_issue(request):
     if request.method == 'GET':
         issues = IssueModel.objects.get(issue=request.GET['issue'])
@@ -105,4 +130,31 @@ def get_search_leaderboard(request):
         users = LeaderboardModel.objects.filter(name__icontains=request.GET['query'])
         serializer = LeaderboardModelSerializer(users, many=True)
         return JsonResponse(serializer.data, safe=False, status=200)
+    return JsonResponse({'message': 'error'}, status=400)
+
+@csrf_exempt
+def complete_issue(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        if data['action'] == 'closed' and data['issue'] is not None:
+            issue = IssueModel.objects.get(issue=data['issue']['html_url'])
+            issue.completed = True
+            issue.save()
+            user = CustomUserModel.objects.get(username=issue.assigneeId)
+            user.assignedIssue = None
+            user.completedIssues.append(issue)
+            user.save()
+            leaderboard = LeaderboardModel.objects.get(username=issue.assigneeId)
+            if leaderboard is None:
+                leaderboard = LeaderboardModel(username=issue.assigneeId, name=issue.assigneeName, points=0)
+            points = 0
+            if issue.issueDifficulty == 'Easy':
+                points = 5
+            elif issue.issueDifficulty == 'Medium':
+                points = 10
+            elif issue.issueDifficulty == 'Hard':
+                points = 20
+            leaderboard.points += points
+            leaderboard.save()
+        return JsonResponse({'message': 'success'}, status=200)
     return JsonResponse({'message': 'error'}, status=400)

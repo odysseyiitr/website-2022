@@ -69,7 +69,7 @@ class IssueModel(models.Model):
     completed = models.BooleanField(default=False)
     issueName = models.CharField(max_length=100, null=True, blank=True)
     issueDifficulty = models.CharField(max_length=10, choices=(
-        (1, "Easy"), (2, "Medium"), (3, "Hard")), default='Easy', null=False, blank=False)
+        ("Easy", "Easy"), ("Medium", "Medium"), ("Hard", "Hard")), default="Easy", null=False, blank=False)
 
     class Meta:
         verbose_name = 'Issue'
