@@ -81,38 +81,6 @@ def claim_issue(request):
     return JsonResponse({'message': 'error'}, status=400)
 
 @csrf_exempt
-def unclaim_issue(request):
-    if request.method == 'POST':
-        data = JSONParser().parse(request)
-        issue = IssueModel.objects.get(issue=data['issue'])
-        post_data = {'access_token': data['access_token'], 'id_token': data['id_token']}
-        response = requests.post(BACKEND_URL+'api/github/', data=post_data)
-        content = response.json()
-        user = CustomUserModel.objects.get(username=content['user']['username'])
-        if(user.assignedIssue == issue):
-            issue.assigneeName = None
-            issue.assigneeId = None
-            issue.save()
-            user.assignedIssue = None
-            user.save()
-        return JsonResponse({'message': 'success'}, status=200)
-    return JsonResponse({'message': 'error'}, status=400)
-
-@csrf_exempt
-def get_assigned_issue(request):
-    if request.method == 'GET':
-        data = JSONParser().parse(request)
-        post_data = {'access_token': data['access_token'], 'id_token': data['id_token']}
-        response = requests.post(BACKEND_URL+'api/github/', data=post_data)
-        content = response.json()
-        user = CustomUserModel.objects.get(username=content['user']['username'])
-        if(user.assignedIssue is not None):
-            serializer = IssueModelSerializer(user.assignedIssue)
-            return JsonResponse(serializer.data, status=200)
-        return JsonResponse({'message': 'no issue assigned'}, status=200)
-    return JsonResponse({'message': 'error'}, status=400)
-
-@csrf_exempt
 def get_issue(request):
     if request.method == 'GET':
         issues = IssueModel.objects.get(issue=request.GET['issue'])
