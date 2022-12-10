@@ -7,15 +7,15 @@ import { signIn } from "next-auth/react";
 
 const UNCLAIMED_CARD_COLOR = "linear-gradient(90deg, rgba(50, 18, 138, 0.207) 0%, rgba(80, 41, 189, 0.207) 0.01%, rgba(170, 28, 100, 0.237) 58.85%, rgba(233, 69, 96, 0.3) 100%), linear-gradient(90deg, #1D0F44 0%, #3D0E3D 100%)";
 
-const Repo = ({ Card, refetch }) => {
+const Repo = ({ Card, refetch, disableClaim }) => {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
 
-  const handleClaimIssue = useCallback(async() => {
+  const claimUnclaimIssue = useCallback(async(unclaim = false) => {
     setLoading(true);
     try {
       await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}api/claim-issue/`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}api/${unclaim ? 'un' : ''}claim-issue/`,
         {
           access_token: session.accessToken,
           id_token: session.user.id,
@@ -30,10 +30,11 @@ const Repo = ({ Card, refetch }) => {
     }
   }, [session?.user?.id, session?.accessToken, Card.issueUrl, refetch])
 
-  const handleUnclaimIssue = useCallback(async() => {}, []); // TBD
+  const handleClaimIssue = claimUnclaimIssue;
+  const handleUnclaimIssue = () => claimUnclaimIssue(true);
   
   const renderClaimButton = () => {
-    const isLoggedIn = session?.user?.id && session?.accessToken; 
+    const isLoggedIn = session?.user?.id && session?.accessToken;
     if(!isLoggedIn) {
       // If not logged in, show login button
       return (
@@ -60,6 +61,12 @@ const Repo = ({ Card, refetch }) => {
     }
 
     // If logged in and issue is claimed by someone else, show nothing
+
+    
+    if(disableClaim) {
+      // If user has already claimed an issue, show nothing
+      return;
+    }
 
     if(!Card.claim) {
       // If logged in and issue is unclaimed, show claime button

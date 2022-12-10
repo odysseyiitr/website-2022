@@ -10,6 +10,8 @@ urlpatterns = [
     path('get-issue/', views.get_issue, name='get-issue'),
     path('get-announcements/', views.get_announcements, name='get-announcements'),
     path('claim-issue/', views.claim_issue, name='claim_issue'),
+    path('unclaim-issue/', views.unclaim_issue, name='unclaim_issue'),
+    path('get-assigned-issue/', views.get_assigned_issue, name='get-assigned-issue'),
     path('leaderboard/<int:page>', views.get_leaderboard, name='leaderboard'),
     path('get-search-leaderboard/', views.get_search_leaderboard, name='get-search-leaderboard'),
 ]
