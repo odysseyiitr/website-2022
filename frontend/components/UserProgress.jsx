@@ -9,8 +9,8 @@ const UserProgress = ({ progress, rank}) =>{
             </div>
             <div className="progressbar">
             <CircularProgressbar
-             value={progress}  
-             text={`${progress}%`}
+             value={50} // Find better progress logic  
+             text={`${progress}`}
              styles={buildStyles({
                 pathColor: '#E94560',
                 textColor: '#fff',
@@ -18,7 +18,7 @@ const UserProgress = ({ progress, rank}) =>{
             })}/>
             </div>
             <div className="rank">
-            {rank} RANK
+            RANK #{rank}
             </div>
     </div>
     )
