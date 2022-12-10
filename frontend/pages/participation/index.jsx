@@ -16,74 +16,105 @@ const PARTICIPATION_DETAILS = [
 ];
 
 export default function Home() {
+  let defaultTagMap = new Map([
+    ["easy", false],
+    ["medium", false],
+    ["hard", false],
+    ["claimed", false],
+    ["unclaimed", false],
+  ]);
   const [margin, setMargin] = useState();
   const [CardData, setCardData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [tagMap, setTagMap] = useState(defaultTagMap);
+  const [filterCount, setFilterCount] = useState(0);
 
+  const updateTagMap = (tag) => {
+    let currValue = tagMap.get(tag);
+    if (currValue) setFilterCount(filterCount - 1);
+    else setFilterCount(filterCount + 1);
+    setTagMap((map) => new Map(map.set(tag, !currValue)));
+  };
+  let repos = [];
   const fetchRepos = async () => {
     setLoading(true);
     try {
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-all-issues/`
-    );
-    let repos = [];
-    data.forEach(async (element) => {
-      var repoInfo = element.issue.split("/");
-      repos = JSON.parse(JSON.stringify(repos));
-      repos.push({
-        repoName: repoInfo[3],
-        tag: repoInfo[4],
-        issueTitle: element.issueName,
-        mentor: element.mentorId,
-        claim: element.assigneeId ? true : false,
-        assignee: element.assigneeId,
-        issueUrl: element.issue,
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-all-issues/`
+      );
+      data.forEach(async (element) => {
+        var repoInfo = element.issue.split("/");
+        repos = JSON.parse(JSON.stringify(repos));
+        repos.push({
+          repoName: repoInfo[3],
+          tag: repoInfo[4],
+          issueTitle: element.issueName,
+          mentor: element.mentorId,
+          claim: element.assigneeId ? true : false,
+          assignee: element.assigneeId,
+          issueUrl: element.issue,
+        });
       });
-      setCardData(JSON.parse(JSON.stringify(repos)));
-    });
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
     }
+    setCardData(JSON.parse(JSON.stringify(repos)));
   };
-
-
   useEffect(() => {
     if (window.innerWidth < 576) {
       setMargin("2.5rem");
-    }
-    else {
+    } else {
       setMargin("6.25rem");
     }
     fetchRepos();
   }, []);
 
+  useEffect(() => {
+    let filteredRepo = repos.filter(
+      (repo) =>
+        tagMap.get(repo.tag) &&
+        (!tagMap.get("claimed") || repo.claim) &&
+        (!tagMap.get("unclaimed") || !repo.claim)
+    );
+    setCardData(JSON.parse(JSON.stringify(filteredRepo)));
+  }, [tagMap]);
+
+  useEffect(() => {
+    if (filterCount == 0) setCardData(JSON.parse(JSON.stringify(repos)));
+  }, [filterCount]);
+
   if (loading) {
     return <Loader />;
-  } 
-
-  return (
-    <>
-      <div className="about" style={{ marginTop: margin }}>
-        <div className="pickIssues">
-          <p>PICK YOUR ISSUES</p>
-          <Filter />
+  } else {
+    return (
+      <>
+        <div className="about" style={{ marginTop: margin }}>
+          <div className="pickIssues">
+            <p>PICK YOUR ISSUES</p>
+            {/* <Searchbar /> */}
+            <Filter
+              tagMap={tagMap}
+              updateTagMapCallback={updateTagMap}
+              count={filterCount}
+            />
+          </div>
         </div>
-      </div>
-      <div className="content">
+        <div className="content">
           <ReposToContribute list={CardData} />
         </div>
-      <div className="participationB">
-        <Info
-          heading={"Participation Details"}
-          text={PARTICIPATION_DETAILS}
-        />
-        <Info
-          heading={"Resources"}
-          text={['Visit https://github.com/sdslabs/recommends']}
-        />
-      </div>
-    </>
-  );
+        <div className="participationB">
+          <Info
+            heading={"Participation Details"}
+            text={PARTICIPATION_DETAILS}
+          />
+          <Info
+            heading={"Resources"}
+            text={["Visit https://github.com/sdslabs/recommends"]}
+          />
+        </div>
+      </>
+    );
+  }
 }
