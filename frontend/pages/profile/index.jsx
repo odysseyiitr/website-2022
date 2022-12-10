@@ -11,7 +11,7 @@ export default function Home() {
   const [user, setUser] = useState(null);
 
   const fetchUserData = async () => {
-    const response = await axios.get(
+    const {data} = await axios.post(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
       {
         access_token: session.accessToken,
@@ -20,19 +20,20 @@ export default function Home() {
       { headers: { "Content-Type": "application/json" } }
     );
 
-    return response;
+    return data;
   };
   useEffect(() => {
     if (session)
       fetchUserData().then((response) => {
         let userData = {};
-        userData.uname = response.data.username;
-        userData.role = response.data.field;
-        userData.eno = response.data.enrollmentNo;
-        userData.contact = response.data.contactNo;
-        userData.aname = response.data.name;
-        userData.email = response.data.email;
+        userData.uname = response.user.username;
+        userData.role = response.user.field;
+        userData.eno = response.user.enrollmentNo;
+        userData.contact = response.user.contactNo;
+        userData.aname = response.user.name;
+        userData.email = response.user.email;
         userData.pfp = session.user.image;
+        userData.rank = response.rank;
         setUser(userData);
       });
   }, [session]);
@@ -51,7 +52,8 @@ export default function Home() {
               email={user.email}
               pfp={user.pfp}
             />
-            {/* <UserProgress progress={0} rank={"NA"} /> */}
+            {/* Find better logic to fill progress bar */}
+            <UserProgress progress={1/user.rank * 100} rank={user.rank} />
           </div>
           {user.issue && <ProfileIssues issue={user.issue} />}
         </div>

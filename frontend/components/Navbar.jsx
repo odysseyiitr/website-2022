@@ -23,15 +23,16 @@ const Navbar = () => {
   const router = useRouter();
 
   const fetchUserData = async () => {
-    const response = await axios.get(
+    const {data} = await axios.post(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
       { access_token: session.accessToken, id_token: session.user.id },
       { headers: { "Content-Type": "application/json" } }
     );
-    if (typeof response.data.enrollmentNo != 'string'      //this condition will redirect the user directly to profile
-      || typeof response.data.contactNo != 'string'        //page with edit profile if their profile is not complete
-      || typeof response.data.email != 'string'
-      || typeof response.data.name != 'string') {
+
+    if (typeof data.user.enrollmentNo != 'string'      //this condition will redirect the user directly to profile
+      || typeof data.user.contactNo != 'string'        //page with edit profile if their profile is not complete
+      || typeof data.user.email != 'string'
+      || typeof data.user.name != 'string') {
       router.push({
         pathname: '/profile',                              //details=0 is sent as parameter which opens the edit option
         query: { details: 0 }                              //on the profile page
@@ -42,14 +43,14 @@ const Navbar = () => {
         pathname: '/profile',                                                //if all details are filled
       });
     }
-    return response;
+    return data.user;
   };
 
 
   useEffect(() => {
     if (session)
       fetchUserData().then((response) => {
-        setUserId(response.data.username);
+        setUserId(response.username);
       });
   }, [session]);
 
