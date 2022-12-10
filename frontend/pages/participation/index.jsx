@@ -32,7 +32,7 @@ export default function Home() {
       repos = JSON.parse(JSON.stringify(repos));
       repos.push({
         repoName: repoInfo[3],
-        tag: repoInfo[4],
+        tag: element.issueDifficulty,
         issueTitle: element.issueName,
         mentor: element.mentorId,
         claim: element.assigneeId ? true : false,
@@ -72,7 +72,7 @@ export default function Home() {
         </div>
       </div>
       <div className="content">
-          <ReposToContribute list={CardData} />
+          <ReposToContribute list={CardData} refetch={fetchRepos} />
         </div>
       <div className="participationB">
         <Info

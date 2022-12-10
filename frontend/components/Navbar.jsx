@@ -4,6 +4,10 @@ import NavItem from "./NavItem";
 import { signIn, signOut, useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from 'next/router';
+import getUser from '../apis/getUser';
+import Loader from "./Loader";
+import useUserStore from "../store/userStore";
+import shallow from 'zustand/shallow';
 
 const MENU_LIST = [
   //{ text: "Events", href: "/events" },
@@ -16,19 +20,29 @@ const MENU_LIST = [
 const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
-  const [userId, setUserId] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const { data: session } = useSession();
-
   const router = useRouter();
+  const {setUser, userId} = useUserStore((state) => ({
+    setUser: state.setUser,
+    userId: state.user?.username || '',
+  }), shallow)
 
   const fetchUserData = async () => {
-    const {data} = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
-      { access_token: session.accessToken, id_token: session.user.id },
-      { headers: { "Content-Type": "application/json" } }
-    );
+    if(!session.user?.id || !session.accessToken) return;
 
+    const data = await getUser({
+      access_token: session.accessToken,
+      id_token: session.user.id,
+    })
+
+    setIsLoading(false);
+    
+    if(data) {
+      setUser({...data.user, rank: data.rank});
+    }
+    
     if (typeof data.user.enrollmentNo != 'string'      //this condition will redirect the user directly to profile
       || typeof data.user.contactNo != 'string'        //page with edit profile if their profile is not complete
       || typeof data.user.email != 'string'
@@ -43,23 +57,27 @@ const Navbar = () => {
         pathname: '/profile',                                                //if all details are filled
       });
     }
-    return data.user;
   };
 
 
   useEffect(() => {
     if (session)
-      fetchUserData().then((response) => {
-        setUserId(response.username);
-      });
+      fetchUserData();
+    else {
+      setIsLoading(false);
+    }
   }, [session]);
 
+  if(isLoading) {
+    return <Loader/>
+  }
+  
   return (
     <header>
       <nav className={`nav`}>
         <Link href={"/"}>
           <a>
-            <img src="/images/logo.svg" id="navbar-logo"></img>
+            <img src="/images/logo.svg" id="navbar-logo"/>
           </a>
         </Link>
         <div
