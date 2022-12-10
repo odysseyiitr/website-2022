@@ -10,15 +10,14 @@ const ReposToContribute = ({ list, refetch }) => {
   const checkClaimEligibility = async () => {
     if(!session?.accessToken || !session?.user?.id) return;
     try {
-      const {data} = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-assigned-issue/`,
-      {
-        access_token: session.accessToken,
-        id_token: session.user.id,
-      })
-      if(data.message === 'no issue assigned') {
-        setDisableClaim(false)
-      } else {
+      const {data: user} = await axios.get(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
+        { access_token: session.accessToken, id_token: session.user.id },
+      );
+      if(Boolean(user.assignedIssue)) {
         setDisableClaim(true)
+      } else {
+        setDisableClaim(false)
       }
     }
       catch (e) {

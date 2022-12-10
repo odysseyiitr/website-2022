@@ -23,7 +23,7 @@ const Navbar = () => {
   const router = useRouter();
 
   const fetchUserData = async () => {
-    const response = await axios.post(
+    const response = await axios.get(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
       { access_token: session.accessToken, id_token: session.user.id },
       { headers: { "Content-Type": "application/json" } }

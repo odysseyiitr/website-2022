@@ -36,7 +36,7 @@ def set_custom_user_details(request):
 
 @csrf_exempt
 def get_custom_user_details(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         data = JSONParser().parse(request)
         post_data = {'access_token': data['access_token'], 'id_token': data['id_token']}
         response = requests.post(BACKEND_URL+'api/github/', data=post_data)

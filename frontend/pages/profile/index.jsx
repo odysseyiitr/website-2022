@@ -11,7 +11,7 @@ export default function Home() {
   const [user, setUser] = useState(null);
 
   const fetchUserData = async () => {
-    const response = await axios.post(
+    const response = await axios.get(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
       {
         access_token: session.accessToken,
