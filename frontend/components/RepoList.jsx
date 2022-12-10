@@ -10,7 +10,7 @@ const ReposToContribute = ({ list, refetch }) => {
   const checkClaimEligibility = async () => {
     if(!session?.accessToken || !session?.user?.id) return;
     try {
-      const {data: user} = await axios.get(
+      const {data: user} = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
         { access_token: session.accessToken, id_token: session.user.id },
       );
