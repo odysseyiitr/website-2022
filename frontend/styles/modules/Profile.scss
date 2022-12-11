@@ -20,11 +20,12 @@
 
 .profile-page-content {
   display: flex;
+  width:30rem;
   justify-content: space-around;
   height: max-content;
   margin-left: 6.375rem;
   height: 55.8125rem;    
-  margin-top: 9rem;    
+  margin-top: 1rem;    
 }
 
 .profile {
@@ -35,13 +36,13 @@
 .split_right {
   height: auto;
   padding-left: 6rem;
-  margin-top: 8.8rem;  
+  margin-top: 4rem;  
 }
 
 .merge_request {
   font-size: 4rem;
   text-shadow: 2px 2px 10px #f8f6f6;
-  margin: 0rem;
+  margin:0rem;
   padding-bottom: 2.6875rem;
 }
 

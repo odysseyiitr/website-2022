@@ -1,6 +1,8 @@
-.signup {      
+.userCard {      
   box-sizing: border-box;
-  margin:0;                                             
+  margin:0rem;
+  padding: 0rem;
+  width: 100% ;                              
   vertical-align: middle;
   display: flex;
   flex-wrap: wrap;
@@ -17,21 +19,6 @@
   border-right: 0.5rem solid #E95F8D;
 }
 
-.a {
-  transform:rotate(45deg);
-}           
-  
-.b{                 
-  top: -11rem;
-  left: 8rem;
-}
-
-.c {       
-  top: -7.6rem;      
-  left: 8rem;   
-  transform:rotate(90deg);
-}                  
-  
 .input {              
   background: rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;    
@@ -102,8 +89,7 @@
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 15px;
-  line-height: 15px;
+  font-size: 0.9375rem;
   padding-left: 1.2rem;
   padding-right: 0.8rem;
 }

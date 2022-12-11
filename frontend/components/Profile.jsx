@@ -12,26 +12,10 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp, rank }) => {
   const [formContact, setContact] = useState("");
   const [formField, setField] = useState("Developer");
 
-  async function setData(e) {
-    e.preventDefault();
-    let data = {
-      access_token: session.accessToken,
-      id_token: session.user.id,
-      name: formName ? formName : aname,
-      email: formEmail ? formEmail : email,
-      enrollmentNo: formEno ? formEno : eno,
-      contactNo: formContact ? formContact : contact,
-      field: formField ? formField : field,
-    };
-
-    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}backend/api/set-user/`, data, { headers: { "Content-Type": "application/json" } }).then(() => {
-      window.location.reload();
-    });
-  }
 
   return (
-    <div className="signup">
-      <form className="user-form" onSubmit={setData}>
+    <div className="userCard">
+      <div className="user-form">
         <div className="avatar">
           <div
             className="imageCropper"
@@ -68,7 +52,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp, rank }) => {
             <label className>#RANK</label>
           </div>
         </div>
-      </form>
+      </div>
 
     </div>
   );
