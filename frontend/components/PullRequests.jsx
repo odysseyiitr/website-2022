@@ -16,7 +16,7 @@ const Issue = ({ Card }) => {
         </h4>
     
       </div>
-      <div className="mentora"></div>
+      <div className="mentor"></div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import Profile from "../../components/Profile";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader";
-import PendingList from "../../components/PendingList";
+import PendingCard from "../../components/PendingCard";
 import MergedList from "../../components/MergedList";
 
 const axios = require("axios").default;
@@ -16,26 +16,18 @@ export default function Home() {
 
   const fetchUserData = async () => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
       {
         access_token: session.accessToken,
         id_token: session.user.id,
       },
       { headers: { "Content-Type": "application/json" } }
     );
-    return response;
-  };
 
-  const fetchMerged = async () => {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
-      {
-        access_token: session.accessToken,
-        id_token: session.user.id,
-      },
-      { headers: { "Content-Type": "application/json" } }
-    );
-    const issues = response.data.completedIssues;
+    const issue = response.data.user.assignedIssue;
+    setPending(JSON.parse(JSON.stringify(issue)));
+
+    const issues = response.data.user.completedIssues;
     let repos = [];
     if (issues != undefined || issues != null)
       issues.forEach(async (element) => {
@@ -45,27 +37,7 @@ export default function Home() {
         });
         setMerged(JSON.parse(JSON.stringify(repos)));
       });
-  };
-
-  const fetchPending = async () => {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}api/get-user/`,
-      {
-        access_token: session.accessToken,
-        id_token: session.user.id,
-      },
-      { headers: { "Content-Type": "application/json" } }
-    );
-    const issues = response.data.assignedIssues;
-    let repos = [];
-    if (issues != undefined || issues != null)
-      issues.forEach(async (element) => {
-        var repoInfo = element.issue.split("/");
-        repos = JSON.parse(JSON.stringify(repos));
-        repos.push({
-        });
-        setPending(JSON.parse(JSON.stringify(repos)));
-      });
+    return response;
   };
 
   useEffect(() => {
@@ -81,10 +53,8 @@ export default function Home() {
         userData.pfp = session.user.image;
         userData.rank = response.data.rank;
         setUser(userData);
+        setLoading(false)
       });
-
-    fetchPending().then(() => setLoading(false));
-    fetchMerged().then(() => setLoading(false));
   }, [session]);
 
   if (loading) {
@@ -108,9 +78,9 @@ export default function Home() {
             </div>
             <div className="split_right">
               <h1 className="merge_request">merged pull requests</h1>
-              <MergedList list={Merged} callback={fetchMerged} />
+              <MergedList list={Merged} />
               <h1 className="pending_request">pending pull requests</h1>
-              <PendingList list={Pending} callback={fetchPending} />
+              <PendingCard Card={Pending}/>
             </div>
           </div>
         ) : (

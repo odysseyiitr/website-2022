@@ -1,9 +1,9 @@
 import MergedCard from "./MergedCard";
 
-const MergedList= ({ list, callback }) => {
+const MergedList= ({ list}) => {
     return (
         list.map((Card, i) => {
-            return <MergedCard Card={Card} key={i} callback={callback} />;
+            return <MergedCard Card={Card} key={i} />;
         })
     );
 };
