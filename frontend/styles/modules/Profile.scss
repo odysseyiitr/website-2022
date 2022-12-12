@@ -1,4 +1,3 @@
-
 .role,
 .capitalised {
   font-family: BankGothicLtBT;
@@ -20,33 +19,35 @@
 
 .profile-page-content {
   display: flex;
-  width:30rem;
+  width: 30rem;
   justify-content: space-around;
   height: max-content;
   margin-left: 6.375rem;
-  height: 55.8125rem;    
-  margin-top: 1rem;    
+  height: 55.8125rem;
+  margin-top: 1rem;
 }
 
 .profile {
   display: flex;
   flex-direction: row;
+  margin-bottom: 4rem;
 }
 
 .split_right {
   height: auto;
   padding-left: 6rem;
-  margin-top: 4rem;  
+  margin-top: 4rem;
+  width: auto;
 }
 
 .merge_request {
   font-size: 4rem;
   text-shadow: 2px 2px 10px #f8f6f6;
-  margin:0rem;
+  margin: 0rem;
   padding-bottom: 2.6875rem;
 }
 
-.pending_request{
+.pending_request {
   font-size: 4rem;
   text-shadow: 2px 2px 10px #f8f6f6;
   margin: 0rem;
@@ -70,16 +71,40 @@
 
 
 @media only screen and (max-width: 1024px) {
-  .profile{
+  .profile {
     flex-direction: column;
   }
-  .split_right{
+
+  .split_right {
     padding-left: 4rem;
   }
 }
 
 @media only screen and (max-width: 576px) {
-  .merge_request,.pending_request {
+
+  .merge_request,
+  .pending_request {
     font-size: 2.5rem;
+  }
+
+  .userCard {
+    margin: auto;
+  }
+
+  .profile-page-content {
+    margin: auto;
+    width: 100vw;
+    height: auto;
+  }
+
+  .role,
+  .capitalised {
+    font-size: 0.5rem;
+  }
+
+  .split_right{
+    padding-left: 0rem;
+    align-items: center;
+    text-align: center;
   }
 }

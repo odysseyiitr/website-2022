@@ -1,35 +1,35 @@
-.userCard {      
+.userCard {
   box-sizing: border-box;
-  margin:0rem;
+  margin: 0rem;
   padding: 0rem;
-  width: 100% ;                              
+  width: 100%;
   vertical-align: middle;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-}         
-  
-.border{                             
+}
+
+.border {
   content: "";
-  position:relative;
-  width:2.5rem;
-  height:2.5rem;
-  overflow:hidden;
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  overflow: hidden;
   border-right: 0.5rem solid #E95F8D;
 }
 
-.input {              
+.input {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;    
-  border: none;                      
+  border-radius: 0.5rem;
+  border: none;
   font-size: 1.75rem;
   line-height: 1.7rem;
   height: 2.81rem;
-  width: 60%;        
-  padding-left: 1.56rem;      
+  width: 60%;
+  padding-left: 1.56rem;
   margin-left: 1.56rem;
-}                
+}
 
 .dropDown {
   background: rgba(255, 255, 255, 0.1);
@@ -114,12 +114,13 @@
   display: block;
 }
 
-.rank-label, .rank {
+.rank-label,
+.rank {
   display: block;
-  
+
 }
 
-.rankHandle{
+.rankHandle {
   font-size: 3rem;
   text-align: center;
   margin-top: 1rem;
@@ -171,15 +172,59 @@
 }
 
 @media only screen and (max-width: 1024px) {
+
   .detail,
   .detail-label {
-    width: 120%;
     display: block;
   }
 
   .signup,
   .progresspanel {
     margin-bottom: 2rem;
+  }
+
+}
+
+@media only screen and (max-width: 576px) {
+  .userCard {
+    margin: auto;
+  }
+
+  .user-form {
+    margin-top: 2rem;
+    width: 80vw;
+  }
+
+  .imageCropper {
+    width: 60vw;
+    height: 40vw;
+    position: relative;
+    margin-top: 1.2rem;
+    padding: 3%;
+    border-radius: 1rem;
+    box-shadow: 3px 3px 9px 6px #cfcdcd41;
+  }
+
+  .userHandle {
+    padding-top: 3%;
+    font-size: 1.75rem;
+    display: block;
+  }
+
+  .actualName {
+    font-size: 1rem;
+  }
+
+  .detail-label,
+  .details {
+    font-size: 0.9rem;
+  }
+
+  .rankHandle {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
   }
 
 }

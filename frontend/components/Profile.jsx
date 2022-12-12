@@ -39,7 +39,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp, rank }) => {
             <label className="detail-label">CONTACT NO</label>
             <label className="details">{contact}</label>
           </div>
-          <div className="form-floating">
+          <div className="form-floating"> 
             <label className="detail-label">EMAIL ID</label>
             <label className="details">{email}</label>
           </div>
