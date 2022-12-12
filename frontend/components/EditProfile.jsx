@@ -4,14 +4,16 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { useRouter } from 'next/router';
 import Button from "./Button";
-const EditProfile = ({pfp}) => {
+import { useEffect } from "react";
+const EditProfile = ({ uname, aname, eno, contact, email, field, pfp }) => {
     const { data: session } = useSession();
     const [editProfile, setEdit] = useState(true);
     const [formName, setName] = useState("");
     const [formEmail, setEmail] = useState("");
     const [formEno, setEno] = useState("");
     const [formContact, setContact] = useState("");
-    const [formField, setField] = useState("Developer");
+    const [formField, setField] = useState("");
+    const [fieldColor, setColor] = useState("rgba(255, 255, 255, 0.4)");
     async function setData(e) {
         e.preventDefault();
         let data = {
@@ -29,20 +31,31 @@ const EditProfile = ({pfp}) => {
         });
     }
 
+    useEffect(()=>{
+        if(formField=="Developer" || formField=="Designer")
+        setColor("rgba(255, 255, 255)")
+    })
+
     return (
         <>
             <div className="signup">
                 <form className="signupForm" onSubmit={setData}>
-                    <div className="avatar">
+                    <div className="formAvatar">
                         <div
                             className="formImage"
                             style={{
                                 backgroundImage: `url(${pfp})`,
                             }}
                         ></div>
+                        <div className="userHandleForm">{uname}</div>
+                        <select name="field" onChange={(e) => setField(e.target.value)} className="roleDropDown" style={{color:fieldColor}}>
+                            <option value="" disabled selected hidden>Select Field</option>
+                            <option className="options1" value="Developer">Developer</option>
+                            <option className="options2" value="Designer">Designer</option>
+                        </select>
                     </div>
-                    <div className="user-details">
-                        <div className="form-floating">
+                    <div className="userDetailsForm">
+                        <div className="formEdit">
                             <label>ACTUAL NAME</label>
                             <input
                                 type="text"
@@ -52,7 +65,7 @@ const EditProfile = ({pfp}) => {
                                 value={formName}
                             />
                         </div>
-                        <div className="form-floating">
+                        <div className="formEdit">
                             <label>ENROLMENT NO</label>
                             <input
                                 type="text"
@@ -64,7 +77,7 @@ const EditProfile = ({pfp}) => {
                                 value={formEno}
                             />
                         </div>
-                        <div className="form-floating">
+                        <div className="formEdit">
                             <label>CONTACT NO</label>
                             <input
                                 type="tel"
@@ -76,7 +89,7 @@ const EditProfile = ({pfp}) => {
                                 value={formContact}
                             />
                         </div>
-                        <div className="form-floating">
+                        <div className="formEdit">
                             <label>EMAIL ID</label>
                             <input
                                 type="email"
@@ -86,9 +99,7 @@ const EditProfile = ({pfp}) => {
                                 value={formEmail}
                             />
                         </div>
-                        <div
-                            className="submit-button-profile"
-                        >
+                        <div    className="submitProfile">
                             <Button type="submit" text={"Sign Up"} />
                         </div>
 

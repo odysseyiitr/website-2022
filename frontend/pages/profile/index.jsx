@@ -70,7 +70,13 @@ export default function Home() {
   if (!editProfile && user != null) {
     return (
       <>
-        <EditProfile pfp={user.pfp} />
+        <EditProfile uname={user.uname}
+          aname={user.aname}
+          field={user.field}
+          eno={user.eno}
+          contact={user.contact}
+          email={user.email}
+          pfp={user.pfp} />
       </>
     );
   } else {
@@ -88,6 +94,7 @@ export default function Home() {
                 email={user.email}
                 pfp={user.pfp}
                 rank={user.rank}
+                field={user.field}
               />
             </div>
             <div className="split_right">

@@ -1,0 +1,109 @@
+.signup {
+    width: 66.375rem;
+    height: 45rem;
+    border-radius: 1.125rem;
+    border: 0.25rem solid white;
+    box-shadow: 5px 5px 15px 10px #cfcdcd41;
+    margin-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5rem;
+    position: relative;
+}
+
+.formAvatar {
+    display: flex;
+    flex-direction: row;
+}
+
+.formImage {
+    width: 10rem;
+    height: 10rem;
+    margin-left: 5.625rem;
+    margin-top: 5.625rem;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+
+.userHandleForm {
+    margin-top: 8rem;
+    margin-left: 2rem;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-family: 'BankGothicMdBT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5rem;
+}
+
+.roleDropDown {
+    text-transform: uppercase;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'BankGothicLtBT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    position: absolute;
+    right: 6rem;
+    top: 8.4rem;
+    width: 20rem;
+    padding-left: 2rem;
+}
+
+.options1 {
+    font-family: 'BankGothicLtBT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #ffffff1a;
+}
+
+.options2 {
+    font-family: 'BankGothicLtBT';
+    background: rgba(255, 255, 255, 0.1);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-color: #ffffff1a;
+}
+
+.userDetailsForm {
+    margin-left: 5.625rem;
+    margin-right: 6rem;
+    margin-top: 3.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.625rem;
+    justify-content: space-between;
+}
+
+.formEdit {
+    display: flex;
+    font-family: 'BankGothicMdBT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    align-items: center;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.submitProfile {
+    margin: auto;
+
+    button {
+        font-size: 1.75rem !important;
+    }
+}
