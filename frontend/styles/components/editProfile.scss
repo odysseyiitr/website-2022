@@ -1,5 +1,5 @@
 .signup {
-    width: 66.375rem;
+    width: 58vw;
     height: 45rem;
     border-radius: 1.125rem;
     border: 0.25rem solid white;
@@ -19,8 +19,8 @@
 .formImage {
     width: 10rem;
     height: 10rem;
-    margin-left: 5.625rem;
-    margin-top: 5.625rem;
+    margin-left: 5vw;
+    margin-top: 5vw;
     border-radius: 50%;
     background-size: cover;
     background-position: center;
@@ -49,7 +49,7 @@
     background: rgba(255, 255, 255, 0.1);
     border-radius: 0.5rem;
     position: absolute;
-    right: 6rem;
+    right: 5vw;
     top: 8.4rem;
     width: 20rem;
     padding-left: 2rem;
@@ -105,5 +105,80 @@
 
     button {
         font-size: 1.75rem !important;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .roleDropDown {
+        width: 15rem;
+        height: 2rem;
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+    .signup {
+        width: 88vw;
+    }
+
+    .formAvatar {
+        flex-direction: row;
+    }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .signup {
+        width: 88vw;
+    }
+
+    .roleDropDown {
+        position: static;
+        width: 20rem;
+        text-align: center;
+        padding-left: 0%;
+    }
+
+    .formAvatar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .userHandleForm {
+        margin-top: 1rem;
+    }
+
+    .signup {
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .formImage {
+        height: 8rem;
+        width: 8rem;
+    }
+
+    .userDetailsForm {
+        font-size: 1.25rem;
+        margin: 1rem;
+        margin-top: 2rem;
+    }
+    .formEdit,.input {
+        font-size: 1rem;
+    }
+}
+@media only screen and (max-width: 425px) {
+    .signup {
+        width:98vw;
+    }
+    .userDetailsForm{
+        margin: 0.5rem;
+        margin-top: 2rem;
+    }
+    .input{
+        padding: 0.25rem;
     }
 }

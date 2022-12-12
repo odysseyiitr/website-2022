@@ -4,12 +4,14 @@
 }
 
 .mergedCard {
-    width: 53rem;
+    width: 54vw;
+    max-width: 100%;
     min-height: 8.125rem;
     background-image: linear-gradient(90deg, #28155d, #711e49);
     border: 2px solid #FFFFFF;
     border-radius: 1rem;
-    margin: 1.5rem;
+    margin: 0rem;
+    margin-top: 1.5rem;
     padding: 1.5rem;
 }
 
