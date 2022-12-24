@@ -14,8 +14,9 @@ const Repo = ({ Card, refetch }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const claimUnclaimIssue = useCallback(async(unclaim = false) => {
+  const claimUnclaimIssue = useCallback(async(event, unclaim = false) => {
     setLoading(true);
+    event.preventDefault();
     try {
       await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}api/${unclaim ? 'un' : ''}claim-issue/`,
@@ -34,7 +35,7 @@ const Repo = ({ Card, refetch }) => {
   }, [session?.user?.id, session?.accessToken, Card.issueUrl, refetch])
 
   const handleClaimIssue = claimUnclaimIssue;
-  const handleUnclaimIssue = () => claimUnclaimIssue(true);
+  const handleUnclaimIssue = (event) => claimUnclaimIssue(event,true);
   
   const renderClaimButton = () => {
     const isLoggedIn = session?.user?.id && session?.accessToken && user; 

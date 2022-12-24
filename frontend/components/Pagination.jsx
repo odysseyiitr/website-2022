@@ -8,6 +8,7 @@ export const paginate = (items, pageNumber, pageSize) => {
 };
 
 const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
+  const [strI, setStrI] = useState(0);
   let pagecount = items / pageSize;
   if (items % pageSize === 0) pagecount++;
   if (Math.ceil(pagecount) <= 1) return null;
@@ -22,8 +23,6 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
     if (strI - 5 < 0) return;
     setStrI(strI - 5, strI);
   };
-
-  const [strI, setStrI] = useState(0);
 
   return (
     <div className="pagination">
