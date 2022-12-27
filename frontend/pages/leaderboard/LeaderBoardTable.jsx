@@ -26,7 +26,7 @@ const LeaderBoardTable = () => {
         });
         if (check.length === 0) {
           const res = await axios.get(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/leaderboard/${currentPage}`
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}api/leaderboard/${currentPage}`
           );
 
           const data = res.data.sort(function (a, b) {
