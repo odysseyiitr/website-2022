@@ -142,17 +142,20 @@ def complete_issue(request):
             issue.save()
             user = CustomUserModel.objects.get(username=issue.assigneeId)
             user.assignedIssue = None
-            user.completedIssues.append(issue)
+            user.completedIssues.add(issue)
             user.save()
-            leaderboard = LeaderboardModel.objects.get(username=issue.assigneeId)
+            leaderboard = LeaderboardModel.objects.filter(username=issue.assigneeId).first()
             if leaderboard is None:
-                leaderboard = LeaderboardModel(username=issue.assigneeId, name=issue.assigneeName, points=0)
+                leaderboard = LeaderboardModel(username=issue.assigneeId, name=issue.assigneeName or issue.assigneeId, points=0)
             points = 0
             if issue.issueDifficulty == 'Easy':
+                leaderboard.easy += 1
                 points = 5
             elif issue.issueDifficulty == 'Medium':
+                leaderboard.medium += 1
                 points = 10
             elif issue.issueDifficulty == 'Hard':
+                leaderboard.hard += 1
                 points = 20
             leaderboard.points += points
             leaderboard.save()
