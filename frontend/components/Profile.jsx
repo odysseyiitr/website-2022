@@ -95,7 +95,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 <label>ACTUAL NAME</label>
                 <input
                   type="text"
-                  placeholder="ENTER YOUR NAME"
+                  placeholder={aname}
                   className="input"
                   onChange={(e) => setName(e.target.value)}
                   value={formName}
@@ -105,7 +105,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 <label>ENROLMENT NO</label>
                 <input
                   type="text"
-                  placeholder="ENTER ENROLLMENT NO."
+                  placeholder={eno}
                   pattern="[0-9]{8}"
                   className="input"
                   title="enrollment number should contain only 8 numeric digits"
@@ -117,7 +117,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 <label>CONTACT NO</label>
                 <input
                   type="tel"
-                  placeholder="ENTER CONTACT NO."
+                  placeholder={contact}
                   pattern="[0-9]{10}"
                   title="phone number should contain only 10 numeric digits"
                   className="input"
@@ -129,7 +129,7 @@ const Profile = ({ uname, aname, role, eno, contact, email, pfp }) => {
                 <label>EMAIL ID</label>
                 <input
                   type="email"
-                  placeholder="ENTER EMAIL ID"
+                  placeholder={email}
                   className="input"
                   onChange={(e) => setEmail(e.target.value)}
                   value={formEmail}
