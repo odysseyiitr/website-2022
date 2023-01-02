@@ -4,9 +4,10 @@ import Loader from "./Loader";
 import axios from "axios";
 import { useCallback } from "react";
 import { signIn } from "next-auth/react";
-import useUserStore from '../store/userStore';
+import useUserStore from "../store/userStore";
 
-const UNCLAIMED_CARD_COLOR = "linear-gradient(90deg, rgba(50, 18, 138, 0.207) 0%, rgba(80, 41, 189, 0.207) 0.01%, rgba(170, 28, 100, 0.237) 58.85%, rgba(233, 69, 96, 0.3) 100%), linear-gradient(90deg, #1D0F44 0%, #3D0E3D 100%)";
+const UNCLAIMED_CARD_COLOR =
+  "linear-gradient(90deg, rgba(50, 18, 138, 0.207) 0%, rgba(80, 41, 189, 0.207) 0.01%, rgba(170, 28, 100, 0.237) 58.85%, rgba(233, 69, 96, 0.3) 100%), linear-gradient(90deg, #1D0F44 0%, #3D0E3D 100%)";
 
 const Repo = ({ Card, refetch }) => {
   const { data: session } = useSession();
@@ -14,79 +15,103 @@ const Repo = ({ Card, refetch }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const claimUnclaimIssue = useCallback(async(event, unclaim = false) => {
-    setLoading(true);
-    event.preventDefault();
-    try {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}api/${unclaim ? 'un' : ''}claim-issue/`,
-        {
-          access_token: session.accessToken,
-          id_token: session.user.id,
-          issue: Card.issueUrl,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-      refetch();
-    }
-  }, [session?.user?.id, session?.accessToken, Card.issueUrl, refetch])
+  const claimUnclaimIssue = useCallback(
+    async (event, unclaim = false) => {
+      setLoading(true);
+      event.preventDefault();
+      try {
+        await axios.post(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}api/${
+            unclaim ? "un" : ""
+          }claim-issue/`,
+          {
+            access_token: session.accessToken,
+            id_token: session.user.id,
+            issue: Card.issueUrl,
+          }
+        );
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+        refetch();
+      }
+    },
+    [session?.user?.id, session?.accessToken, Card.issueUrl, refetch]
+  );
 
   const handleClaimIssue = claimUnclaimIssue;
-  const handleUnclaimIssue = (event) => claimUnclaimIssue(event,true);
-  
+  const handleUnclaimIssue = (event) => claimUnclaimIssue(event, true);
+
   const renderClaimButton = () => {
-    const isLoggedIn = session?.user?.id && session?.accessToken && user; 
-    if(!isLoggedIn) {
+    const isLoggedIn = session?.user?.id && session?.accessToken && user;
+    if (!isLoggedIn) {
       // If not logged in, show login button
       return (
-        <button className="button" onClick={() => signIn('github')}>
+        <button className="button" onClick={() => signIn("github")}>
           Login
         </button>
-      )
+      );
     }
 
-    if(Card.claim && Card.assignee === user.username) {
+    if (Card.completed) {
+      return (
+        <button
+          className="button"
+          style={{
+            backgroundColor: "#E95F8D",
+            borderColor: "#E95F8D",
+            color: "#FFF",
+          }}
+        >
+          Completed
+        </button>
+      );
+    }
+
+    if (Card.claim && Card.assignee === user.username) {
       return (
         // If logged in and issue is claimed by the user, show unclaim button
-        <button className="button" 
+        <button
+          className="button"
           onClick={handleUnclaimIssue}
           style={{
             backgroundColor: "#E95F8D",
             borderColor: "#E95F8D",
-            color: "#FFF"
+            color: "#FFF",
           }}
         >
           Unclaim
         </button>
-      )
+      );
     }
 
     // If logged in and issue is claimed by someone else, show nothing
 
-    if(!Card.claim) {
+    if (!Card.claim) {
       // If logged in and issue is unclaimed, show claime button
       return (
         <button className="button" onClick={handleClaimIssue}>
           Claim
         </button>
-      )
+      );
     }
-  }
+  };
 
-  if(loading) {
-    return <Loader />
+  if (loading) {
+    return <Loader />;
   }
 
   return (
-    <div className="repobox" style={{ background: Card.claim ? 'none' : UNCLAIMED_CARD_COLOR }}>
+    <div
+      className="repobox"
+      style={{ background: Card.claim ? "none" : UNCLAIMED_CARD_COLOR }}
+    >
       <div className="cardTag">{Card.tag}</div>
       <div className="issueDetails">
         <div>
           <h4>
-            <i>{Card.repoName}</i> - {' '}
+            <i>{Card.repoName}</i> -{" "}
             <b className="issue">
               <a href={Card.issueUrl} target="_blank" rel="noreferrer">
                 {Card.issueTitle}
@@ -96,17 +121,11 @@ const Repo = ({ Card, refetch }) => {
         </div>
         <div className="buttonWrap">
           <div>
-            <div className="mentor">
-              MENTOR : {Card.mentor}
-            </div>
+            <div className="mentor">MENTOR : {Card.mentor}</div>
             {!Card.claim ? (
-              <div className='assignee'>
-                ASSIGNEE : None
-              </div>
+              <div className="assignee">ASSIGNEE : None</div>
             ) : (
-              <div className='assignee'>
-                ASSIGNEE : {Card.assignee}
-              </div>
+              <div className="assignee">ASSIGNEE : {Card.assignee}</div>
             )}
           </div>
           {renderClaimButton()}
