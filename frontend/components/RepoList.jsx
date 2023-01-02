@@ -3,9 +3,9 @@ import Repo from "./RepoComponent";
 const ReposToContribute = ({ list, refetch }) => (
   <div className="repodialogue">
     <div className="scroll">
-      {list.map((card) => (
-        <Repo Card={card} key={card.issueTitle} refetch={refetch} /> 
-      ))} 
+      {list.map((card, index) => (
+        <Repo Card={card} key={index} refetch={refetch} />
+      ))}
     </div>
   </div>
 );
